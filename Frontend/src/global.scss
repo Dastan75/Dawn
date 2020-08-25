@@ -1,0 +1,163 @@
+$base-color: rgb(39, 35, 67);
+$base-color-lightgrey: rgb(243, 244, 248);
+$base-color-darkergrey: rgb(212, 213, 221);
+
+$base-color-red: rgb(214, 34, 70);
+$base-color-purple: rgb(145, 57, 182);
+$base-color-blue: rgb(0, 129, 202);
+$base-color-green: rgb(2, 195, 126);
+$base-color-orange: rgb(255, 125, 73);
+$base-color-yellow: rgb(255, 189, 59);
+$base-color-pink: rgb(225, 82, 185);
+$base-color-emerald: rgb(23, 190, 187);
+
+$left-menu-size: 56px;
+$left-menu-icon-size: 70%;
+$left-menu-icon-space: 48px;
+$left-menu-size-open: 10vw;
+
+$text-caps: 0.9em;
+$text-parag-normal: 1.125em;
+$text14px: 1em;
+$text18px: 1.25em;
+$text21px: 1.5em;
+$text24px: 1.75em;
+$text52px: 3.715em;
+
+$scale8: 8px;
+$scale12: 12px;
+$scale16: 16px;
+$scale24: 24px;
+$scale32: 32px;
+$scale40px: 40px;
+$scale48px: 48px;
+
+$shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
+$shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 0px 6px rgba(0, 0, 0, 0.15);
+
+$letterspacing-tight: -0.035em;
+$letterspacing-normal: 0.0035em;
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: url('greycliff-cf-bold.ttf')  format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Greycliff CF';
+  src: url('greycliff-cf-medium.ttf')  format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes come-from-left {
+  from {
+    margin-left: -400px;
+  }
+  to {
+    margin-left: 0px;
+  }
+}
+
+@keyframes come-from-top {
+  from {
+    margin-top: -400px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.SwapBody {
+  color: $base-color;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.MenuBlock {
+  transition: 1s all;
+  z-index: 10;
+  top: 0px;
+  animation: ease-in-out 1s;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $left-menu-size;
+  padding: 1vh 0vw;
+  height: 100vw;
+  background: #FFFFFF;
+  box-shadow: $shadow-bigger;
+
+
+}
+
+.MenuBlockOne {
+  height: $left-menu-icon-space;
+  width: $left-menu-icon-size;
+  padding-left: 1px;
+  padding-right: 1px;
+  border-radius: 3px;
+  background: linear-gradient(-45deg, #FF5C00, #FFA800, white, white);
+  background-size: 400% 400%;
+  &.current {
+    animation: menu-background .5s forwards;
+  }
+}
+
+.LeftMenuSVG {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes menu-background {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

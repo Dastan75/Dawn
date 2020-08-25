@@ -1,0 +1,333 @@
+@import '../global.scss';
+
+.MenuBlock {
+    z-index: 1;
+}
+.taskOverlay {
+    background-color: $base-color;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100vw;
+    z-index: 2;
+}
+    .taskDetails {
+        background: white;
+        margin-left: $left-menu-size;
+        margin: 40px;
+        height: calc(100vh - 80px);;
+        font-family: Greycliff CF;
+        font-weight: bold;
+        box-shadow: $shadow-smaller;
+        border-radius: 3px;
+        overflow: auto;
+    }
+        .closeButton {
+            background-color: white;
+            border-radius: 150px;
+            box-shadow: $shadow-bigger;
+            height: 28px;
+            position: absolute;
+            right: 26px;
+            top: 26px;
+            width: 28px;
+            z-index: 100;
+        }
+        .sideNav {
+            height: 260px;
+            position: absolute;
+            right: 14px;
+            top: 160px;
+            width: 52px;
+        }
+        .navItem {
+            background-color: white;
+            border-radius: 150px;
+            box-shadow: $shadow-smaller;
+            height: 52px;
+            margin-bottom: 12px;
+            padding: 10px;
+        }
+        .taskTopBar {
+            background-color: white;;
+            display: flex;
+            box-shadow: $shadow-bigger;
+            // margin: 40px 0;
+            border-radius: 3px 3px 0 0;
+            z-index: 10;
+            position: relative;
+        }
+        .topBarLeft {
+            display: flex;
+            padding-left: $scale32;
+            width: 40%;
+            position: relative;
+        }
+        .moreNav {
+            background-color: rebeccapurple;
+            height: 32px;
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            width: 32px;
+        }
+        .topBarRight {
+            display: flex;
+            padding: 0 $scale32 0 8px;
+            width: 60%;
+        }
+        .twoRows {
+            display: flex;
+            height: 32px;
+            justify-content: space-evenly;
+            padding: 0 24px;
+            flex-direction: column;
+            border-right: 1px solid $base-color;
+            margin-top: 24px;
+        }
+        .twoRows:last-child {
+            border: none;
+        }
+        .rowTitle {
+            color: #5D5A72;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .dueDate, .trackedTime, .estimatedTime, .priorityLabel, .statusLabel {
+            font-size: $text-caps;
+            text-transform: uppercase;
+            letter-spacing: 0.007em;
+        }
+        .priorityLabel, .statusLabel {
+            background-color: salmon;
+            border-radius: 2px;
+            height: 19px;
+            line-height: 18px;
+            padding: 0 8px;
+            font-weight: bold;
+            // position: relative;
+            // left: -8px;
+        }
+    .taskTitle {
+        font-size: $text24px;
+        margin-right: $scale24;
+        line-height: 80px;
+    }
+    .taskMainDetails {
+        height: calc(100vh - 160px);
+        display: flex;
+        z-index: 5;
+    }
+        .leftDetails {
+            padding: $scale32;
+            width: 40%;
+        }
+        .title {
+            font-size: $text24px;
+        }
+        .smallTitle {
+            font-size: $text-caps;
+            text-transform: uppercase;
+            letter-spacing: 0.007em;
+            margin: 32px 0 8px 0;
+        }
+        .description {
+            font-size: $text-parag-normal;
+            font-weight: 500;
+        }
+        .rightDetails {
+            background-color: $base-color-lightgrey;
+            box-shadow: 1px -10px 0px rgba(0, 0, 0, 0.1), 0px -10px 1px rgba(0, 0, 0, 0.15), 0px -10px 6px rgba(0, 0, 0, 0.15);
+            width: 60%;
+        }
+            .viewConverse, .viewFiles {
+                height: 100%;
+                width: 100%;
+            }
+            .contents {
+                height: calc(100% - 80px);
+                padding: $scale32;
+                display: flex;
+                flex-direction: column;
+            }
+            .converseRow, .taskRow {
+                // display: flex;
+                // height: 80px;
+                font-size: $text-parag-normal;
+                font-weight: 500;
+                margin: 12px 0;
+                padding: 0 12px 0 0;
+                position: relative;
+                width: 100%;
+            }
+            .taskRow {
+                margin-bottom: 24px;
+            }
+            .avatar {
+                background-color: tomato;
+                border-radius: 150px;
+                height: 30px;
+                margin-right: 12px;
+                width: 30px;
+            }
+            .comment {
+                background-color: white;
+                border-radius: 10px;
+                margin-right: 12px;
+                padding: 18px;
+                width: calc(100% - 200px);
+            }
+            .timeStamp, .timeEstimated {
+                position: absolute;
+                right: 12px;
+                letter-spacing: -0.035em;
+                text-align: right;
+                width: 150px;
+            }
+            .timeEstimated {
+                font-size: $text-caps;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.007em;
+            }
+            .action {
+                width: calc(100% - 150px);
+            }
+            .action span { font-weight: bold; }
+            .subtaskAdd {
+                background-color: white;
+                box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+                display: flex;
+                padding: 12px;
+            }
+            .avatarAdd {
+                width: 24px;
+            }
+            .avatarAdd, .addMoreBox {
+                display: flex;
+                height: 24px;
+                margin-right: 12px;
+            }
+            .subtaskTitle {
+                font-size: $text21px;
+                font-weight: bold;
+                width: calc(100% - 200px);
+            }
+            .taskItem {
+                display: flex;
+                width: 100%;
+            }
+            .checklist {
+                flex-direction: column;
+                margin: 24px 0 0 42px;
+                width: calc(100% - 42px);
+                display: flex;
+            }
+            .checklistItem {
+                display: flex;
+                line-height: 32px;
+                margin-bottom: 12px;
+                width: 100%;
+            }
+            .checkbox {
+                background-color: white;
+                border-radius: 150px;
+                box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.1), inset 0px 0px 1px rgba(0, 0, 0, 0.15);
+                height: 32px;
+                margin-right: 8px;
+                width: 32px;
+            }
+            .completed {
+                background-color: $base-color-green;
+                box-shadow: none;
+            }
+            .checklistAdd {
+                background-color: white;
+                box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+                display: flex;
+                padding: 12px;
+            }
+            .subtaskTitle {
+                font-size: $text14px;
+            }
+            .converseComment, .uploadBar {
+                background-color: white;
+                height: 80px;
+                line-height: 80px;
+                padding: 0 32px;
+            }
+            .commentButton {
+                font-size: $text-caps;
+                text-transform: uppercase;
+                letter-spacing: 0.007em;
+            }
+            .filesList {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                left: -12px;
+                position: relative;
+                width: 100%;
+            }
+            .fileItem {
+                padding: 12px;
+                position: relative;
+            }
+            .fileAttachment {
+                background-color: white;
+                border-radius: 3px;
+                box-shadow: $shadow-smaller;
+                height: 100px;
+                margin-bottom: 12px;
+                min-width: 150px;
+                width: 100%;
+            }
+            .fileName {
+                font-size: $text-parag-normal;
+                text-align: center;
+            }
+
+    .members {
+        align-items: center;
+        width: 30%;
+        bottom: 24px;
+        right: 0;
+        display: flex ;
+        padding: 0px 7px 0px 0px ;
+        z-index: 1 ;
+        .memberBox {
+            // height: 44px ;
+            margin: 0px 0px 0px 0px ;
+            padding: 0px 0px 0px 0px ;
+            position: relative ;
+            width: 22px ;
+        }
+        .membersBoxSmall {
+            width: 22px;
+        }
+        .memberBox:nth-child( 1 ) { z-index: 9 ; }
+        .memberBox:nth-child( 2 ) { z-index: 8 ; }
+        .memberBox:nth-child( 3 ) { z-index: 7 ; }
+        .oneMember {
+            color: white;
+            background: #FFBD3B;;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white ;
+            font-family: Greycliff CF;
+            font-size: 12px ;
+            font-weight: 100 ;
+            height: 40px ;
+            line-height: 40px ;
+            text-align: center ;
+            width: 40px ;
+        }
+        .oneMemberSmall {
+            height: 30px ;
+            line-height: 30px ;
+            width: 30px ;
+        }
+    }
