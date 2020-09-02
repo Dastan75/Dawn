@@ -1,0 +1,141 @@
+@import '../../global.scss';
+
+
+.backlogContainer {
+    background-color: $base-color-lightgrey;
+    box-shadow: $shadow-bigger;
+    font-family: Greycliff CF;
+    font-weight: bold;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    width: 314px;
+    z-index: 10;
+    transition: all 1s;
+    animation: fade-in 1s;
+}
+.closeBacklog {
+  background-color: white;
+  border-radius: 3px 0 0 3px;
+  display: flex;
+  height: 32px;
+  left: -24px;
+  position: absolute;
+  top: 12px;
+  width: 24px;
+  z-index: 2;
+}
+.backlogTitle {
+    background-color: white;
+    box-shadow: $shadow-smaller;
+    font-size: $text21px;
+    height: 56px;
+    line-height: 52px;
+    padding: 0 12px;
+    width: 100%;
+}
+.todaysBlock {
+    padding: 24px 12px;
+    height: 70vh;
+    // border: red solid 1px;
+    overflow-y: scroll;
+}
+.filter {
+    font-size: $text-caps;
+    text-transform: uppercase;
+}
+.task {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-top: $scale16;
+    box-shadow: $shadow-smaller;
+    border-radius: 3px;
+    height: 60px;
+    background: white;
+    padding: 0px 4%;
+    display: flex;
+    justify-content: space-between;
+    transition: all 1s;
+    .name {
+      color: $base-color;
+      font-family: Greycliff CF;
+      font-style: normal;
+      font-size: $text18px;
+      line-height: 22px;
+    }
+    .duration {
+      color: $base-color;
+      font-family: Greycliff CF;
+      font-style: normal;
+      font-size: $text-caps;
+    }
+    .workBar {
+      position: absolute;
+      border-radius: 3px 0px 0px 0px;
+      height: 3px;
+      top: 0px;
+      left: 0px;
+    }
+    &.task1 {
+      .workBar {
+        width: 50%;
+        background: #129EAF;
+      }
+    }
+    &.task2 {
+      .workBar {
+        width: 90%;
+        background: #23D0CD;
+      }
+    }
+    &.task3 {
+      .workBar {
+        width: 20%;
+        background: #EC365A;
+      }
+    }
+  }
+.TasksBarsBlock {
+    // border: solid 1px green;
+    width: 35%;
+    .TaskOne {
+      margin-top: 2vh;
+      display: flex;
+      justify-content: space-between;
+      color: $base-color;
+      font-family: Greycliff CF;
+      font-style: normal;
+      font-size: $text21px;
+      line-height: 25px;
+      // padding-right: 10%;
+      .ant-progress {
+        // border: blue solid 1px;
+        width: 70%;
+      }
+      .ant-progress-bg {
+        height: 12px !important;
+      }
+    }
+  }
+  .noteToUser {
+    margin-top: 18px;
+    display: flex;
+  }
+  .noteArrow {
+    height: 36px;
+    margin-top: 24px;
+    width: 40px;
+  }
+  .noteText {
+    font-family: Kalam;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    margin-left: 12px;
+    transform: rotate(-2deg);
+    width: 200px;
+  }

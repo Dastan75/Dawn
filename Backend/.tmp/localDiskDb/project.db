@@ -1,0 +1,4 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"name":"Code Swap","desc":"I use HTML/CSS + React/Node","team":"42b470ce-9086-4d17-bcc7-e215c6dbef38","createdAt":1598994358335,"updatedAt":1598994358335,"id":"488459f5-cd44-4329-be17-6252c81cf287","_id":"488459f5-cd44-4329-be17-6252c81cf287"}
+{"name":"Design Swap","desc":"I use dribble and figma","team":"42b470ce-9086-4d17-bcc7-e215c6dbef38","createdAt":1598994358338,"updatedAt":1598994358338,"id":"a1989f72-eea5-4a1f-b7c2-dd403df41fe2","_id":"a1989f72-eea5-4a1f-b7c2-dd403df41fe2"}
+{"name":"Sell Swap","desc":"I use this african prince money that I received in my email","team":"42b470ce-9086-4d17-bcc7-e215c6dbef38","createdAt":1598994358345,"updatedAt":1598994358345,"id":"fc853e48-72fc-4463-97c7-3b148f44106f","_id":"fc853e48-72fc-4463-97c7-3b148f44106f"}

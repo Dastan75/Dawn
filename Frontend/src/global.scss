@@ -63,6 +63,12 @@ $letterspacing-normal: 0.0035em;
   }
 }
 
+@keyframes spin { 
+  100% { 
+    transform: rotate(360deg); 
+  } 
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -74,16 +80,34 @@ $letterspacing-normal: 0.0035em;
 
 @keyframes come-from-left {
   from {
-    margin-left: -400px;
+      margin-left: -4000px;
+  }
+  to {
+      margin-left: 0px;
+  }
+}
+
+@keyframes come-from-top {
+  from {
+    margin-top: -4000px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+@keyframes come-from-right {
+  from {
+    margin-left: 4000px;
   }
   to {
     margin-left: 0px;
   }
 }
 
-@keyframes come-from-top {
+@keyframes come-from-bottom {
   from {
-    margin-top: -400px;
+    margin-top: 4000px;
   }
   to {
     margin-top: 0px;
@@ -104,7 +128,7 @@ $letterspacing-normal: 0.0035em;
   transition: 1s all;
   z-index: 10;
   top: 0px;
-  animation: ease-in-out 1s;
+  // animation: come-from-left ease-in-out 1s;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -116,6 +140,14 @@ $letterspacing-normal: 0.0035em;
   box-shadow: $shadow-bigger;
 
 
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .MenuBlockOne {

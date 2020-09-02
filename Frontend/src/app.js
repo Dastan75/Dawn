@@ -49,23 +49,25 @@ class App extends React.PureComponent {
             <div className="SwapBody">
                 <ToastContainer />
                 {
-                    !user.loggedIn &&  
+                    user.loggedIn &&  
                     <Router basename="/app/">
                         <Switch>
                             <Route exact path="/Login">
                                 <Signup getData={this.getData}/>
+                                {/* <PersonalPlanner /> */}
                             </Route>
                             <Redirect to="/Login" />
                         </Switch>
                     </Router>
                 }
                 {
-                    user.loggedIn &&
+                    !user.loggedIn &&
                     <Router basename="/app/">
                         <LeftMenu/>
                         <Switch>
                             <Route exact path="/Home">
                                 <MainBody/>
+                                {/* <PersonalPlanner /> */}
                             </Route>
 
                             <Route path="/Overview">
@@ -75,10 +77,6 @@ class App extends React.PureComponent {
 
                             <Route path="/Projects"> 
                                 <ProjectSpace getData={this.getData}/>
-                            </Route>
-
-                            <Route path="/PersonalPlanner"> 
-                                <PersonalPlanner />
                             </Route>
 
                             <Route path="/Tasks/:projectId" component={ProjectsTasks}/>

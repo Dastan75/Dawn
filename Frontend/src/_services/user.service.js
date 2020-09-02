@@ -63,7 +63,7 @@ const createTaskCat = async(data) => {
     const reqReturn = await axios({
       method: `post`,
       url: `${apiUrl}/taskcategory`,
-      data
+      data,
     })
     return reqReturn.data
   }
@@ -77,7 +77,7 @@ const createTask = async(data) => {
     const reqReturn = await axios({
       method: `post`,
       url: `${apiUrl}/task`,
-      data
+      data,
     })
     return reqReturn.data
   }
@@ -91,7 +91,7 @@ const updateTaskCat = async(data, taskCatId) => {
     const reqReturn = await axios({
       method: `patch`,
       url: `${apiUrl}/taskcategory/${taskCatId}`,
-      data
+      data,
     })
     return reqReturn.data
   }
@@ -105,7 +105,7 @@ const updateTask = async(data, taskId) => {
     const reqReturn = await axios({
       method: `patch`,
       url: `${apiUrl}/task/${taskId}`,
-      data
+      data,
     })
     return reqReturn.data
   }
@@ -119,7 +119,7 @@ const createProject = async(data) => {
     const reqReturn = await axios({
       method: `post`,
       url: `${apiUrl}/project`,
-      data
+      data,
     })
     return reqReturn.data
   }
@@ -133,7 +133,7 @@ const loginUser = async(data) => {
     const reqReturn = await axios({
       method: `post`,
       url: `${apiUrl}/auth/getToken`,
-      data
+      data,
     })
     return reqReturn.data
   }
