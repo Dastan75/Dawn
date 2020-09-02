@@ -1,0 +1,181 @@
+@import '../style.scss';
+@import '../../global.scss';
+
+.CardsPage {
+    padding-top: 72px;
+    font-weight: bold;
+    .oneTeamBlock {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        // border: red solid 1px;
+        .teamName {
+            font-family: Greycliff CF;
+            font-size: $text-caps;
+            padding-bottom: 1vh;
+            border-bottom: 1px solid $base-color;
+            margin-bottom: 4vh;
+        }
+        .projectsBlock {
+            display: flex;
+            // border: red solid 1px;
+            flex-wrap: wrap;
+            .oneProjectBlock {
+                opacity: 0;
+                animation: fade-in .5s forwards;
+                margin-top: 2vh;
+                margin-left: .5vw;
+                margin-right: .5vw;
+                background: white;
+                box-shadow: $shadow-smaller;
+                border-radius: 3px;
+                height: 242px;
+                padding: 24px;
+                width: 32%;
+                // display: flex;
+                position: relative;
+                .progressBar {
+                    position: absolute;
+                    background: linear-gradient(90deg,  lighten($base-color-red, 35%) 0%, $base-color-red 100%);
+                    height: .5vh;
+                    width: percentage((random(80) + 10) / 100);
+                    top: 0px;
+                    left: 0px;
+                    border-radius: 3px 0 0 0;
+                }
+                .name {
+                    display: flex;
+                    // height: 20%;
+                    align-items: center;
+                    width: 70%;
+                    // border: red solid 1px;
+                    font-family: Greycliff CF;
+                    font-style: normal;
+                    font-size: $text21px;
+                    padding-right: 1.5vh;
+                    float: left;
+
+                }
+                .deadline {
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                    width: 30%;
+                    // border: red solid 1px;
+                    font-family: Greycliff CF;
+                    font-style: normal;
+                    font-size: $text-caps;
+                    text-transform: uppercase;
+                    padding-left: 1.5vh;
+                    float: left;
+                    flex-direction: row-reverse;
+                }
+                .desc {
+                    height: 50%;
+                    float: left;
+                    width: 85%;
+                    display: flex;
+                    // align-items: center;
+                    // border: red solid 1px;
+                    font-family: Greycliff CF;
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: $text-parag-normal;
+                    padding-right: 1.5vh;
+                }
+                .team {
+                    float: left;
+                    display: flex;
+                    align-items: center;
+                    width: 70%;
+                    font-family: Greycliff CF;
+                    font-style: normal;
+                    font-size: $text-caps;
+                    position: absolute;
+                    bottom: 32px;
+                    .oneTeam {
+                        margin-right: 1.5vh;
+                    }
+                }
+                .members {
+                    align-items: center;
+                    width: 30%;
+                    position: absolute;
+                    bottom: 24px;
+                    right: 0;
+                    display: flex ;
+                    padding: 0px 7px 0px 0px ;
+                    z-index: 1 ;
+                    .memberBox {
+                        // height: 44px ;
+                        margin: 0px 0px 0px 0px ;
+                        padding: 0px 0px 0px 0px ;
+                        position: relative ;
+                        width: 32px ;
+                    }
+                    .memberBox:nth-child( 1 ) { z-index: 9 ; }
+                    .memberBox:nth-child( 2 ) { z-index: 8 ; }
+                    .memberBox:nth-child( 3 ) { z-index: 7 ; }
+                    .oneMember {
+                        color: white;
+                        background: #FFBD3B;;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 2px solid white ;
+                        font-family: Greycliff CF;
+                        font-size: 12px ;
+                        font-weight: 100 ;
+                        height: 40px ;
+                        line-height: 40px ;
+                        text-align: center ;
+                        width: 40px ;
+                    }
+                }
+                &.p2 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-purple, 35%) 0%, $base-color-purple 100%) !important;
+                    }
+                }
+                &.p3 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-blue, 35%) 0%, $base-color-blue 100%) !important;
+                    }
+                }
+                &.p4 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-green, 35%) 0%, $base-color-green 100%) !important;
+                    }
+                }
+                &.p5 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-orange, 35%) 0%, $base-color-orange 100%) !important;
+                    }
+                }
+                &.p6 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-yellow, 35%) 0%, $base-color-yellow 100%) !important;
+                    }
+                }
+                &.p7 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-pink, 35%) 0%, $base-color-pink 100%) !important;
+                    }
+                }
+                &.p8 {
+                    .progressBar {
+                        width: percentage((random(80) + 10) / 100);
+                        background: linear-gradient(90deg, lighten($base-color-emerald, 35%) 0%, $base-color-emerald 100%) !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
