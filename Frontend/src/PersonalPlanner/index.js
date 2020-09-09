@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux'
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
@@ -16,34 +17,35 @@ import {
 import Backlog from './Backlog'
 import './style.scss'
 import moment from "moment";
+import { userService } from '../_services';
 
 const monthFormat = "YYYY-MM-DD";
 
 const today = moment().format(monthFormat)
 console.log('Today', today)
-console.log(new Date(2020, 7, 25, 9, 35));
+console.log(new Date(2020, 8, 7, 9, 35));
 
-const appointments = [{
-  title: 'Website Re-Design Plan',
-  startDate: new Date(2020, 7, 25, 9, 35),
-  endDate: new Date(2020, 7, 25, 11, 30),
-  id: 0,
-  rRule: 'FREQ=DAILY;COUNT=2',
-  // exDate: '20180628T063500Z,20180626T063500Z',
-}, {
-  title: 'Book Flights to San Fran for Sales Trip',
-  startDate: new Date(2018, 5, 25, 12, 11),
-  endDate: new Date(2018, 5, 25, 13, 0),
-  id: 1,
-  rRule: 'FREQ=DAILY;COUNT=4',
-  exDate: '20180627T091100Z',
-}, {
-  title: 'Install New Router in Dev Room',
-  startDate: new Date(2018, 5, 25, 13, 30),
-  endDate: new Date(2018, 5, 25, 14, 30),
-  id: 2,
-  rRule: 'FREQ=WEEKLY;BYDAY=SU,TU,WE;INTERVAL=1;UNTIL=20200828T040000Z',
-}];
+// const appointments = [{
+//   title: 'Website Re-Design Plan',
+//   startDate: new Date(2020, 8, 7, 9, 35),
+//   endDate: new Date(2020, 10, 10, 9, 35),
+//   id: 0,
+//   rRule: 'FREQ=DAILY;COUNT=2',
+//   // exDate: '20180628T063500Z,20180626T063500Z',
+// }, {
+//   title: 'Book Flights to San Fran for Sales Trip',
+//   startDate: new Date(2020, 8, 7, 9, 35),
+//   endDate: new Date(2020, 10, 10, 9, 35),
+//   id: 1,
+//   rRule: 'FREQ=DAILY;COUNT=4',
+//   // exDate: '20210627T091100Z',
+// }, {
+//   title: 'Install New Router in Dev Room',
+//   startDate: new Date(2020, 8, 7, 9, 35),
+//   endDate: new Date(2020, 10, 10, 9, 35),
+//   id: 2,
+//   rRule: 'FREQ=WEEKLY;BYDAY=SU,TU,WE;INTERVAL=1;UNTIL=21210828T040000Z',
+// }];
 
 const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
   const onCustomFieldChange = (nextValue) => {
@@ -60,57 +62,82 @@ const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
         text="Choose a color"
         type="title"
       />
-      {console.log(appointmentData)}
       <div className="colorGroup">
         <div className={`color1 circleButton ${appointmentData.choosedColor === 'color1' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color1")}/>
-        <div className="color2 circleButton" onClick={() => onCustomFieldChange("color2")}/>
-        <div className="color3 circleButton" onClick={() => onCustomFieldChange("color3")}/>
-        <div className="color4 circleButton" onClick={() => onCustomFieldChange("color4")}/>
-        <div className="color5 circleButton" onClick={() => onCustomFieldChange("color5")}/>
-        <div className="color6 circleButton" onClick={() => onCustomFieldChange("color6")}/>
-        <div className="color7 circleButton" onClick={() => onCustomFieldChange("color7")}/>
-        <div className="color8 circleButton" onClick={() => onCustomFieldChange("color8")}/>
-        <div className="color9 circleButton" onClick={() => onCustomFieldChange("color9")}/>
+        <div className={`color2 circleButton ${appointmentData.choosedColor === 'color2' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color2")}/>
+        <div className={`color3 circleButton ${appointmentData.choosedColor === 'color3' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color3")}/>
+        <div className={`color4 circleButton ${appointmentData.choosedColor === 'color4' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color4")}/>
+        <div className={`color5 circleButton ${appointmentData.choosedColor === 'color5' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color5")}/>
+        <div className={`color6 circleButton ${appointmentData.choosedColor === 'color6' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color6")}/>
+        <div className={`color7 circleButton ${appointmentData.choosedColor === 'color7' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color7")}/>
+        <div className={`color8 circleButton ${appointmentData.choosedColor === 'color8' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color8")}/>
+        <div className={`color9 circleButton ${appointmentData.choosedColor === 'color9' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color9")}/>
       </div>
-      {/* <AppointmentForm.Select
-        value={'blue'}
-        availableOptions={[ { id: 'blue', text: 'blue' }, { id: 'red', text: 'red' } ]}
-        onValueChange={onCustomFieldChange}
-      /> */}
     </AppointmentForm.BasicLayout>
   );
 };
 
-class PersonalPlanner extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: appointments,
-      backlogVisible: false,
-      addedAppointment: {},
-    };
 
+class PersonalPlanner extends React.Component {
+
+  state = {
+    data: [],
+    backlogVisible: false,
+    addedAppointment: {},
+    selectedEvent: null
+  };
+
+  componentDidMount = async () => {
+    const ret = await userService.getEvent()
+    console.log(ret);
+    this.setState({
+      data: ret
+    })
   }
 
-  // commitChanges({ added, changed, deleted }) {
-    // this.setState((state) => {
-    //   let { data } = state;
-    //   if (added) {
-    //     const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-    //     data = [...data, { id: startingAddedId, ...added }];
-    //   }
-    //   if (changed) {
-    //     data = data.map(appointment => (
-    //       changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
-    //   }
-    //   if (deleted !== undefined) {
-    //     data = data.filter(appointment => appointment.id !== deleted);
-    //   }
-    //   return { data };
-    // });
+  TimeTableCell = (props) => {
+    return <WeekView.TimeTableCell onClick={() => {
+      // console.log('CLICK', bouh)
+      // console.log(bouh.view);
+      // console.log(bouh.currentTarget);
+      console.log(props);
+      this.setState({
+        selectedEvent: { endDate: props.endDate, startDate: props.startDate},
+        backlogVisible: true
+      })
+    }} {...props} />;
+  };
+  
+  // commitChanges = ({ added, changed, deleted }) => {
+  //   this.setState((state) => {
+  //     let { data } = state;
+  //     if (added) {
+  //       const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+  //       data = [...data, { id: startingAddedId, ...added }];
+  //     }
+  //     if (changed) {
+  //       data = data.map(appointment => (
+  //         changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+  //     }
+  //     if (deleted !== undefined) {
+  //       data = data.filter(appointment => appointment.id !== deleted);
+  //     }
+  //     return { data };
+  //   });
   // }
-  commitChanges = (print) => {
-    console.log('commitChanges', print);
+  commitChanges = async ({ added, changed, deleted }) => {
+    const { user } = this.props 
+    let { data } = this.state;
+    console.log('commitChanges', added, changed, deleted);
+    if (added) {
+      let data = { ...added }
+      data.owner = user.id;
+      const ret = await userService.createEvent(data)
+      data = [...data, ...ret];
+    }
+    this.setState({
+      data
+    })
   }
 
   showDrawer = () => {
@@ -127,6 +154,7 @@ onClose = () => {
 
     render() {
         const { data, currentDate, backlogVisible, addedAppointment } = this.state;
+        console.log('PLANNER STATE', this.state);
         return (
             <div className="PersonalPlanner">
                   {
@@ -137,6 +165,7 @@ onClose = () => {
               <Paper>
                 <Scheduler
                   data={data}
+                  onClick={() => console.log(3)}
                 >
                   <ViewState
                     defaultCurrentDate={today}
@@ -146,15 +175,16 @@ onClose = () => {
                     // addedAppointment={addedAppointment}
                     onCommitChanges={this.commitChanges}
                     // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
-                    onDoubleClick={(bouh)=>console.log("bouh", bouh)}
-                    onClick={() => console.log(1)}
+                    // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
+                    onClick={() => console.log(4)}
                   />
                   <WeekView
                     startDayHour={7}
                     endDayHour={20}
-                    onClick={() => console.log(1)}
+                    // onClick={() => console.log(2)}
+                    timeTableCellComponent={this.TimeTableCell}
                   />
-                  <MonthView />
+                  <MonthView  />
                   <Appointments />
 
                   <Toolbar />
@@ -162,7 +192,7 @@ onClose = () => {
 
                   <EditRecurrenceMenu />
 
-                  <DragDropProvider />
+                  <DragDropProvider  />
                   <AppointmentForm 
                     basicLayoutComponent={BasicLayout}
                   />
@@ -174,4 +204,12 @@ onClose = () => {
     }
 }
 
-export default PersonalPlanner;
+const mapStateToProps = (state) => {
+  const { user } = state
+  return {
+      user
+  }
+}
+
+
+export default connect(mapStateToProps)(PersonalPlanner)

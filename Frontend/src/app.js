@@ -49,7 +49,7 @@ class App extends React.PureComponent {
             <div className="SwapBody">
                 <ToastContainer />
                 {
-                    user.loggedIn &&  
+                    !user.loggedIn &&  
                     <Router basename="/app/">
                         <Switch>
                             <Route exact path="/Login">
@@ -61,7 +61,7 @@ class App extends React.PureComponent {
                     </Router>
                 }
                 {
-                    !user.loggedIn &&
+                    user.loggedIn &&
                     <Router basename="/app/">
                         <LeftMenu/>
                         <Switch>

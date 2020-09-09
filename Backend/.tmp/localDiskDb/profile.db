@@ -1,4 +1,4 @@
 {"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
 {"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":"ADMIN","createdAt":1598994358279,"updatedAt":1598994358279,"id":"706d4c2d-480b-4ae5-aa76-781959133687","_id":"706d4c2d-480b-4ae5-aa76-781959133687"}
-{"name":"USER","createdAt":1598994358306,"updatedAt":1598994358306,"id":"ead82364-af71-4891-92b0-ef2905a5be1e","_id":"ead82364-af71-4891-92b0-ef2905a5be1e"}
+{"name":"ADMIN","createdAt":1599655838783,"updatedAt":1599655838783,"id":"efc415f9-b04f-434d-9ddb-0b5a125b4e34","_id":"efc415f9-b04f-434d-9ddb-0b5a125b4e34"}
+{"name":"USER","createdAt":1599655838803,"updatedAt":1599655838803,"id":"e6912707-1bfa-43ae-8e2b-0e80e8f3d0d2","_id":"e6912707-1bfa-43ae-8e2b-0e80e8f3d0d2"}

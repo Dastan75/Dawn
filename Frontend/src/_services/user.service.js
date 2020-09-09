@@ -142,6 +142,34 @@ const loginUser = async(data) => {
   }
 }
 
+const createEvent = async(data) => {
+  try {
+    const reqReturn = await axios({
+      method: `post`,
+      url: `${apiUrl}/event`,
+      data,
+    })
+    return reqReturn.data
+  }
+  catch (error) {
+    return null;
+  }
+}
+
+const getEvent = async(data) => {
+  try {
+    const reqReturn = await axios({
+      method: `get`,
+      url: `${apiUrl}/event`,
+      data,
+    })
+    return reqReturn.data
+  }
+  catch (error) {
+    return null;
+  }
+}
+
 export const userService = {
     getUserById,
     getCompanyById,
@@ -152,5 +180,7 @@ export const userService = {
     updateTaskCat,
     updateTask,
     createProject,
-    loginUser
+    loginUser,
+    createEvent,
+    getEvent
 };
