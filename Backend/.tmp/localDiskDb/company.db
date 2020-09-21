@@ -1,3 +1,0 @@
-{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":"Swap","createdAt":1599655838806,"updatedAt":1599655838806,"id":"69652f9d-01f8-49ba-a59f-a37c7e723749","_id":"69652f9d-01f8-49ba-a59f-a37c7e723749"}

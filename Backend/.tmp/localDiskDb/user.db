@@ -1,3 +1,0 @@
-{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"email","unique":true,"sparse":false}}
-{"id":"6b5ced78-e17f-4ad3-bd5c-792e25ef0000","email":"1","name":"B","firstName":"Florian","gender":1,"state":"2","avatarUrl":"","profile":"efc415f9-b04f-434d-9ddb-0b5a125b4e34","company":"69652f9d-01f8-49ba-a59f-a37c7e723749","createdAt":1599655838829,"updatedAt":1599655838829,"tel":0,"address":"","zipCode":0,"city":"","events":null,"encryptedPassword":"$2b$10$A4PnmQfaI1I3JsTLgWI/x.eO0wZJxngfpM9j240W8s/q4ka2njxi.","_id":"6b5ced78-e17f-4ad3-bd5c-792e25ef0000"}
