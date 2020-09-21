@@ -20,6 +20,7 @@ class Backlog extends React.Component {
 
 
     render() {
+        const { backlogList } = this.props
         return (
                 <div className="backlogContainer">                
                     <div className="backlogTitle">My backlog</div>
@@ -28,61 +29,21 @@ class Backlog extends React.Component {
                         <div className="filter">
                             Sort by: estimated time
                         </div>
-                        <div className="task task1">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Figure out channels
-                            </div>
-                            <div className="duration">
-                                3 HRS
-                            </div>
-                        </div>
-                        <div className="task task2">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Setup FB
-                            </div>
-                            <div className="duration">
-                                1 HR
-                            </div>
-                        </div>
+                        {
+                            backlogList && backlogList.length> 0 &&
+                            backlogList.map(item => (
+                                <div onClick={() => this.props.selectBacklog(item.id)} id={item.id} className="task task1">
+                                    <div className="workBar"/>
+                                    <div className="name">
+                                        { item.title }
+                                    </div>
+                                    {/* <div className="duration">
+                                        3 HRS
+                                    </div> */}
+                                </div>
+                            ))
+                        }
 
-                        <div className="task task3">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Specs for LinkedIn
-                            </div>
-                            <div className="duration">
-                                2 HRS
-                            </div>
-                        </div><div className="task task1">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Figure out channels
-                            </div>
-                            <div className="duration">
-                                3 HRS
-                            </div>
-                        </div>
-                        <div className="task task2">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Setup FB
-                            </div>
-                            <div className="duration">
-                                1 HR
-                            </div>
-                        </div>
-
-                        <div className="task task3">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Specs for LinkedIn
-                            </div>
-                            <div className="duration">
-                                2 HRS
-                            </div>
-                        </div>
                     </div>
                     <div className="noteToUser">
                         <div className="noteArrow"><SVGArrow/></div>

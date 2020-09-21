@@ -130,7 +130,7 @@ class ProjectsTasks extends React.Component {
             }
         }
         if (modalType === 'newTask') {
-            const task = await userService.createTask({ name: imputNameValue, project: projectId, category: selectedCat })
+            const task = await userService.createTask({ title: imputNameValue, project: projectId, category: selectedCat })
             const newCol = []
             if (task) {
                 let tmpCat = null
@@ -324,7 +324,7 @@ class ProjectsTasks extends React.Component {
                                                         {...provided.dragHandleProps}
                                                         className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
                                                             <div className="content">
-                                                                {item.name}
+                                                                {item.title}
                                                             </div>
                                                         </div>
                                                     )}

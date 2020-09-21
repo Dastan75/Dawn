@@ -67,13 +67,15 @@ class App extends React.PureComponent {
                         <Switch>
                             <Route exact path="/Home">
                                 <MainBody/>
-                                {/* <PersonalPlanner /> */}
                             </Route>
 
                             <Route path="/Overview">
                                 <CompanySpace />
                             </Route>
 
+                            <Route exact path="/Planner">
+                                <PersonalPlanner />
+                            </Route>
 
                             <Route path="/Projects"> 
                                 <ProjectSpace getData={this.getData}/>
@@ -84,7 +86,6 @@ class App extends React.PureComponent {
                         </Switch>
                     </Router>
                 }
-
             </div>
         );
     }

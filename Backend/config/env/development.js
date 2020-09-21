@@ -70,7 +70,9 @@ module.exports = {
     * https://sailsjs.com/docs/concepts/models-and-orm/model-settings#?migrate *
     *                                                                          *
     ***************************************************************************/
-    migrate: 'drop', 
+    // migrate: 'drop',
+    migrate: 'alter', 
+
 
 
     // 1. FOR DEV:      alter   wipe/drop and try to re-insert ALL my data (recommended)

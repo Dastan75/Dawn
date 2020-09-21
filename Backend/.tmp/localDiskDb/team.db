@@ -1,3 +1,0 @@
-{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":"Agency Team","company":"69652f9d-01f8-49ba-a59f-a37c7e723749","createdAt":1599655838811,"updatedAt":1599655838811,"id":"78e67345-7321-4018-9733-aa54fe60b564","_id":"78e67345-7321-4018-9733-aa54fe60b564"}

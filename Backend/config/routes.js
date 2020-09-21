@@ -27,6 +27,8 @@ module.exports.routes = {
   
   'POST /auth/getToken': 'AuthController.index',
   'POST /user/forgot': 'UserController.forgot',
+  'GET /task/myTasks': 'TaskController.getAllTasks',
+
   
   /***************************************************************************
   *                                                                          *

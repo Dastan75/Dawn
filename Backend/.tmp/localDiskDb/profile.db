@@ -1,4 +1,0 @@
-{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":"ADMIN","createdAt":1599655838783,"updatedAt":1599655838783,"id":"efc415f9-b04f-434d-9ddb-0b5a125b4e34","_id":"efc415f9-b04f-434d-9ddb-0b5a125b4e34"}
-{"name":"USER","createdAt":1599655838803,"updatedAt":1599655838803,"id":"e6912707-1bfa-43ae-8e2b-0e80e8f3d0d2","_id":"e6912707-1bfa-43ae-8e2b-0e80e8f3d0d2"}

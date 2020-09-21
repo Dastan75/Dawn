@@ -12,22 +12,19 @@ import {
 function LeftMenu(props) {
     return (
         <div className="MenuBlock">
-            {
-                console.log(props.location)
-            }
             <div onClick={() => props.history.push("/Home")} className={`MenuBlockOne ${props.location.pathname === '/Home' ? 'current' : ''}`}>
                 <SVGLogo fill={`${props.location.pathname === '/Home' ? 'white' : 'black'}`}/>
             </div>
             <div onClick={() => props.history.push("/Overview")} className={`MenuBlockOne ${props.location.pathname === '/Overview' ? 'current' : ''}`}>
                 <SVGMyWork fill={`${props.location.pathname === '/Overview' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/app/Planner' ? 'current' : ''}`}>
+            <div onClick={() => props.history.push("/Planner")} className={`MenuBlockOne ${props.location.pathname === '/Planner' ? 'current' : ''}`}>
                 <SVGPlanner fill={`${props.location.pathname === '/Planner' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/app/Notifications' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Notifications' ? 'current' : ''}`}>
                 <SVGNotifications fill={`${props.location.pathname === '/Notifications' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/app/Favorites' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Favorites' ? 'current' : ''}`}>
                 <SVGFaves fill={`${props.location.pathname === '/Favorites' ? 'white' : 'black'}`}/>
             </div>
             <div onClick={() => props.history.push("/Projects")} className={`MenuBlockOne ${props.location.pathname === '/Projects' ? 'current' : ''}`}>

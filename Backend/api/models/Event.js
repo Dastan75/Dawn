@@ -18,6 +18,7 @@ module.exports = {
     startDate:            { type: 'string', required: true },
     endDate:              { type: 'string' },
     allDay:               { type: 'boolean' },
+    isTask:               { type: 'boolean', defaultsTo: false },
     owner: {
       model: 'user'
     },

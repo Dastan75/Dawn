@@ -43,7 +43,7 @@ module.exports.bootstrap = async function (done) {
   //******************* CREATE PROFILE TEMPLATE *******************//
   let createdCompany = null
   try {
-    createdCompany = await Company.findOrCreate({ email: '1' }, {
+    createdCompany = await Company.findOrCreate({ name: 'Swap' }, {
       name: 'Swap'
     });
   } catch (err) {
@@ -54,7 +54,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdTeamA = null
   try {
-    createdTeamA = await Team.findOrCreate({ email: '1' }, {
+    createdTeamA = await Team.findOrCreate({ name: 'Agency Team' }, {
       name: 'Agency Team',
       company: createdCompany.id
     });
@@ -64,7 +64,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdSubTeam = null
   try {
-    createdSubTeam = await SubTeam.findOrCreate({ email: '1' }, {
+    createdSubTeam = await SubTeam.findOrCreate({ name: 'Design' }, {
       name: 'Design',
       team: createdTeamA.id
     });
@@ -74,7 +74,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject = null
   try {
-    createdProject = await Project.findOrCreate({ email: '1' }, {
+    createdProject = await Project.findOrCreate({ name: 'Code Swap' }, {
       name: 'Code Swap',
       desc: 'I use HTML/CSS + React/Node',
       team: createdTeamA.id
@@ -85,7 +85,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject2 = null
   try {
-    createdProject2 = await Project.findOrCreate({ email: '1' }, {
+    createdProject2 = await Project.findOrCreate({ name: 'Design Swap' }, {
       name: 'Design Swap',
       desc: 'I use dribble and figma',
       team: createdTeamA.id
@@ -96,7 +96,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject3 = null
   try {
-    createdProject3 = await Project.findOrCreate({ email: '1' }, {
+    createdProject3 = await Project.findOrCreate({ name: 'Sell Swap' }, {
       name: 'Sell Swap',
       desc: 'I use this african prince money that I received in my email',
       team: createdTeamA.id
@@ -107,7 +107,7 @@ module.exports.bootstrap = async function (done) {
 
   //******** CREATE USER ADMIN ********//
   try {
-    await User.findOrCreate({ email: '2' }, {
+    await User.findOrCreate({ email: '1' }, {
       id: 'abc',
       email: '1',
       password: '@@@@',

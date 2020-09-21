@@ -1,3 +1,0 @@
-{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
-{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}
-{"name":"Design","team":"78e67345-7321-4018-9733-aa54fe60b564","createdAt":1599655838815,"updatedAt":1599655838815,"id":"39064973-1d23-4910-bb8a-5f36ccc73d5b","_id":"39064973-1d23-4910-bb8a-5f36ccc73d5b"}
