@@ -1,28 +1,29 @@
 import React from 'react';
+
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import Paper from '@material-ui/core/Paper';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {
-  Scheduler,
-  WeekView,
-  MonthView,
-  Appointments,
-  ViewSwitcher,
-  Toolbar,
-  DragDropProvider,
-  EditRecurrenceMenu,
-  AppointmentForm
+    Scheduler,
+    WeekView,
+    MonthView,
+    Appointments,
+    ViewSwitcher,
+    Toolbar,
+    DragDropProvider,
+    EditRecurrenceMenu,
+    AppointmentForm
 } from '@devexpress/dx-react-scheduler-material-ui';
-import Backlog from './Backlog'
-import './style.scss'
-import moment from "moment";
+import Backlog from './Backlog';
+import './style.scss';
+import moment from 'moment';
 import { userService } from '../_services';
 
-const monthFormat = "YYYY-MM-DD";
+const monthFormat = 'YYYY-MM-DD';
 
-const today = moment().format(monthFormat)
-console.log('Today', today)
+const today = moment().format(monthFormat);
+console.log('Today', today);
 console.log(new Date(2020, 8, 7, 9, 35));
 
 // const appointments = [{
@@ -48,66 +49,63 @@ console.log(new Date(2020, 8, 7, 9, 35));
 // }];
 
 const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
-  const onCustomFieldChange = (nextValue) => {
-    onFieldChange({ choosedColor: nextValue });
-  };
+    const onCustomFieldChange = (nextValue) => {
+        onFieldChange({ choosedColor: nextValue });
+    };
 
-  return (
-    <AppointmentForm.BasicLayout
-      appointmentData={appointmentData}
-      onFieldChange={onFieldChange}
-      {...restProps}
-    >
-      <AppointmentForm.Label
-        text="Choose a color"
-        type="title"
-      />
-      <div className="colorGroup">
-        <div className={`color1 circleButton ${appointmentData.choosedColor === 'color1' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color1")}/>
-        <div className={`color2 circleButton ${appointmentData.choosedColor === 'color2' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color2")}/>
-        <div className={`color3 circleButton ${appointmentData.choosedColor === 'color3' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color3")}/>
-        <div className={`color4 circleButton ${appointmentData.choosedColor === 'color4' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color4")}/>
-        <div className={`color5 circleButton ${appointmentData.choosedColor === 'color5' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color5")}/>
-        <div className={`color6 circleButton ${appointmentData.choosedColor === 'color6' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color6")}/>
-        <div className={`color7 circleButton ${appointmentData.choosedColor === 'color7' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color7")}/>
-        <div className={`color8 circleButton ${appointmentData.choosedColor === 'color8' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color8")}/>
-        <div className={`color9 circleButton ${appointmentData.choosedColor === 'color9' ? 'selected' : ''}`} onClick={() => onCustomFieldChange("color9")}/>
-      </div>
-    </AppointmentForm.BasicLayout>
-  );
+    return (
+        <AppointmentForm.BasicLayout
+            appointmentData={appointmentData}
+            onFieldChange={onFieldChange}
+            {...restProps}
+        >
+            <AppointmentForm.Label
+                text='Choose a color'
+                type='title'
+            />
+            <div className='colorGroup'>
+                <div className={`color1 circleButton ${appointmentData.choosedColor === 'color1' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color1')}/>
+                <div className={`color2 circleButton ${appointmentData.choosedColor === 'color2' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color2')}/>
+                <div className={`color3 circleButton ${appointmentData.choosedColor === 'color3' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color3')}/>
+                <div className={`color4 circleButton ${appointmentData.choosedColor === 'color4' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color4')}/>
+                <div className={`color5 circleButton ${appointmentData.choosedColor === 'color5' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color5')}/>
+                <div className={`color6 circleButton ${appointmentData.choosedColor === 'color6' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color6')}/>
+                <div className={`color7 circleButton ${appointmentData.choosedColor === 'color7' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color7')}/>
+                <div className={`color8 circleButton ${appointmentData.choosedColor === 'color8' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color8')}/>
+                <div className={`color9 circleButton ${appointmentData.choosedColor === 'color9' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color9')}/>
+            </div>
+        </AppointmentForm.BasicLayout>
+    );
 };
-
 
 class PersonalPlanner extends React.Component {
 
   state = {
-    data: [],
-    backlogVisible: false,
-    addedAppointment: {},
-    selectedEvent: null
+      data: [],
+      backlogVisible: false,
+      addedAppointment: {},
+      selectedEvent: null
   };
 
   componentDidMount = async () => {
-    const ret = await userService.getEvent()
-    console.log(ret);
-    this.setState({
-      data: ret
-    })
+      const ret = await userService.getEvent();
+      console.log(ret);
+      this.setState({
+          data: ret
+      });
   }
 
-  TimeTableCell = (props) => {
-    return <WeekView.TimeTableCell onClick={() => {
+  TimeTableCell = (props) => <WeekView.TimeTableCell onClick={() => {
       // console.log('CLICK', bouh)
       // console.log(bouh.view);
       // console.log(bouh.currentTarget);
       console.log(props);
       this.setState({
-        selectedEvent: { endDate: props.endDate, startDate: props.startDate},
-        backlogVisible: true
-      })
-    }} {...props} />;
-  };
-  
+          selectedEvent: { endDate: props.endDate, startDate: props.startDate },
+          backlogVisible: true
+      });
+  }} {...props} />;
+
   // commitChanges = ({ added, changed, deleted }) => {
   //   this.setState((state) => {
   //     let { data } = state;
@@ -126,24 +124,24 @@ class PersonalPlanner extends React.Component {
   //   });
   // }
   commitChanges = async ({ added, changed, deleted }) => {
-    const { user } = this.props 
-    let { data } = this.state;
-    console.log('commitChanges', added, changed, deleted);
-    if (added) {
-      let data = { ...added }
-      data.owner = user.id;
-      const ret = await userService.createEvent(data)
-      data = [...data, ...ret];
-    }
-    this.setState({
-      data
-    })
+      const { user } = this.props;
+      const { data } = this.state;
+      console.log('commitChanges', added, changed, deleted);
+      if (added) {
+          let data = { ...added };
+          data.owner = user.id;
+          const ret = await userService.createEvent(data);
+          data = [...data, ...ret];
+      }
+      this.setState({
+          data
+      });
   }
 
   showDrawer = () => {
-    this.setState({
-        backlogVisible: true,
-    });
+      this.setState({
+          backlogVisible: true,
+      });
   };
 
 onClose = () => {
@@ -152,64 +150,66 @@ onClose = () => {
     });
 };
 
-    render() {
-        const { data, currentDate, backlogVisible, addedAppointment } = this.state;
-        console.log('PLANNER STATE', this.state);
-        return (
-            <div className="PersonalPlanner">
-                  {
-                    backlogVisible && <Backlog onClose={this.onClose}/>
-                  }
-              <div className="clickable" onClick={this.showDrawer}>Start planning your week</div>
-              <div>My personal planner</div>
-              <Paper>
+render() {
+    const { data, currentDate, backlogVisible, addedAppointment } = this.state;
+    console.log('PLANNER STATE', this.state);
+    return (
+        <div className='PersonalPlanner'>
+            {
+                backlogVisible && <Backlog onClose={this.onClose}/>
+            }
+            <div className='clickable' onClick={this.showDrawer}>Start planning your week</div>
+            <div>My personal planner</div>
+            <Paper>
                 <Scheduler
-                  data={data}
-                  onClick={() => console.log(3)}
+                    data={data}
+                    onClick={() => console.log(3)}
                 >
-                  <ViewState
-                    defaultCurrentDate={today}
-                    onClick={() => console.log(1)}
-                  />
-                  <EditingState
-                    // addedAppointment={addedAppointment}
-                    onCommitChanges={this.commitChanges}
-                    // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
-                    // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
-                    onClick={() => console.log(4)}
-                  />
-                  <WeekView
-                    startDayHour={7}
-                    endDayHour={20}
-                    // onClick={() => console.log(2)}
-                    timeTableCellComponent={this.TimeTableCell}
-                  />
-                  <MonthView  />
-                  <Appointments />
+                    <ViewState
+                        defaultCurrentDate={today}
+                        onClick={() => console.log(1)}
+                    />
+                    <EditingState
 
-                  <Toolbar />
-                  <ViewSwitcher />
+                        // addedAppointment={addedAppointment}
+                        onClick={() => console.log(4)}
 
-                  <EditRecurrenceMenu />
+                        // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
+                        // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
+                        onCommitChanges={this.commitChanges}
+                    />
+                    <WeekView
+                        endDayHour={20}
+                        startDayHour={7}
 
-                  <DragDropProvider  />
-                  <AppointmentForm 
-                    basicLayoutComponent={BasicLayout}
-                  />
+                        // onClick={() => console.log(2)}
+                        timeTableCellComponent={this.TimeTableCell}
+                    />
+                    <MonthView />
+                    <Appointments />
+
+                    <Toolbar />
+                    <ViewSwitcher />
+
+                    <EditRecurrenceMenu />
+
+                    <DragDropProvider />
+                    <AppointmentForm
+                        basicLayoutComponent={BasicLayout}
+                    />
                 </Scheduler>
-              </Paper>
+            </Paper>
 
-            </div>
-        );
-    }
+        </div>
+    );
+}
 }
 
 const mapStateToProps = (state) => {
-  const { user } = state
-  return {
-      user
-  }
-}
+    const { user } = state;
+    return {
+        user
+    };
+};
 
-
-export default connect(mapStateToProps)(PersonalPlanner)
+export default connect(mapStateToProps)(PersonalPlanner);

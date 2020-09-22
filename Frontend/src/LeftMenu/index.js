@@ -1,24 +1,24 @@
 import React from 'react';
-import SVGLogo from './SvgIcons/Logo'
-import SVGMyWork from './SvgIcons/MyWork'
-import SVGPlanner from './SvgIcons/Planner'
-import SVGProjects from './SvgIcons/Projects'
-import SVGFaves from './SvgIcons/Faves'
-import SVGNotifications from './SvgIcons/Notifications'
+import SVGLogo from './SvgIcons/Logo';
+import SVGMyWork from './SvgIcons/MyWork';
+import SVGPlanner from './SvgIcons/Planner';
+import SVGProjects from './SvgIcons/Projects';
+import SVGFaves from './SvgIcons/Faves';
+import SVGNotifications from './SvgIcons/Notifications';
 import {
-    withRouter  
-} from "react-router-dom";
+    withRouter
+} from 'react-router-dom';
 
 function LeftMenu(props) {
     return (
-        <div className="MenuBlock">
-            <div onClick={() => props.history.push("/Home")} className={`MenuBlockOne ${props.location.pathname === '/Home' ? 'current' : ''}`}>
+        <div className='MenuBlock'>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Home' ? 'current' : ''}`} onClick={() => props.history.push('/Home')}>
                 <SVGLogo fill={`${props.location.pathname === '/Home' ? 'white' : 'black'}`}/>
             </div>
-            <div onClick={() => props.history.push("/Overview")} className={`MenuBlockOne ${props.location.pathname === '/Overview' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Overview' ? 'current' : ''}`} onClick={() => props.history.push('/Overview')}>
                 <SVGMyWork fill={`${props.location.pathname === '/Overview' ? 'white' : 'black'}`}/>
             </div>
-            <div onClick={() => props.history.push("/Planner")} className={`MenuBlockOne ${props.location.pathname === '/Planner' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Planner' ? 'current' : ''}`} onClick={() => props.history.push('/Planner')}>
                 <SVGPlanner fill={`${props.location.pathname === '/Planner' ? 'white' : 'black'}`}/>
             </div>
             <div className={`MenuBlockOne ${props.location.pathname === '/Notifications' ? 'current' : ''}`}>
@@ -27,14 +27,12 @@ function LeftMenu(props) {
             <div className={`MenuBlockOne ${props.location.pathname === '/Favorites' ? 'current' : ''}`}>
                 <SVGFaves fill={`${props.location.pathname === '/Favorites' ? 'white' : 'black'}`}/>
             </div>
-            <div onClick={() => props.history.push("/Projects")} className={`MenuBlockOne ${props.location.pathname === '/Projects' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Projects' ? 'current' : ''}`} onClick={() => props.history.push('/Projects')}>
                 <SVGProjects fill={`${props.location.pathname === '/Projects' ? 'white' : 'black'}`}/>
             </div>
-            <div className="MenuSettings">
-
-            </div>
+            <div className='MenuSettings' />
         </div>
     );
 }
 
-export default withRouter(LeftMenu)
+export default withRouter(LeftMenu);
