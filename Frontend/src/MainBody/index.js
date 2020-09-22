@@ -102,7 +102,7 @@ class MainBody extends React.PureComponent {
                 </div>
 
                 <div className="boxesBlock">
-                    <div className="todaysBlock block">
+                    <div className="todayBlock block">
                         <div className="title">
                             Today's tasks
                         </div>
@@ -134,22 +134,60 @@ class MainBody extends React.PureComponent {
                                 2 HRS
                             </div>
                         </div>
-                        <div className="seeTasks">
+                        <div className="seeMore">
                             See your tasks
                         </div>
                     </div>
                     <div className="weekBlock block">
-                        {/* <div className="title">
+                        <div className="title">
                             This week at a glance
                         </div>
-                        <div className="tasksBlock">
-                            <div className="todo">
-                                Tasks to do
+                        <div className="graphBlock">
+                            <div className="graphLegend">
+                                <div className="todo">
+                                    Tasks to do
+                                </div>
+                                <div className="done">
+                                    Tasks done
+                                </div>
                             </div>
-                            <div className="done">
-                                Tasks done
+                            <div className="graphContent">
+                                <div className="graphBars">
+                                    <div className="graphBarItems">
+                                        <div className="graphBarItem">
+                                            <div className="graphBarItemTodo"></div>
+                                            <div className="graphBarItemDone"></div>
+                                        </div>
+                                        <div className="graphBarItem">
+                                            <div className="graphBarItemTodo"></div>
+                                            <div className="graphBarItemDone"></div>
+                                        </div>
+                                        <div className="graphBarItem">
+                                            <div className="graphBarItemTodo"></div>
+                                            <div className="graphBarItemDone"></div>
+                                        </div>
+                                        <div className="graphBarItem">
+                                            <div className="graphBarItemTodo"></div>
+                                            <div className="graphBarItemDone"></div>
+                                        </div>
+                                        <div className="graphBarItem">
+                                            <div className="graphBarItemTodo"></div>
+                                            <div className="graphBarItemDone"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div> */}
+                            <div className="graphDays">
+                                <div className="dayItem">Mon</div>
+                                <div className="dayItem">Tue</div>
+                                <div className="dayItem">Wed</div>
+                                <div className="dayItem">Thu</div>
+                                <div className="dayItem">Fri</div>
+                            </div>
+                        </div>
+                        <div className="seeMore">
+                            See your tasks
+                        </div>
                     </div>
                     <div className="inspirationBlock block">
                         <div className="title">

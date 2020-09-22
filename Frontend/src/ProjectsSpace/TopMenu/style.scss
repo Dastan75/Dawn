@@ -2,110 +2,85 @@
 @import '../../global.scss';
 
 .TopMenu {
-    // animation: come-from-top 0.1s;
-    position: absolute;
-    height: 56px;
-    width: 87vw;
-    box-shadow: $shadow-bigger;
-    border-radius: 0px 0px 3px 3px;
-    // border: red solid 1px;
-    font-weight: bold;
-    display: flex;
     background: white;
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: $shadow-bigger;
+    display: flex;
+    font-family: Greycliff CF;
+    font-weight: bold;
+    height: 56px;
+    position: absolute;
+    width: 87vw;
     .switchViewBlock {
         display: flex;
-        width: 20%;
         justify-content: space-evenly;
+        position: absolute;
+        right: 0;
+        top: 12px;
         .oneView {
-            // border: blue solid 1px;
-            width: 32px;
-            height: 100%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: $text24px;
             color: grey;
+            display: flex;
+            font-size: $text24px;
+            height: 100%;
+            justify-content: center;
+            margin-right: 4px;
+            width: 32px;
             &.current {
+                background-color: $base-color-darkergrey;
+                border-radius: 3px;
                 color: $base-color;
             }
         }
     }
     .ant-btn {
-        width: 100%;
+        border: 0px solid $base-color;
+        color: $base-color;
         font-weight: bold;
         height: 100%;
         text-align: left;
-        border: 0px solid $base-color;
-        color: $base-color;
+        width: 100%;
+    }
+    .ant-dropdown {
+        border-radius: 3px;
+    }
+    .ant-dropdown-menu-item {
+        font-family: Greycliff CF;
+        font-size: $text-caps;
+        font-weight: bold;
+        text-transform: uppercase;
     }
     .projectChoice {
+        border-right: 1px solid black;
+        // font-family: Greycliff CF;
         height: 100%;
         width: 20%;
-        border-right: 1px solid black;
-        font-family: Greycliff CF;
         .ant-btn {
             font-size: $text24px;
         }
     }
-    .teamChoice {
-        height: 100%;
-        width: 8%;
-        font-family: Greycliff CF;
+    .teamChoice,
+    .assigneeChoice,
+    .duedateChoice,
+    .priorityChoice,
+    .statusChoice
+     {
         font-style: normal;
         font-weight: bold;
-        .ant-btn {
-            font-size: $text-caps;
-        }
-    }
-    .assigneeChoice {
         height: 100%;
-        width: 8%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
         .ant-btn {
             font-size: $text-caps;
-        }
-    }
-    .duedateChoice {
-        height: 100%;
-        width: 8%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
-        .ant-btn {
-            font-size: $text-caps;
-        }
-    }
-    .priorityChoice {
-        height: 100%;
-        width: 8%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
-        .ant-btn {
-            font-size: $text-caps;
-        }
-    }
-    .statusChoice {
-        height: 100%;
-        width: 8%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
-        .ant-btn {
-            font-size: $text-caps;
+            text-transform: uppercase;
         }
     }
     .searchBar {
-        font-size: $text21px;
-        padding-right: 2%;
         align-items: center;
-        height: 56px;
-        width: 20%;
-        display: flex;
         border-right: black solid 1px;
+        display: flex;
         flex-direction: row-reverse;
+        font-size: $text21px;
+        height: 56px;
+        padding-right: 2%;
     }
     .searchBar svg {
         width: $scale32;

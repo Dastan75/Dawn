@@ -36,16 +36,14 @@ class TaskDetails extends React.Component {
                 <div className="fifty">
                     <div className="stepOne">
                         <div className="smallText">Productivity meets sanity</div>
-                        <div className="mainTitle">Mental health over everything</div>
+                        <div className="mainTitle">Are you ready to be make time for your best work?</div>
                         <div className="smallText">We don’t ask much from you to connect</div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
-                                Email:
-                                <input style={{ marginLeft: '10px' }} type="text" value={this.state.email} onChange={({target}) => this.setState({ email: target.value })} />
+                                <input placeholder="Your email:" type="text" value={this.state.email} onChange={({target}) => this.setState({ email: target.value })} />
                             </label>
                             <label>
-                                Password:
-                                <input style={{ marginLeft: '10px' }} type="password" value={this.state.password} onChange={({target}) => this.setState({ password: target.value })} />
+                                <input placeholder="Your password:" type="password" value={this.state.password} onChange={({target}) => this.setState({ password: target.value })} />
                             </label>
                             {/* <label>
                                 <input
@@ -60,6 +58,7 @@ class TaskDetails extends React.Component {
                                 Log me now!
                             </div>
                         </form>
+
                     </div>
 
                     {/* <div className="stepTwo">

@@ -1,24 +1,26 @@
 @import '../global.scss';
 
+body {
+  background-color: $base-color-lightgrey !important;
+}
 .CompanySpace {
-    margin-left: $left-menu-size;
-    padding-left: 4vw;
-    padding-right: 4vw;
-    min-height: 100vh;
+  font-weight: bold;  
+  margin-left: $left-menu-size;
+  min-height: 100vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
   
     .tableBlock {
       .menuBlock {
         display: flex;
         margin-top: 5vh;
         .topMenu {
+          border-bottom: $base-color solid 1px;
           font-family: Greycliff CF;
+          font-size: $text-caps;
           font-style: normal;
-          font-weight: bold;
-          font-size: 1.2vw;
           padding-bottom: 5px;
           width: 20%;
-          // border: red solid 1px;
-          border-bottom: black solid 1px;
           &.peopleBlock {
             padding-left: 1.7vw;
           }
@@ -28,41 +30,48 @@
         }
       }
       .collapseBlock {
+        color: $base-color;
         margin-top: 3vh;
         .ant-collapse {
           border: solid 0px white;
         }
+        .ant-collapse-content {
+          background-color: transparent !important;
+        }
         .ant-collapse-item {
           border: solid 0px white;
           &:nth-of-type(odd) {
-            background: white !important;
+            background: $base-color-lightgrey !important;
           }
           &:nth-of-type(even) {
-            background: #EFF0F3 !important;
+            background: white !important;
             .ant-collapse-content-box {
-              background: #EFF0F3 !important;
+              background: white !important;
             }
           }
+        }
+        .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+          line-height: 64px;
+          padding: 0 16px;          
         }
         .panelTitleBlock {
           display: flex;
           .contentMenu {
             // border: red solid 1px;
-            width: 20%;
             font-family: Greycliff CF;
+            font-size: $text21px;
             font-style: normal;
-            font-weight: bold;
-            font-size: 1.4vw;
+            width: 20%;
             &.seeSpace {
-              text-align: end;
               font-size: 1.2vw;
+              text-align: end;
             }
           }
         }
         .contentBlock .subTeam {
           .subOneBlock {
-            margin-bottom: 2vh;
             display: flex;
+            margin-bottom: 2vh;
             &:nth-child(1) .subMenu .dot {
               background: #9139B6;
             }
@@ -72,15 +81,14 @@
             &:nth-child(3) .subMenu .dot {
               background: #02C37E;
             }
-            .subMenu {
-              width: 20%;        
-              font-family: Greycliff CF;
-              font-style: normal;
-              font-weight: bold;
-              font-size: 1.2vw;
-              color: black;
-              display: flex;
+            .subMenu {     
               align-items: center;
+              color: $base-color;
+              display: flex;
+              font-family: Greycliff CF;
+              font-size: $text18px;
+              font-style: normal;
+              width: 20%;
               &.people {
                 padding-left: 1.2vw;
               }
@@ -91,59 +99,59 @@
                 padding-left: .7vw;
               }
               & .dot {
-                margin-right: 10px;
                 border-radius: 50px;
-                width: 10px;
                 height: 10px;
+                margin-right: 10px;
+                width: 10px;
               }
             }
           }
         }
       }
-  
     }
   
     .Introduction {
-      margin-top: 4vh;
       font-family: Greycliff CF;
+      font-size: $text21px;
       font-style: normal;
-      font-weight: bold;
-      font-size: 1.7vw;
+      margin-top: 80px;
     }
     .CompanyName {
       font-family: Greycliff CF;
+      font-size: $text52px;
       font-style: normal;
-      font-weight: bold;
-      font-size: 4vw;
+      margin-bottom: 40px;
     }
-    .boxesBlock {
-      margin-top: 1vh;
+    .boxesBlock {      
       display: flex;
       justify-content: space-around;
+      margin-top: 1vh;
       .OneBox {
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.1), 1px 0px 0px rgba(0, 0, 0, 0.05);
-        border-radius: 3px;  
+        background: white;
+        border-radius: 3px;
+        box-shadow: $shadow-smaller;
+        margin-right: 24px; 
         width: 24%;
         .Content {
-          padding: 8% 12%;
+          padding: $scale24;
           width: 70%;
-          // border: red solid 1px;
-          .Number {
-            // border: blue solid 1px;
-            line-height: 1;
+          .Number {            
             font-family: Greycliff CF;
+            font-size: $text52px;
             font-style: normal;
-            font-weight: bold;
-            font-size: 3vw;
+            letter-spacing: -0.15em;
+            line-height: 1;
           }
-          .Title {
-            line-height: 1;
+          .title {
             font-family: Greycliff CF;
+            font-size: $text18px;
             font-style: normal;
-            font-weight: bold;
-            font-size: 1.6vw;
+            line-height: 1;
           }
         }
+      }
+      .OneBox:last-child {
+        margin-right: 0;
       }
     }
   }

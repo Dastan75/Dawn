@@ -14,13 +14,13 @@ import {
 
 const menu = (
     <Menu>
-      <Menu.Item key="1" icon={<UserOutlined />}>
+      <Menu.Item key="1">
         1st menu item
       </Menu.Item>
-      <Menu.Item key="2" icon={<UserOutlined />}>
+      <Menu.Item key="2">
         2nd menu item
       </Menu.Item>
-      <Menu.Item key="3" icon={<UserOutlined />}>
+      <Menu.Item key="3">
         3rd item
       </Menu.Item>
     </Menu>
@@ -48,35 +48,35 @@ class TopMenu extends React.Component {
                 <div className="teamChoice">
                     <Dropdown overlay={menu}>
                         <Button>
-                            TEAM <DownOutlined />
+                            Team <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className="assigneeChoice">
                     <Dropdown overlay={menu}>
                         <Button>
-                            ASSIGNEE <DownOutlined />
+                            Assignee <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className="duedateChoice">
                     <Dropdown overlay={menu}>
                         <Button>
-                            DUE DATE <DownOutlined />
+                            Due Date <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className="priorityChoice">
                     <Dropdown overlay={menu}>
                         <Button>
-                            PRIORITY <DownOutlined />
+                            Priority <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className="statusChoice">
                     <Dropdown overlay={menu}>
                         <Button>
-                            STATUS <DownOutlined />
+                            Status <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
