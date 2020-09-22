@@ -157,19 +157,6 @@ const getEvent = async (data) => {
     }
 };
 
-const getEvent = async(data) => {
-  try {
-    const reqReturn = await axios({
-      method: `get`,
-      url: `${apiUrl}/event`,
-      data,
-    })
-    return reqReturn.data
-  }
-  catch (error) {
-    return null;
-  }
-}
 
 const getTasks = async(userId) => {
   try {
