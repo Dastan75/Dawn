@@ -1,6 +1,6 @@
 $base-color: rgb(39, 35, 67);
-$base-color-lightgrey: rgb(243, 244, 248);
 $base-color-darkergrey: rgb(212, 213, 221);
+$base-color-lightgrey: rgb(243, 244, 248);
 
 $base-color-red: rgb(214, 34, 70);
 $base-color-purple: rgb(145, 57, 182);
@@ -19,7 +19,7 @@ $left-menu-size-open: 10vw;
 $text-caps: 0.9em;
 $text-parag-normal: 1.125em;
 $text14px: 1em;
-$text18px: 1.25em;
+$text18px: 1.125em;
 $text21px: 1.5em;
 $text24px: 1.75em;
 $text52px: 3.715em;
@@ -32,140 +32,154 @@ $scale32: 32px;
 $scale40px: 40px;
 $scale48px: 48px;
 
-$shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
-$shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 0px 6px rgba(0, 0, 0, 0.15);
+$shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1),
+	0px 2px 12px rgba(0, 0, 0, 0.15);
+$shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15),
+	0px 0px 6px rgba(0, 0, 0, 0.15);
 
-$letterspacing-tight: -0.035em;
 $letterspacing-normal: 0.0035em;
+$letterspacing-tight: -0.035em;
 
 @font-face {
-  font-family: 'Greycliff CF';
-  src: url('greycliff-cf-bold.ttf')  format('truetype');
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'Greycliff CF';
+	src: url('greycliff-cf-medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
 }
-
 @font-face {
-  font-family: 'Greycliff CF';
-  src: url('greycliff-cf-medium.ttf')  format('truetype');
-  font-weight: 500;
-  font-style: normal;
+	font-family: 'Greycliff CF';
+	src: url('greycliff-cf-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Kalam';
+	src: url('Kalam-Regular.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
 }
 
 @keyframes fade-in-scale {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
-@keyframes spin { 
-  100% { 
-    transform: rotate(360deg); 
-  } 
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes come-from-left {
-  from {
-      margin-left: -4000px;
-  }
-  to {
-      margin-left: 0px;
-  }
+	from {
+		margin-left: -4000px;
+	}
+	to {
+		margin-left: 0px;
+	}
 }
 
 @keyframes come-from-top {
-  from {
-    margin-top: -4000px;
-  }
-  to {
-    margin-top: 0px;
-  }
+	from {
+		margin-top: -4000px;
+	}
+	to {
+		margin-top: 0px;
+	}
 }
 
 @keyframes come-from-right {
-  from {
-    margin-left: 4000px;
-  }
-  to {
-    margin-left: 0px;
-  }
+	from {
+		margin-left: 4000px;
+	}
+	to {
+		margin-left: 0px;
+	}
 }
 
 @keyframes come-from-bottom {
-  from {
-    margin-top: 4000px;
-  }
-  to {
-    margin-top: 0px;
-  }
+	from {
+		margin-top: 4000px;
+	}
+	to {
+		margin-top: 0px;
+	}
 }
 
 .clickable {
-  cursor: pointer !important;
+	cursor: pointer !important;
 }
 
 .SwapBody {
-  color: $base-color;
-  min-height: 100vh;
-  min-width: 100vw;
+	color: $base-color;
+	min-height: 100vh;
+	min-width: 100vw;
 }
 
 .MenuBlock {
-  transition: 1s all;
-  z-index: 10;
-  top: 0px;
-  // animation: come-from-left ease-in-out 1s;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: $left-menu-size;
-  padding: 1vh 0vw;
-  height: 100vw;
-  background: #FFFFFF;
-  box-shadow: $shadow-bigger;
-
-
+	align-items: flex-start;
+	animation: ease-in-out 1s;
+	background: white;
+	box-shadow: $shadow-bigger;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Greycliff CF';
+	font-weight: bold;
+	height: 100vw;
+	min-height: 100vh;
+	padding: 1vh 0;
+	position: fixed;
+	top: 0px;
+	transition: 1s all;
+	width: auto;
 }
 
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 .MenuBlockOne {
-  height: $left-menu-icon-space;
-  width: $left-menu-icon-size;
-  padding-left: 1px;
-  padding-right: 1px;
-  border-radius: 3px;
-  background: linear-gradient(-45deg, #FF5C00, #FFA800, white, white);
-  background-size: 400% 400%;
-  &.current {
-    animation: menu-background .5s forwards;
-  }
+	background-size: 400% 400%;
+	// background: linear-gradient(-45deg, #FF5C00, #FFA800, white, white);
+	border-bottom: 1px solid $base-color-darkergrey;
+	display: flex;
+	height: 52px;
+	line-height: 52px;
+	padding: 0 12px;
+	width: 100%;
+	&.current {
+		animation: menu-background 0.5s forwards;
+	}
 }
 
 .LeftMenuSVG {
-  width: 100%;
-  height: 100%;
+	height: 100%;
+	width: 32px;
+}
+.MenuSettings {
+	// background-color: fuchsia;
+	align-items: flex-end;
+	height: 200px;
+	width: 100%;
 }
 
 @keyframes menu-background {
@@ -176,20 +190,3 @@ body {
 		background-position: 100% 50%;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

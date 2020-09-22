@@ -1,18 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { Collapse, Input, Modal } from 'antd';
-import TopMenu from './TopMenu'
-import './style.scss'
-import ProgressPage from './ProgressPage'
-import CardsPage from './CardsSpace'
-import { connect } from 'react-redux'
+import TopMenu from './TopMenu';
+import './style.scss';
+import ProgressPage from './ProgressPage';
+import CardsPage from './CardsSpace';
+import { connect } from 'react-redux';
 import { user } from '../_reducers';
 import { userService } from '../_services';
 
 const { TextArea } = Input;
 
 const { Panel } = Collapse;
+
 // const { TabPane } = Tabs;
 
 class ProjectSpace extends React.Component {
@@ -28,24 +30,24 @@ class ProjectSpace extends React.Component {
     changePage = (newPage) => {
         this.setState({
             type: newPage
-        })
+        });
     }
 
-    changeModalValue = ({target}) => {
+    changeModalValue = ({ target }) => {
         this.setState({
             [target.name]: target.value
-        })
+        });
     }
 
     handleOk = async () => {
-        const { imputNameValue, imputDescValue } = this.state
+        const { imputNameValue, imputDescValue } = this.state;
         if (imputNameValue === '' || imputDescValue === '') {
-            return
+            return;
         }
-        const { user } = this.props
-        const ret = await userService.createProject({ name: imputNameValue, desc: imputDescValue, team: user.company.teams[0].id})
+        const { user } = this.props;
+        const ret = await userService.createProject({ name: imputNameValue, desc: imputDescValue, team: user.company.teams[0].id });
         if (ret) {
-            this.props.getData()
+            this.props.getData();
         }
         this.setState({
             modalVisible: false,
@@ -69,10 +71,10 @@ class ProjectSpace extends React.Component {
     };
 
     render() {
-        const { modalVisible, imputNameValue, imputDescValue } = this.state 
-        const { user } = this.props
+        const { modalVisible, imputNameValue, imputDescValue } = this.state;
+        const { user } = this.props;
         return (
-            <div className="ProjectSpace">
+            <div className='ProjectSpace'>
                 <TopMenu changeType={this.changePage}/>
                 {/* <ProgressPage /> */}
                 {
@@ -84,16 +86,16 @@ class ProjectSpace extends React.Component {
                     <ProgressPage data={user.company} />
                 }
                 <Modal
-                    title="Choose a name"
-                    visible={modalVisible}
-                    onOk={this.handleOk}
                     onCancel={this.handleCancel}
-                    >
-                    <Input name="imputNameValue" onChange={this.changeModalValue} placeholder="Please enter a name" value={imputNameValue}/>
-                    <TextArea name="imputDescValue" style={{ marginTop: '10px'}} rows={4} onChange={this.changeModalValue} placeholder="Please enter a description" value={imputDescValue}/>
+                    onOk={this.handleOk}
+                    title='Choose a name'
+                    visible={modalVisible}
+                >
+                    <Input name='imputNameValue' onChange={this.changeModalValue} placeholder='Please enter a name' value={imputNameValue}/>
+                    <TextArea name='imputDescValue' onChange={this.changeModalValue} placeholder='Please enter a description' rows={4} style={{ marginTop: '10px' }} value={imputDescValue}/>
                 </Modal>
-                <div onClick={() => this.showModal()} className={`newProject clickable`}>
-                    <div className="content">
+                <div className={'newProject clickable'} onClick={() => this.showModal()}>
+                    <div className='content'>
                         Create a new project
                     </div>
                 </div>
@@ -103,11 +105,10 @@ class ProjectSpace extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const { user } = state
+    const { user } = state;
     return {
         user
-    }
-}
-  
+    };
+};
 
-export default connect(mapStateToProps)(ProjectSpace)
+export default connect(mapStateToProps)(ProjectSpace);

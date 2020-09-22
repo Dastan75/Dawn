@@ -1,6 +1,6 @@
 import React from 'react';
-import './style.scss'
-import { userService } from '../_services'
+import './style.scss';
+import { userService } from '../_services';
 import { toast } from 'react-toastify';
 
 class TaskDetails extends React.Component {
@@ -14,13 +14,13 @@ class TaskDetails extends React.Component {
     };
 
     onLogin = async () => {
-        const ret = await userService.loginUser({ email: this.state.email, password: this.state.password })
+        const ret = await userService.loginUser({ email: this.state.email, password: this.state.password });
         if (ret && ret.user) {
-            this.props.getData(ret.user, true)            
-            return
+            this.props.getData(ret.user, true);
+            return;
         }
         toast.error('☹️ Wrong password or email!', {
-            position: "top-right",
+            position: 'top-right',
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -32,34 +32,33 @@ class TaskDetails extends React.Component {
 
     render() {
         return (
-            <div className="signupDetails">
-                <div className="fifty">
-                    <div className="stepOne">
-                        <div className="smallText">Productivity meets sanity</div>
-                        <div className="mainTitle">Mental health over everything</div>
-                        <div className="smallText">We don’t ask much from you to connect</div>
+            <div className='signupDetails'>
+                <div className='fifty'>
+                    <div className='stepOne'>
+                        <div className='smallText'>Productivity meets sanity</div>
+                        <div className='mainTitle'>Are you ready to be make time for your best work?</div>
+                        <div className='smallText'>We don’t ask much from you to connect</div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
-                                Email:
-                                <input style={{ marginLeft: '10px' }} type="text" value={this.state.email} onChange={({target}) => this.setState({ email: target.value })} />
+                                <input onChange={({ target }) => this.setState({ email: target.value })} placeholder='Your email:' type='text' value={this.state.email} />
                             </label>
                             <label>
-                                Password:
-                                <input style={{ marginLeft: '10px' }} type="password" value={this.state.password} onChange={({target}) => this.setState({ password: target.value })} />
+                                <input onChange={({ target }) => this.setState({ password: target.value })} placeholder='Your password:' type='password' value={this.state.password} />
                             </label>
                             {/* <label>
                                 <input
-                                    name="isGoing"            
+                                    name="isGoing"
                                     type="checkbox"
                                     style={{ marginRight: '10px' }}
                                     // checked={this.state.isGoing}
                                 />
                                 I accept the terms and conditions:
                             </label> */}
-                            <div onClick={this.onLogin} className="clickable loginBlock">
+                            <div className='clickable loginBlock' onClick={this.onLogin}>
                                 Log me now!
                             </div>
                         </form>
+
                     </div>
 
                     {/* <div className="stepTwo">
@@ -110,11 +109,8 @@ class TaskDetails extends React.Component {
                         </div>
                     </div> */}
 
-
                 </div>
-                <div className="illustration">
-                    
-                </div>
+                <div className='illustration' />
             </div>
         );
     }

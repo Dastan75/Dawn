@@ -25,5 +25,5 @@ const getUser = (userId) => async(dispatch) => {
 };
 
 export const userActions = {
-  getUser,
+    getUser,
 };

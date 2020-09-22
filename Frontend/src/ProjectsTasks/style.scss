@@ -5,13 +5,10 @@
 }
 .ProjectsTasks {
     animation: fade-in .3s forwards;
-    margin-left: $left-menu-size;
     font-family: Greycliff CF;
-    // border: red solid 1px;
     font-weight: bold;
-    // padding-left: 4vw;
-    // padding-right: 4vw;
     height: 100vh;
+    margin-left: $left-menu-size;
     .projectWrapper {
         padding-left: 4vw;
         padding-right: 4vw;
@@ -33,12 +30,12 @@
         width: 100%;
     }
     .progressBar {
-        position: absolute;
         background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
-        height: .5vh;
-        width: 70%;
         bottom: 0px;
+        height: 3px;
         left: 0px;
+        position: absolute;
+        width: 70%;
     }
     .barLeft {
         display: flex;
@@ -58,34 +55,32 @@
     }
     .members {
         align-items: center;
-        width: 30%;
         bottom: 24px;
-        right: 0;
-        display: flex ;
-        padding: 0px 7px 0px 0px ;
-        z-index: 1 ;
+        display: flex;
+        padding: 0px 7px 0px 0px;
+        right: 24px;
+        z-index: 1;
         .memberBox {
-            // height: 44px ;
-            margin: 0px 0px 0px 0px ;
-            padding: 0px 0px 0px 0px ;
-            position: relative ;
-            width: 32px ;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            position: relative;
+            width: 32px;
         }
         .memberBox:nth-child( 1 ) { z-index: 9 ; }
         .memberBox:nth-child( 2 ) { z-index: 8 ; }
         .memberBox:nth-child( 3 ) { z-index: 7 ; }
         .oneMember {
-            color: white;
+            align-items: center;
             background: #FFBD3B;;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: 2px solid white ;
+            color: white;
+            display: flex;
             font-family: Greycliff CF;
             font-size: 12px ;
             font-weight: 100 ;
             height: 40px ;
+            justify-content: center;
             line-height: 40px ;
             text-align: center ;
             width: 40px ;
@@ -96,7 +91,6 @@
         padding: 20px 48px;
         position: absolute;
         right: 0;
-        // width: 60%;
     }
     .navBtn {
         border-radius: 3px;
@@ -139,24 +133,20 @@
         text-transform: uppercase;
     }
     .rightNav {
-        // border: 2px solid blueviolet;
-        height: 32px;
         display: flex;
+        height: 32px;
         position: absolute;
         right: 0;
     }
     .search {
-        // background-color: hotpink;
         border-right: 1px solid $base-color;
         line-height: 32px;
-        // margin-right: 12px;
         padding-right: 24px;
         width: 56px;
     }
     .viewFilters {
         display: flex;
         padding-left: 24px;
-        // width: 100px;
     }
     .viewButton {
         height: 32px;
@@ -166,7 +156,7 @@
         background-color: $base-color;
         border-radius: 150px;
         display: flex;
-        height: 60px;
+        height: 52px;
     }
     .createNew button {
         background: none;
@@ -174,75 +164,70 @@
         color: white;
         font-size: $text18px;
         font-weight: bold;
-        padding: 12px;
         padding-left: 20px;
         padding-right: 20px;
+        padding: 12px;
     }
     .createNew button.circleAdd {
         background: orange;
         border-radius: 150px;
-        height: 60px;
+        height: 52px;
     }
     .dragBlock {
-        margin-top: 40px;
         display: flex;
+        margin-top: 40px;
         .columnBlock {
-            width: 260px;
-            // margin-left: 1vw;
             margin-right: 24px;
-            // border: red solid 1px;
+            width: 260px;
             .title {
                 font-size: $text-caps;
                 font-weight: bold;
-                margin-bottom: 24px;
-                text-transform: uppercase;
-                border-bottom: solid grey 2px;
                 padding-bottom: 2px;
+                text-transform: uppercase;
             }
             .task {
                 &.new {
-                    margin-bottom: 10px;
-                    transition: all .5s;
-                    opacity: 1;
-                    background: $base-color;
-                    color: white;
-                    display: flex;
                     align-items: center;
-                    justify-content: center;
-
-                    // margin-top: 16px;
-                    font-weight: bold;
-                    padding: 0px 0px !important;  
-                    width: 100%;
+                    background: $base-color-darkergrey;
                     border-radius: 3px;
+                    box-shadow: none;
+                    color: $base-color;
+                    display: flex;
+                    font-weight: bold;
                     height: 60px;
+                    margin-bottom: 10px;
+                    opacity: 1;
+                    padding-left: 12px;
+                    text-align: left;
+                    transition: all .5s;
+                    width: 100%;
                     .content {
                         font-size: $text18px;
                     }
                     &:hover{
-                        box-shadow: 0px 0px 3px 3px rgba(0, 129, 202, .4);
+                        background: white;
                     }
                 }
             }
             .column {
-                min-height: 60vh;
-                border-bottom-right-radius: 10px;
                 border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                min-height: 60vh;
                 &.isDraggedOn {
                     border:solid 2px $base-color-darkergrey;
                 }
                 .task {
-                    background: white;
-                    margin-bottom: 16px;
-                    height: 60px;
-                    width: 100%;
-                    font-size: $text18px;
-                    box-shadow: $shadow-smaller;
-                    border-radius: 3px;
-                    display: flex;
                     align-items: center;
-                    padding-left: 1vw;
+                    background: white;
+                    border-radius: 3px;
+                    box-shadow: $shadow-smaller;
+                    display: flex;
+                    font-size: $text18px;
                     font-weight: bold;
+                    height: 60px;
+                    margin-bottom: 16px;
+                    padding-left: 1vw;
+                    width: 100%;
                     &.isDragging {
                         box-shadow: $shadow-bigger;
                     }

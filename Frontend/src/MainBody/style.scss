@@ -1,278 +1,317 @@
 @import '../global.scss';
 
-
+body {
+  background-color: white !important;
+}
 .MainBody {
+    font-family: Greycliff CF;
+    font-weight: bold;
     margin-left: $left-menu-size;
+    min-height: 100vh;
     padding-left: 4vw;
     padding-right: 4vw;
-    min-height: 100vh;
-    animation: fade-in .3s forwards;
     .boxesBlock {
-      // border: green solid 1px;
-      margin-top: 5vh;
       display: flex;
       justify-content: space-evenly;
+      margin-top: 7.5vh;
       .block {
-        padding: 1% 2%;
-        width: 30%;
         border-radius: 16px;
-        height: 50vh;
+        margin: 0 2% 0 0;
+        padding: $scale24;
+        width: 33%;
+      }
+      .title {
+        color: $base-color;
+        font-family: Greycliff CF;
+        font-size: $text21px;
+        margin-bottom: $scale32;
       }
       .weekBlock {
         background: #95E4EB;;
       }
       .inspirationBlock {
         background: #FCDDBC;
-        .title {
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.6vw;
-          color: black;
-        }
+        margin-right: 0;;
         .content {
-          margin-top: 5vh;
+          color: $base-color;
           font-family: Greycliff CF;
+          font-size: $text21px;
           font-style: italic;
-          font-size: 1.4vw;
-          color: black;
+          margin-top: 5vh;
         }
-        .author {
-          margin-top: 3vh;
+        .author {          
+          color: $base-color;
           font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.4vw;
-          color: black;
+          font-size: $text21px;
+          margin-top: 3vh;
         }
       }
-      .todaysBlock {
+      .todayBlock {
         background: #EFF0F3;
-        .title {
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.4vw;
-          color: black;
-        }
         .task {
-          position: relative;
-          display: flex;
           align-items: center;
-          margin-top: 2vh;
-          box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 0px rgba(0, 0, 0, 0.05);
-          border-radius: 3px;
-          height: 9vh;
           background: white;
-          padding: 0px 4%;
+          border-radius: 3px;
+          box-shadow: $shadow-smaller;
           display: flex;
+          height: 60px;
           justify-content: space-between;
+          margin-top: $scale16;
+          padding: 0px 4%;
+          position: relative;
           transition: all 1s;
           .name {
-            color: black;
+            color: $base-color;
             font-family: Greycliff CF;
+            font-size: $text18px;
             font-style: normal;
-            font-weight: bold;
-            font-size: 1.2vw;
             line-height: 22px;
           }
           .duration {
-            color: black;
+            color: $base-color;
             font-family: Greycliff CF;
+            font-size: $text-caps;
             font-style: normal;
-            font-weight: bold;
-            font-size: 1.2vw;
           }
           .workBar {
-            position: absolute;
             border-radius: 3px 0px 0px 0px;
-            height: .6vh;
-            top: 0px;
+            height: 3px;
             left: 0px;
+            position: absolute;
+            top: 0px;
           }
           &.task1 {
-            margin-top: 3vh;
             .workBar {
-              width: 50%;
               background: #129EAF;
+              width: 50%;
             }
           }
           &.task2 {
             .workBar {
-              width: 90%;
               background: #23D0CD;
+              width: 90%;
             }
           }
           &.task3 {
             .workBar {
-              width: 20%;
               background: #EC365A;
+              width: 20%;
             }
           }
         }
-        .seeTasks {
-          margin-top: 2vh;
+        .seeMore {
+          color: $base-color;
           font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
           font-size: 1.2vw;
-          color: black;
+          font-style: normal;
+          margin-top: $scale32;
         }
       }
     }
-  
-    .TitlesBlock {
-      // border: 1px blue solid;
-      margin-top: 5vh;
+    .graphBlock {
+      background-color: white;
+      border-radius: 3px;
+      box-shadow: $shadow-smaller;
+      height: 212px;
+      margin-bottom: 24px;
+    }
+    .graphLegend {
       display: flex;
+      padding: 18px 24px;
+      width: 100%;
+    }
+    .todo, .done {
+      width: 50%;
+    }
+    .graphBarItems {
+      border-bottom: 1px solid $base-color;
+      display: flex;
+      height: 114px;
+      margin: 0 12px;
+    }
+    .graphBarItem {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 20%;
+    }
+    .graphBarItemTodo {
+      background: linear-gradient(113.61deg, #FFF2AA 0%, #FF8A5B 100%);
+      border-radius: 150px 150px 0 0;
+      bottom: 0;
+      height: 84px;
+      left: 26px;
+      max-height: 114px;
+      position: absolute;
+      width: 12px;
+      z-index: 9;
+    }
+    .graphBarItemDone {
+      background-color: $base-color-red;
+      border-radius: 150px 150px 0 0;
+      bottom: 0;
+      height: 114px;
+      left: 34px;
+      max-height: 114px;
+      position: absolute;
+      width: 12px;
+      z-index: 8;
+    }
+    .graphDays {
+      display: flex;
+      margin: 4px 12px;
+    }
+    .dayItem {
+      font-size: $text-caps;
+      text-align: center;
+      text-transform: uppercase;
+      width: 20%;
+    }
+    .TitlesBlock {
+      display: flex;
+      margin-top: 5vh;
       .Greetings {
-        color: black;
-        width: 60%;
+        color: $base-color;
         font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
         font-size: $text21px;
+        font-style: normal;
+        width: 65%;
       }
       .Workload {
-        color: black;
-        // border: 1px yellow solid;
-        width: 40%;
+        color: $base-color;
         font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
         font-size: $text21px;
+        font-style: normal;
+        width: 35%;
       }
     }
     .TasksBlock {
-      // border: red solid 1px;
-      margin-top: 2vh;
       display: flex;
+      margin-top: $scale12;
       .TasksTitle {
+        color: $base-color;
         font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
         font-size: $text52px;
+        font-style: normal;
+        letter-spacing: $letterspacing-normal;
         line-height: 62px;
-        width: 60%;
         padding-right: 10%;
-        color: black;
+        width: 65%;
         .OrangeTitle {
           color: #FF5C00;
         }
-        // border: blue solid 1px;
       }
       .TasksBarsBlock {
-        // border: solid 1px green;
-        width: 40%;
+        width: 35%;
         .TaskOne {
-          margin-top: 2vh;
+          color: $base-color;
           display: flex;
-          justify-content: space-between;
-          color: black;
           font-family: Greycliff CF;
+          font-size: $text21px;
           font-style: normal;
-          font-weight: bold;
-          font-size: 21px;
+          justify-content: space-between;
           line-height: 25px;
-          // padding-right: 10%;
+          margin-top: 2vh;
           .ant-progress {
-            // border: blue solid 1px;
             width: 70%;
+          }
+          .ant-progress-bg {
+            height: 12px !important;
           }
         }
       }
     }
   }
   
-.moodTracker{
-  background-color: rgba(39, 35, 67, .5);
-  display: flex;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 100vw;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  .moodContainer {
-      display: flex;
-      font-family: Greycliff CF;
-      font-weight: bold;
-      padding: 14px;
-      position: relative;
-      width: 414px;
-      .closeButton {
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-    .moodBox {
-        background: white;
-        margin: 0 auto;
+  .moodTracker{
+    align-items: center;
+    background-color: rgba(39, 35, 67, .5);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+    .moodContainer {
+        display: flex;
         font-family: Greycliff CF;
         font-weight: bold;
-        font-size: $text18px;
-        height: 100%;
-        box-shadow: $shadow-bigger;
-        border-radius: 9px;
-        width: 100%;
-    }
-    .question {
-        margin: 32px;
-    }
-    .moodChoices {
-        background-color: $base-color-lightgrey;
-        display: flex;
-        height: 80px;
-        margin-bottom: 24px;
-        padding: 16px 8px;
-        justify-content: space-evenly;
-        width: 100%;
-    }
-    .moodChoiceItem {
-        border-radius: 150px;
-        height: 48px;
-        width: 48px;
-        transition: 0.5s all;
-        animation: ease-in-out 0.5s;
-    }
-    .moodChoiceItem:hover {
-        background-color: $base-color;
-    }
-    .moodChoiceItem svg {
-    }
-    .left { background-color: $base-color-green;}
-    .leftmid { background-color: $base-color-emerald;}
-    .mid { background-color: $base-color-yellow;}
-    .rightmid { background-color: $base-color-orange;}
-    .right { background-color: $base-color-red;}
-    .moodChoiceItem:last-child {
-        margin-right: 0;
-    }
-    .bottomBar {
-        display: flex;
-        height: 48px;
-        line-height: 48px;
-        margin-bottom: 32px;
+        padding: 14px;
         position: relative;
-        width: 100%;
-    }
-    .primaryCTA {
-        background-color: $base-color;
-        border-radius: 150px;
-        color: white;
-        height: 48px;
-        left: 32px;
-        line-height: 48px;
-        padding: 0 24px;
-        position: absolute;
-    }
-    .secondaryCTA {
-        position: absolute;
-        right: 32px;
+        width: 414px;
+        .closeButton {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      .moodBox {
+          background: white;
+          border-radius: 9px;
+          box-shadow: $shadow-bigger;
+          font-family: Greycliff CF;
+          font-size: $text18px;
+          font-weight: bold;
+          height: 100%;
+          margin: 0 auto;
+          width: 100%;
+      }
+      .question {
+          margin: 32px;
+      }
+      .moodChoices {
+          background-color: $base-color-lightgrey;
+          display: flex;
+          height: 80px;
+          justify-content: space-evenly;
+          margin-bottom: 24px;
+          padding: 16px 8px;
+          width: 100%;
+      }
+      .moodChoiceItem {
+          animation: ease-in-out 0.5s;
+          border-radius: 150px;
+          height: 48px;
+          transition: 0.5s all;
+          width: 48px;
+      }
+      .moodChoiceItem:hover {
+          background-color: $base-color;
+      }
+      .moodChoiceItem svg {
+      }
+      .left { background-color: $base-color-green;}
+      .leftmid { background-color: $base-color-emerald;}
+      .mid { background-color: $base-color-yellow;}
+      .rightmid { background-color: $base-color-orange;}
+      .right { background-color: $base-color-red;}
+      .moodChoiceItem:last-child {
+          margin-right: 0;
+      }
+      .bottomBar {
+          display: flex;
+          height: 48px;
+          line-height: 48px;
+          margin-bottom: 32px;
+          position: relative;
+          width: 100%;
+      }
+      .primaryCTA {
+          background-color: $base-color;
+          border-radius: 150px;
+          color: white;
+          height: 48px;
+          left: 32px;
+          line-height: 48px;
+          padding: 0 24px;
+          position: absolute;
+      }
+      .secondaryCTA {
+          position: absolute;
+          right: 32px;
+      }
     }
   }
-}
