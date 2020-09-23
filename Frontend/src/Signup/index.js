@@ -36,8 +36,8 @@ class TaskDetails extends React.Component {
                 <div className='fifty'>
                     <div className='stepOne'>
                         <div className='smallText'>Productivity meets sanity</div>
-                        <div className='mainTitle'>Are you ready to be make time for your best work?</div>
-                        <div className='smallText'>We don’t ask much from you to connect</div>
+                        <div className='mainTitle'>Are you ready to make time for your best work?</div>
+                        <div className='smallText'>We just need a few more details</div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 <input onChange={({ target }) => this.setState({ email: target.value })} placeholder='Your email:' type='text' value={this.state.email} />

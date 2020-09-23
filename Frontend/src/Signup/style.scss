@@ -9,7 +9,7 @@
     background: linear-gradient(113.61deg, #FFF2AA 0%, #FF8A5B 100%);
     display: flex;
     font-family: Greycliff CF;
-    font-size: $text18px;
+    // font-size: $text18px;
     font-weight: bold;
     height: 100vh;
     justify-content: center;
@@ -46,12 +46,12 @@
         justify-content: center;
         left: 0;
         margin-left: 48px;
-        padding: 84px 48px;
+        padding: 84px;
         position: absolute;
         width: calc(50% - 24px);
     }
     .illustration {
-        background-color: $base-color-darkergrey;
+        // background-color: $base-color-darkergrey;
         height: 100vh;
         position: absolute;
         right: 0;
@@ -59,7 +59,6 @@
     }
     .smallText {
         font-size: $text18px;
-        margin-bottom: 24px;
     }
     .mainTitle {
         font-family: Eurostile;
@@ -71,13 +70,26 @@
     form {
         display: flex;
         flex-direction: column;
+        font-size: $text18px;
+        margin-top: 24px;
     }
     label {
-        height: 56px;
         margin: 0 12px 12px 0;
     }
     input {
+        background-color: $base-color-lightgrey;
+        border-radius: 3px;
+        border: none;
+        box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+        color: $base-color;
+        font-weight: bold;
+        height: 56px;
         margin-left: 12px;
+        padding: 0 12px;
+        width: 432px;
+    }
+    .loginBlock {
+        margin-top: 12px;
     }
     .question {
         margin: 32px;

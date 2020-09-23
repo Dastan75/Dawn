@@ -88,11 +88,11 @@ class ProjectSpace extends React.Component {
                 <Modal
                     onCancel={this.handleCancel}
                     onOk={this.handleOk}
-                    title='Choose a name'
+                    title='Let’s add a name and description first'
                     visible={modalVisible}
                 >
-                    <Input name='imputNameValue' onChange={this.changeModalValue} placeholder='Please enter a name' value={imputNameValue}/>
-                    <TextArea name='imputDescValue' onChange={this.changeModalValue} placeholder='Please enter a description' rows={4} style={{ marginTop: '10px' }} value={imputDescValue}/>
+                    <Input name='imputNameValue' onChange={this.changeModalValue} placeholder='My project name' value={imputNameValue}/>
+                    <TextArea className='descProject' name='imputDescValue' onChange={this.changeModalValue} placeholder='Please enter a description' rows={4} style={{ marginTop: '10px' }} value={imputDescValue}/>
                 </Modal>
                 <div className={'newProject clickable'} onClick={() => this.showModal()}>
                     <div className='content'>

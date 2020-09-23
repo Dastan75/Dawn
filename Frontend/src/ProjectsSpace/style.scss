@@ -15,7 +15,7 @@
         bottom: 24px;
         color: white;
         display: flex;
-        font-size: $text18px;
+        font-size: $text14px;
         font-weight: bold;
         height: 52px;
         padding-left: 20px;
@@ -23,4 +23,72 @@
         position: fixed;
         right: 24px;
     }
+}
+.ant-modal {
+    width: 652px !important;
+}
+.ant-modal-content {
+    border-radius: 9px !important;
+    color: $base-color !important;
+    font: {
+        family: 'Greycliff CF' !important;
+        size: $text14px;
+        weight: bold;
+    }
+}
+.ant-modal-header {
+    border: none !important;
+    border-radius: 9px 9px 0 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 32px !important;
+}
+.ant-modal-body {
+    color: $base-color !important;
+}
+.ant-modal-footer {
+    border-radius: 0 0 9px 9px !important;
+    background-color: $base-color-lightgrey !important;
+    display: flex !important;
+    // height: 72px !important;
+    padding: 12px 32px !important;
+    position: relative !important;
+}
+.ant-btn-primary {
+    background-color: $base-color !important;
+    border: none !important;
+    border-radius: 150px !important;
+    height: 48px !important;
+    min-width: 100px !important;
+    padding: 0 24px !important;
+    position: absolute !important;
+    right: 32px !important
+}
+.ant-btn {
+    background-color: white;
+    border-radius: 150px !important;
+    border: none !important;
+    font: {
+        weight: bold !important;
+    }
+    height: 48px !important;
+    min-width: 100px !important;
+    padding: 0 24px !important;
+    // position: absolute !important;
+}
+.ant-input {
+    border: none !important;
+    box-shadow: none !important;
+    color: $base-color !important;
+    line-height: auto !important;
+    font: {
+        size: $text52px !important;
+    }
+    padding: 0 !important;
+}
+.ant-input:focus, .ant-input-focused {
+    border-color: none !important;
+    box-shadow: none !important;
+}
+.descProject {
+    font-size: $text18px !important;
 }

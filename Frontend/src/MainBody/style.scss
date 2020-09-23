@@ -1,7 +1,7 @@
 @import '../global.scss';
 
 body {
-  background-color: white !important;
+  background: white;
 }
 .MainBody {
     font-family: Greycliff CF;
@@ -46,8 +46,15 @@ body {
           margin-top: 3vh;
         }
       }
+      .seeMore {
+        color: $base-color;
+        font-family: Greycliff CF;
+        font-size: 1.2vw;
+        font-style: normal;
+        margin-top: $scale32;
+      }
       .todayBlock {
-        background: #EFF0F3;
+        background: $base-color-lightgrey;
         .task {
           align-items: center;
           background: white;
@@ -98,13 +105,6 @@ body {
               width: 20%;
             }
           }
-        }
-        .seeMore {
-          color: $base-color;
-          font-family: Greycliff CF;
-          font-size: 1.2vw;
-          font-style: normal;
-          margin-top: $scale32;
         }
       }
     }
@@ -279,15 +279,30 @@ body {
           width: 48px;
       }
       .moodChoiceItem:hover {
-          background-color: $base-color;
+          // background-color: $base-color;
       }
       .moodChoiceItem svg {
       }
-      .left { background-color: $base-color-green;}
-      .leftmid { background-color: $base-color-emerald;}
-      .mid { background-color: $base-color-yellow;}
-      .rightmid { background-color: $base-color-orange;}
-      .right { background-color: $base-color-red;}
+      .left {
+        background-color: $base-color-green;
+        &:hover { background-color: #02AF71 }
+      }
+      .leftmid {
+        background-color: $base-color-emerald;
+        &:hover { background-color: #13ABA8 }
+      }
+      .mid {
+        background-color: $base-color-yellow;
+        &:hover { background-color: #EBAE35 }
+      }
+      .rightmid {
+        background-color: $base-color-orange;
+        &:hover { background-color: #E97243 }
+      }
+      .right {
+        background-color: $base-color-red;
+        &:hover { background-color: #C01F3F }
+      }
       .moodChoiceItem:last-child {
           margin-right: 0;
       }
