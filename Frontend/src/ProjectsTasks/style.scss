@@ -4,8 +4,9 @@
     z-index: 1;
 }
 .ProjectsTasks {
+    @include font-default;
     animation: fade-in .3s forwards;
-    font-family: Greycliff CF;
+    background: $base-color-lightgrey;
     font-weight: bold;
     height: 100vh;
     margin-left: $left-menu-size;
@@ -35,6 +36,7 @@
         height: 3px;
         left: 0px;
         position: absolute;
+        top: 0;
         width: 70%;
     }
     .barLeft {
@@ -70,13 +72,13 @@
         .memberBox:nth-child( 2 ) { z-index: 8 ; }
         .memberBox:nth-child( 3 ) { z-index: 7 ; }
         .oneMember {
+            @include font-default;
             align-items: center;
             background: #FFBD3B;;
             border-radius: 50%;
             border: 2px solid white ;
             color: white;
             display: flex;
-            font-family: Greycliff CF;
             font-size: 12px ;
             font-weight: 100 ;
             height: 40px ;
@@ -162,11 +164,9 @@
         background: none;
         border: none;
         color: white;
-        font-size: $text18px;
+        font-size: $text14px;
         font-weight: bold;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding: 12px;
+        padding: 12px 20px;
     }
     .createNew button.circleAdd {
         background: orange;
@@ -188,7 +188,7 @@
             .task {
                 &.new {
                     align-items: center;
-                    background: $base-color-darkergrey;
+                    background: none;
                     border-radius: 3px;
                     box-shadow: none;
                     color: $base-color;
@@ -205,13 +205,13 @@
                         font-size: $text18px;
                     }
                     &:hover{
-                        background: white;
+                        background: $base-color-darkergrey;
                     }
                 }
             }
             .column {
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
+                // border-bottom-left-radius: 10px;
+                // border-bottom-right-radius: 10px;
                 min-height: 60vh;
                 &.isDraggedOn {
                     border:solid 2px $base-color-darkergrey;
@@ -231,8 +231,12 @@
                     &.isDragging {
                         box-shadow: $shadow-bigger;
                     }
-
-
+                    .contentTask {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                    }
                 }
             }
         }

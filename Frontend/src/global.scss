@@ -32,6 +32,8 @@ $scale32: 32px;
 $scale40px: 40px;
 $scale48px: 48px;
 
+$shadow-large: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1),
+	0px 4px 24px rgba(0, 0, 0, 0.15);
 $shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1),
 	0px 2px 12px rgba(0, 0, 0, 0.15);
 $shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15),
@@ -153,6 +155,7 @@ body {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 	background: white;
+	line-height: 1 !important;
 	&::-webkit-scrollbar {
 		display: none;
 	}
@@ -183,6 +186,20 @@ body {
 	align-items: flex-end;
 	height: 200px;
 	width: 100%;
+}
+.nomargin { margin: 0 }
+
+@mixin font-default {
+	color: $base-color;
+	font-family: Greycliff CF;
+	font-style: normal;
+	letter-spacing: 0.0035em;
+}
+
+@mixin big-title {
+	@include font-default;
+	font-size: $text52px;
+	margin-bottom: 40px;
 }
 
 @keyframes menu-background {

@@ -22,6 +22,7 @@
         padding-right: 20px;
         position: fixed;
         right: 24px;
+        z-index: 100;
     }
 }
 .ant-modal {
@@ -55,10 +56,10 @@
 }
 .ant-btn-primary {
     background-color: $base-color !important;
-    border: none !important;
     border-radius: 150px !important;
+    border: none !important;
     height: 48px !important;
-    min-width: 100px !important;
+    // min-width: 100px !important;
     padding: 0 24px !important;
     position: absolute !important;
     right: 32px !important
@@ -71,7 +72,7 @@
         weight: bold !important;
     }
     height: 48px !important;
-    min-width: 100px !important;
+    // min-width: 100px !important;
     padding: 0 24px !important;
     // position: absolute !important;
 }
@@ -88,6 +89,9 @@
 .ant-input:focus, .ant-input-focused {
     border-color: none !important;
     box-shadow: none !important;
+}
+.projectTitle {
+    height: auto !important;
 }
 .descProject {
     font-size: $text18px !important;

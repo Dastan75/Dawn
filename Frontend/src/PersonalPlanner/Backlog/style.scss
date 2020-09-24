@@ -2,19 +2,19 @@
 
 
 .backlogContainer {
-    background-color: $base-color-lightgrey;
-    box-shadow: $shadow-bigger;
-    font-family: Greycliff CF;
-    font-weight: bold;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    right: 0;
-    width: 314px;
-    z-index: 10;
-    transition: all 1s;
-    animation: fade-in 1s;
+  @include font-default;  
+  background-color: $base-color-lightgrey;
+  box-shadow: $shadow-bigger;
+  font-weight: bold;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  width: 314px;
+  z-index: 10;
+  transition: all 1s;
+  animation: fade-in 1s;
 }
 .closeBacklog {
   background-color: white;
@@ -61,16 +61,12 @@
     justify-content: space-between;
     transition: all 1s;
     .name {
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
+      @include font-default;
       font-size: $text18px;
       line-height: 22px;
     }
     .duration {
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
+      @include font-default;
       font-size: $text-caps;
     }
     .workBar {
@@ -103,14 +99,12 @@
     // border: solid 1px green;
     width: 35%;
     .TaskOne {
-      margin-top: 2vh;
+      @include font-default;
       display: flex;
-      justify-content: space-between;
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
       font-size: $text21px;
+      justify-content: space-between;
       line-height: 25px;
+      margin-top: 2vh;
       // padding-right: 10%;
       .ant-progress {
         // border: blue solid 1px;

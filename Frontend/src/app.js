@@ -5,6 +5,7 @@ import MainBody from './MainBody';
 import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
+import Notifications from './Notifications';
 import PersonalPlanner from './PersonalPlanner';
 
 import ProjectSpace from './ProjectsSpace';
@@ -75,6 +76,10 @@ class App extends React.PureComponent {
 
                             <Route exact path="/Planner">
                                 <PersonalPlanner />
+                            </Route>
+
+                            <Route exact path="/Notifications">
+                                <Notifications />
                             </Route>
 
                             <Route path="/Projects"> 

@@ -4,7 +4,7 @@ body {
   background: white;
 }
 .MainBody {
-    font-family: Greycliff CF;
+    @include font-default;
     font-weight: bold;
     margin-left: $left-menu-size;
     min-height: 100vh;
@@ -21,8 +21,8 @@ body {
         width: 33%;
       }
       .title {
+        @include font-default;
         color: $base-color;
-        font-family: Greycliff CF;
         font-size: $text21px;
         margin-bottom: $scale32;
       }
@@ -33,22 +33,22 @@ body {
         background: #FCDDBC;
         margin-right: 0;;
         .content {
+          @include font-default;
           color: $base-color;
-          font-family: Greycliff CF;
           font-size: $text21px;
           font-style: italic;
           margin-top: 5vh;
         }
         .author {          
+          @include font-default;
           color: $base-color;
-          font-family: Greycliff CF;
           font-size: $text21px;
           margin-top: 3vh;
         }
       }
       .seeMore {
+        @include font-default;
         color: $base-color;
-        font-family: Greycliff CF;
         font-size: 1.2vw;
         font-style: normal;
         margin-top: $scale32;
@@ -68,17 +68,15 @@ body {
           position: relative;
           transition: all 1s;
           .name {
+            @include font-default;
             color: $base-color;
-            font-family: Greycliff CF;
             font-size: $text18px;
-            font-style: normal;
             line-height: 22px;
           }
           .duration {
+            @include font-default;
             color: $base-color;
-            font-family: Greycliff CF;
             font-size: $text-caps;
-            font-style: normal;
           }
           .workBar {
             border-radius: 3px 0px 0px 0px;
@@ -171,17 +169,13 @@ body {
       display: flex;
       margin-top: 5vh;
       .Greetings {
-        color: $base-color;
-        font-family: Greycliff CF;
+        @include font-default;
         font-size: $text21px;
-        font-style: normal;
         width: 65%;
       }
       .Workload {
-        color: $base-color;
-        font-family: Greycliff CF;
+        @include font-default;
         font-size: $text21px;
-        font-style: normal;
         width: 35%;
       }
     }
@@ -189,11 +183,8 @@ body {
       display: flex;
       margin-top: $scale12;
       .TasksTitle {
-        color: $base-color;
-        font-family: Greycliff CF;
+        @include font-default;
         font-size: $text52px;
-        font-style: normal;
-        letter-spacing: $letterspacing-normal;
         line-height: 62px;
         padding-right: 10%;
         width: 65%;
@@ -204,11 +195,9 @@ body {
       .TasksBarsBlock {
         width: 35%;
         .TaskOne {
-          color: $base-color;
+          @include font-default;
           display: flex;
-          font-family: Greycliff CF;
           font-size: $text21px;
-          font-style: normal;
           justify-content: space-between;
           line-height: 25px;
           margin-top: 2vh;
@@ -237,8 +226,8 @@ body {
     width: 100vw;
     z-index: 10;
     .moodContainer {
-        display: flex;
-        font-family: Greycliff CF;
+      @include font-default;  
+      display: flex;
         font-weight: bold;
         padding: 14px;
         position: relative;
@@ -249,34 +238,34 @@ body {
           top: 0;
         }
       .moodBox {
-          background: white;
-          border-radius: 9px;
-          box-shadow: $shadow-bigger;
-          font-family: Greycliff CF;
-          font-size: $text18px;
-          font-weight: bold;
-          height: 100%;
-          margin: 0 auto;
-          width: 100%;
+        @include font-default;  
+        background: white;
+        border-radius: 9px;
+        box-shadow: $shadow-bigger;
+        font-size: $text18px;
+        font-weight: bold;
+        height: 100%;
+        margin: 0 auto;
+        width: 100%;
       }
       .question {
           margin: 32px;
       }
       .moodChoices {
-          background-color: $base-color-lightgrey;
-          display: flex;
-          height: 80px;
-          justify-content: space-evenly;
-          margin-bottom: 24px;
-          padding: 16px 8px;
-          width: 100%;
+        background-color: $base-color-lightgrey;
+        display: flex;
+        height: 80px;
+        justify-content: space-evenly;
+        margin-bottom: 24px;
+        padding: 16px 8px;
+        width: 100%;
       }
       .moodChoiceItem {
-          animation: ease-in-out 0.5s;
-          border-radius: 150px;
-          height: 48px;
-          transition: 0.5s all;
-          width: 48px;
+        animation: ease-in-out 0.5s;
+        border-radius: 150px;
+        height: 48px;
+        transition: 0.5s all;
+        width: 48px;
       }
       .moodChoiceItem:hover {
           // background-color: $base-color;
@@ -285,23 +274,23 @@ body {
       }
       .left {
         background-color: $base-color-green;
-        &:hover { background-color: #02AF71 }
+        &:hover { background-color: #009560 }
       }
       .leftmid {
         background-color: $base-color-emerald;
-        &:hover { background-color: #13ABA8 }
+        &:hover { background-color: #16A9A6 }
       }
       .mid {
         background-color: $base-color-yellow;
-        &:hover { background-color: #EBAE35 }
+        &:hover { background-color: #D9A02F }
       }
       .rightmid {
         background-color: $base-color-orange;
-        &:hover { background-color: #E97243 }
+        &:hover { background-color: #DB683A }
       }
       .right {
         background-color: $base-color-red;
-        &:hover { background-color: #C01F3F }
+        &:hover { background-color: #991832 }
       }
       .moodChoiceItem:last-child {
           margin-right: 0;

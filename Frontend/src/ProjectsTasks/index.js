@@ -213,10 +213,10 @@ class ProjectsTasks extends React.Component {
                 <Modal
                     onCancel={this.handleCancel}
                     onOk={this.handleOk}
-                    title='Choose a name'
+                    title='Name your task'
                     visible={modalVisible}
                 >
-                    <Input onChange={this.changeModalValue} placeholder='Please enter a name' value={imputNameValue}/>
+                    <Input onChange={this.changeModalValue} placeholder='Name your task' value={imputNameValue}/>
                 </Modal>
                 <div className='projectBar'>
                     <div className='progressBar'/>
@@ -261,7 +261,7 @@ class ProjectsTasks extends React.Component {
                 </div>
                 <div className='projectWrapper'>
                     <div className='orgNav'>
-                        {/* <div className="filterBy">Sort by: Due date</div> */}
+                        <div className="filterBy">Sort by: Priority</div>
                         <div className='rightNav'>
                             <div className='search'><SVGSearch/></div>
                             <div className='viewFilters'>
@@ -322,8 +322,10 @@ class ProjectsTasks extends React.Component {
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                         className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                            <div className="content">
+                                                            <div className='progressBar'/>
+                                                            <div className="contentTask">
                                                                 {item.title}
+                                                                <div className="avatar nomargin"></div>
                                                             </div>
                                                         </div>
                                                     )}

@@ -35,11 +35,11 @@ class CompanySpace extends React.PureComponent {
             <>
                 {
                     user && user.company &&
-                    <div className='CompanySpace'>
+                    <div className='NotifsSpace'>
                         <div className='Introduction'>
                         Catch up on what happened
                         </div>
-                        <div className='CompanyName'>
+                        <div className='BigTitle'>
                         Notifications
                         </div>
 

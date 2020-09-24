@@ -36,7 +36,7 @@ class CompanySpace extends React.PureComponent {
                         <div className='Introduction'>
                         This is your company space
                         </div>
-                        <div className='CompanyName'>
+                        <div className='BigTitle'>
                         What's up at { user.company.name }
                         </div>
                         <div className='boxesBlock'>

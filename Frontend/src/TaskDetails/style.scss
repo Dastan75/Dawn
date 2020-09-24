@@ -13,10 +13,10 @@
     z-index: 2;
 }
     .taskDetails {
+        @include font-default;
         background: white;
         border-radius: 3px;
         box-shadow: $shadow-smaller;
-        font-family: Greycliff CF;
         font-weight: bold;
         height: calc(100vh - 80px);;
         margin-left: $left-menu-size;
@@ -54,6 +54,7 @@
             border-radius: 3px 3px 0 0;
             box-shadow: $shadow-bigger;
             display: flex;
+            height: 80px;
             position: relative;
             z-index: 10;
         }
@@ -303,13 +304,13 @@
         .memberBox:nth-child( 2 ) { z-index: 8 ; }
         .memberBox:nth-child( 3 ) { z-index: 7 ; }
         .oneMember {
+            @include font-default;
             align-items: center;
             background: #FFBD3B;
             border-radius: 50%;
             border: 2px solid white;
             color: white;
             display: flex;
-            font-family: Greycliff CF;
             font-size: 12px;
             font-weight: 100;
             height: 40px;

@@ -81,9 +81,9 @@ class TopMenu extends React.Component {
                         </Button>
                     </Dropdown>
                 </div>
-                <div className='searchBar'>
+                {/* <div className='searchBar'>
                     <SVGSearch/>
-                </div>
+                </div> */}
                 <div className='switchViewBlock'>
                     <div className='oneView current clickable' onClick={() => this.props.changeType('cards')}>
                         <SVGCards/>
