@@ -157,21 +157,17 @@ const getEvent = async (data) => {
     }
 };
 
-
-const getTasks = async(userId) => {
-  try {
-    const reqReturn = await axios({
-      method: `get`,
-      url: `${apiUrl}/task/myTasks?userId=${userId}`,
-    })
-    return reqReturn.data
-  }
-  catch (error) {
-    return null;
-  }
-}
-
-
+const getTasks = async (userId) => {
+    try {
+        const reqReturn = await axios({
+            method: 'get',
+            url: `${apiUrl}/task/myTasks?userId=${userId}`,
+        });
+        return reqReturn.data;
+    } catch (error) {
+        return null;
+    }
+};
 
 export const userService = {
     getUserById,

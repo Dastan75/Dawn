@@ -16,7 +16,7 @@ class Backlog extends React.Component {
     };
 
     render() {
-        const { backlogList } = this.props
+        const { backlogList } = this.props;
         return (
             <div className='backlogContainer'>
                 <div className='backlogTitle'>My backlog</div>
@@ -26,11 +26,11 @@ class Backlog extends React.Component {
                         Sort by: estimated time
                     </div>
                     {
-                        backlogList && backlogList.length> 0 &&
-                        backlogList.map(item => (
-                            <div onClick={() => this.props.selectBacklog(item.id)} id={item.id} className="task task1">
-                                <div className="workBar"/>
-                                <div className="name">
+                        backlogList && backlogList.length > 0 &&
+                        backlogList.map((item) => (
+                            <div className='task task1' id={item.id} onClick={() => this.props.selectBacklog(item.id)}>
+                                <div className='workBar'/>
+                                <div className='name'>
                                     { item.title }
                                 </div>
                                 {/* <div className="duration">

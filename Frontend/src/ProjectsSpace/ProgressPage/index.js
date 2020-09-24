@@ -35,7 +35,7 @@ class ProgessPage extends React.Component {
                                 team.projects && team.projects.sort((a, b) => a.createdAt - b.createdAt).map((project, index) => (
                                     <div className={`oneProjectBlock clickable p${index + 1}`} key={project.id} onClick={() => this.props.history.push(`/tasks/${project.id}`)}>
                                         <div className='progressBar'/>
-                                        
+
                                         <div className='half'>
                                             <div className='name'>
                                                 { project.name }

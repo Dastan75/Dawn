@@ -130,8 +130,8 @@ class ProjectsTasks extends React.Component {
             }
         }
         if (modalType === 'newTask') {
-            const task = await userService.createTask({ title: imputNameValue, project: projectId, category: selectedCat })
-            const newCol = []
+            const task = await userService.createTask({ title: imputNameValue, project: projectId, category: selectedCat });
+            const newCol = [];
             if (task) {
                 let tmpCat = null;
                 for (let index = 0; index < columns.length; index++) {
@@ -261,7 +261,7 @@ class ProjectsTasks extends React.Component {
                 </div>
                 <div className='projectWrapper'>
                     <div className='orgNav'>
-                        <div className="filterBy">Sort by: Priority</div>
+                        <div className='filterBy'>Sort by: Priority</div>
                         <div className='rightNav'>
                             <div className='search'><SVGSearch/></div>
                             <div className='viewFilters'>
@@ -308,30 +308,30 @@ class ProjectsTasks extends React.Component {
                                                 ref={provided.innerRef}
                                                 {...provided.droppableProps}
                                             >
-                                            {
-                                                column.tasks && column.tasks.map((item, index) => (
-                                                <Draggable
-                                                    key={item.id}
-                                                    draggableId={item.id}
-                                                    index={index}
-                                                    >
-                                                    {(provided, snapshot) => (
-                                                        <div
-                                                        onClick={() => this.openTaskDetails(item)}
-                                                        ref={provided.innerRef}
-                                                        {...provided.draggableProps}
-                                                        {...provided.dragHandleProps}
-                                                        className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                            <div className='progressBar'/>
-                                                            <div className="contentTask">
-                                                                {item.title}
-                                                                <div className="avatar nomargin"></div>
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </Draggable>
-                                                ))
-                                            }
+                                                {
+                                                    column.tasks && column.tasks.map((item, index) => (
+                                                        <Draggable
+                                                            draggableId={item.id}
+                                                            index={index}
+                                                            key={item.id}
+                                                        >
+                                                            {(provided, snapshot) => (
+                                                                <div
+                                                                    onClick={() => this.openTaskDetails(item)}
+                                                                    ref={provided.innerRef}
+                                                                    {...provided.draggableProps}
+                                                                    {...provided.dragHandleProps}
+                                                                    className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
+                                                                    <div className='progressBar'/>
+                                                                    <div className='contentTask'>
+                                                                        {item.title}
+                                                                        <div className='avatar nomargin' />
+                                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        </Draggable>
+                                                    ))
+                                                }
                                                 {provided.placeholder}
                                             </div>
                                         )}

@@ -74,15 +74,15 @@ class App extends React.PureComponent {
                                 <CompanySpace />
                             </Route>
 
-                            <Route exact path="/Planner">
+                            <Route exact path='/Planner'>
                                 <PersonalPlanner />
                             </Route>
 
-                            <Route exact path="/Notifications">
+                            <Route exact path='/Notifications'>
                                 <Notifications />
                             </Route>
 
-                            <Route path="/Projects"> 
+                            <Route path='/Projects'>
                                 <ProjectSpace getData={this.getData}/>
                             </Route>
 

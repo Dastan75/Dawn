@@ -81,80 +81,81 @@ const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
 class PersonalPlanner extends React.Component {
 
   state = {
-    data: [],
-    backlogVisible: false,
-    backlogList: [],
-    selectedBacklog: '',
-    // selectedEvent: null
+      data: [],
+      backlogVisible: false,
+      backlogList: [],
+      selectedBacklog: '',
+
+      // selectedEvent: null
   };
 
   componentDidMount = async () => {
-    const { user } = this.props
-    const ret = await userService.getEvent()
-    let ret2 = await userService.getTasks(user.id)
+      const { user } = this.props;
+      const ret = await userService.getEvent();
+      let ret2 = await userService.getTasks(user.id);
 
-    if (!ret2 || !ret2.tasks) {
-      ret2 = { tasks: [] }
-    }
-    console.log('TASKS', ret2);
+      if (!ret2 || !ret2.tasks) {
+          ret2 = { tasks: [] };
+      }
+      console.log('TASKS', ret2);
 
-    const taksCal = ret2.tasks.filter(item => item.onPlanner === true)
-    const taksBack = ret2.tasks.filter(item => item.onPlanner === false)
+      const taksCal = ret2.tasks.filter((item) => item.onPlanner === true);
+      const taksBack = ret2.tasks.filter((item) => item.onPlanner === false);
 
-    this.setState({
-      data: [ ...ret, ...taksCal ],
-      backlogList: taksBack
-    })
+      this.setState({
+          data: [...ret, ...taksCal],
+          backlogList: taksBack
+      });
   }
 
-  TimeTableCell = (props) => {
-    return <WeekView.TimeTableCell className="bouh" onClick={async () => {
+  TimeTableCell = (props) => <WeekView.TimeTableCell className='bouh' onClick={async () => {
       let { data, backlogVisible, selectedBacklog, backlogList } = this.state;
+
       // console.log('CLICK', bouh)
       // console.log(bouh.view);
       // console.log(bouh.currentTarget);
       if (backlogVisible && selectedBacklog) {
-        //   title: 'Book Flights to San Fran for Sales Trip',
-//   startDate: new Date(2020, 8, 7, 9, 35),
-//   endDate: new Date(2020, 10, 10, 9, 35),
-//   id: 1,
-        let backlog = {}
-        const newBacklogList = backlogList.filter((item) => {
-          if (item.id === selectedBacklog) {
-            backlog = item
-            return false
-          }
-          else {
-            return true
-          }
-        })
-        // const added = {
-        //   title: backlog.name,
-        //   startDate: props.startDate,
-        //   endDate: props.endDate
-        // }
-        backlog.startDate = props.startDate
-        backlog.endDate = props.endDate
-        backlog.onPlanner = true;
-        data = [...data, { id: backlog.id, ...backlog }];
-        const ret = await userService.updateTask(backlog, backlog.id)
-        this.setState({
+          //   title: 'Book Flights to San Fran for Sales Trip',
+          //   startDate: new Date(2020, 8, 7, 9, 35),
+          //   endDate: new Date(2020, 10, 10, 9, 35),
+          //   id: 1,
+          let backlog = {};
+          const newBacklogList = backlogList.filter((item) => {
+              if (item.id === selectedBacklog) {
+                  backlog = item;
+                  return false;
+              }
+
+              return true;
+
+          });
+
+          // const added = {
+          //   title: backlog.name,
+          //   startDate: props.startDate,
+          //   endDate: props.endDate
+          // }
+          backlog.startDate = props.startDate;
+          backlog.endDate = props.endDate;
+          backlog.onPlanner = true;
+          data = [...data, { id: backlog.id, ...backlog }];
+          const ret = await userService.updateTask(backlog, backlog.id);
+          this.setState({
           // selectedEvent: { endDate: props.endDate, startDate: props.startDate},
           // backlogVisible: false,
-          data,
-          backlogList: newBacklogList,
-          selectedBacklog: ''
-        })
+              data,
+              backlogList: newBacklogList,
+              selectedBacklog: ''
+          });
       }
-    }} {...props} />;
-  };
+  }} {...props} />;
 
   selectBacklog = (backlogId) => {
-    this.setState({
-      selectedBacklog: backlogId
-    })
+      this.setState({
+          selectedBacklog: backlogId
+      });
   }
-  
+
   // commitChanges = ({ added, changed, deleted }) => {
   //   this.setState((state) => {
   //     let { data } = state;
@@ -173,40 +174,42 @@ class PersonalPlanner extends React.Component {
   //   });
   // }
   commitChanges = async ({ added, changed, deleted }) => {
-    const { user } = this.props 
-    let { data } = this.state;
-    // console.log('Data', data);
+      const { user } = this.props;
+      let { data } = this.state;
 
-    // console.log('commitChanges Add', added);
-    // console.log('commitChanges Change', changed);
-    // console.log('commitChanges Delete', deleted);
+      // console.log('Data', data);
 
-    if (added) {
-      let copyTask = { ...added }
-      copyTask.owner = user.id;
-      const ret = await userService.createEvent(copyTask)
-      console.log(ret);
-      data = [...data, ret];
-    }
-    if (changed) {
+      // console.log('commitChanges Add', added);
+      // console.log('commitChanges Change', changed);
+      // console.log('commitChanges Delete', deleted);
+
+      if (added) {
+          const copyTask = { ...added };
+          copyTask.owner = user.id;
+          const ret = await userService.createEvent(copyTask);
+          console.log(ret);
+          data = [...data, ret];
+      }
+      if (changed) {
       // for (let index = 0; index < data.length; index += 1) {
       //   // data[index];
-        
-      // }
-      for (let index = 0; index < Object.keys(changed).length; index++) {
-        const elemKey = Object.keys(changed)[index];
-        const pos = data.findIndex(item => item.id === elemKey)
-        data[pos] = { ...data[pos], ...changed[elemKey]}
-        userService.updateTask(data[pos], elemKey)
+
+          // }
+          for (let index = 0; index < Object.keys(changed).length; index++) {
+              const elemKey = Object.keys(changed)[index];
+              const pos = data.findIndex((item) => item.id === elemKey);
+              data[pos] = { ...data[pos], ...changed[elemKey] };
+              userService.updateTask(data[pos], elemKey);
+          }
+
+          // data = data.map(appointment => (
+          //     changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+          // }
+
       }
-      // data = data.map(appointment => (
-      //     changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
-      // }
-      
-    }
-    this.setState({
-      data: [ ...data ]
-    })
+      this.setState({
+          data: [...data]
+      });
   }
 
   showDrawer = () => {
@@ -221,17 +224,17 @@ onClose = () => {
     });
 };
 
-    render() {
-        const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
-        console.log('PLANNER STATE', this.state);
-        return (
-            <div className="PersonalPlanner">
-                  {
-                    backlogVisible && <Backlog selectBacklog={this.selectBacklog} backlogList={backlogList} onClose={this.onClose}/>
-                  }
-              <div className="clickable" onClick={this.showDrawer}>Start planning your week</div>
-              <div>My personal planner</div>
-              <Paper>
+render() {
+    const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
+    console.log('PLANNER STATE', this.state);
+    return (
+        <div className='PersonalPlanner'>
+            {
+                backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectBacklog={this.selectBacklog}/>
+            }
+            <div className='clickable' onClick={this.showDrawer}>Start planning your week</div>
+            <div>My personal planner</div>
+            <Paper>
                 <Scheduler
                     data={data}
                     onClick={() => console.log(3)}

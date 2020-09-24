@@ -6,8 +6,8 @@ console.log('SAVED', savedUser);
 const initialState = {
     loggedIn: false,
     ...savedUser
-}
-  
+};
+
 export function user(state = initialState, action) {
     switch (action.type) {
     case userConstants.USER_SAVE_ONE:
