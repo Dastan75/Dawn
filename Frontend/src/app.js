@@ -70,7 +70,7 @@ class App extends React.PureComponent {
                             <Route exact path='/Home'>
                                 <MainBody/>
                             </Route>
-{/* 
+                            {/*
                             <Route path='/Overview'>
                                 <CompanySpace />
                             </Route> */}

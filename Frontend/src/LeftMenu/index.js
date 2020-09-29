@@ -35,7 +35,7 @@ function LeftMenu(props) {
                 <div className='helpCenter clickable'>
                     <SVGHelp/>
                 </div>
-                <div className='settingsCenter clickable'></div>
+                <div className='settingsCenter clickable' />
             </div>
         </div>
     );

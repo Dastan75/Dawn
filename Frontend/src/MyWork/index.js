@@ -212,7 +212,7 @@ class ProjectsTasks extends React.Component {
                 >
                     <Input onChange={this.changeModalValue} placeholder='Name your task' value={imputNameValue}/>
                 </Modal>
-                
+
                 <div className='projectWrapper'>
                     <div className='orgNav'>
                         <div className='filterBy'>Sort by: Priority</div>
@@ -226,7 +226,7 @@ class ProjectsTasks extends React.Component {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className='dragBlock'>
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             {columns && columns.map((column, index) => (
