@@ -29,10 +29,10 @@ class TaskDetails extends React.Component {
                 <div className='taskDetails'>
                     <div className='closeButton' onClick={this.props.closeDetails}><SVGClose/></div>
                     <div className='sideNav'>
-                        <div className='navItem conversation' onClick={() => this.setState({ openPanel: 'viewConverse' })}><SVGConversation/></div>
                         <div className='navItem subTasks' onClick={() => this.setState({ openPanel: 'viewSubTasks' })}><SVGSubtasks/></div>
+                        <div className='navItem conversation' onClick={() => this.setState({ openPanel: 'viewConverse' })}><SVGConversation/></div>
                         <div className='navItem files' onClick={() => this.setState({ openPanel: 'viewFiles' })}><SVGFiles/></div>
-                        <div className='navItem timeLog'><SVGTimelog/></div>
+                        {/* <div className='navItem timeLog'><SVGTimelog/></div> */}
                     </div>
                     <div className='taskTopBar'>
                         <div className='topBarLeft'>
@@ -108,7 +108,7 @@ class TaskDetails extends React.Component {
                                 }}
                             />
                         </div>
-                        <div className='viewSubTasks'>
+                        <div className='viewSubTasks rightDetails'>
                             { openPanel === 'viewConverse' &&
                             <div className='viewConverse'>
                                 <div className='contents'>

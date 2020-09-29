@@ -24,6 +24,7 @@
             margin-top: 16px;
             padding: 10px 24px;
             position: relative;
+            transition: 0.35s all;
             width: 100%;
             .progressBar {
                 background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
@@ -55,7 +56,7 @@
                 display: flex;
                 font-size: $text-caps;
                 padding-right: 1.5vh;
-                width: 10%;
+                width: 15%;
             }
             .team {
                 @include font-default;
@@ -111,6 +112,7 @@
                 }
             }
         }
+        .oneProjectBlock:hover { box-shadow: $shadow-large; }
     }
 
 }

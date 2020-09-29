@@ -1,24 +1,25 @@
 @import '../global.scss';
 
-body {
+.whitebg {
   background: white;
 }
 .MainBody {
     @include font-default;
     font-weight: bold;
-    margin-left: $left-menu-size;
+    // margin-left: $left-menu-size;
+    margin: 0 auto;
     min-height: 100vh;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    width: 1050px;
     .boxesBlock {
       display: flex;
       justify-content: space-evenly;
-      margin-top: 7.5vh;
+      margin-top: 80px;
       .block {
         border-radius: 16px;
-        margin: 0 2% 0 0;
+        height: 346px;
+        margin: 0 24px 0 0;
         padding: $scale24;
-        width: 33%;
+        width: 338px;
       }
       .title {
         @include font-default;
@@ -27,10 +28,10 @@ body {
         margin-bottom: $scale32;
       }
       .weekBlock {
-        background: #95E4EB;;
+        background: #FFE7B9;
       }
       .inspirationBlock {
-        background: #FCDDBC;
+        background: #FFD7C7;
         margin-right: 0;;
         .content {
           @include font-default;
@@ -49,9 +50,9 @@ body {
       .seeMore {
         @include font-default;
         color: $base-color;
-        font-size: 1.2vw;
+        font-size: $text14px;
         font-style: normal;
-        margin-top: $scale32;
+        margin-top: 20px;
       }
       .todayBlock {
         background: $base-color-lightgrey;
@@ -64,9 +65,12 @@ body {
           height: 60px;
           justify-content: space-between;
           margin-top: $scale16;
-          padding: 0px 4%;
+          padding: 0px $scale12;
           position: relative;
-          transition: all 1s;
+          transition: all 0.35s;
+          &:hover {
+            box-shadow: $shadow-large;
+          }
           .name {
             @include font-default;
             color: $base-color;
@@ -111,7 +115,6 @@ body {
       border-radius: 3px;
       box-shadow: $shadow-smaller;
       height: 212px;
-      margin-bottom: 24px;
     }
     .graphLegend {
       display: flex;
@@ -167,16 +170,17 @@ body {
     }
     .TitlesBlock {
       display: flex;
-      margin-top: 5vh;
+      padding-top: 80px;
       .Greetings {
         @include font-default;
         font-size: $text21px;
-        width: 65%;
+        margin-right: 24px;
+        width: 700px;
       }
       .Workload {
         @include font-default;
         font-size: $text21px;
-        width: 35%;
+        width: 338px;
       }
     }
     .TasksBlock {
@@ -186,21 +190,22 @@ body {
         @include font-default;
         font-size: $text52px;
         line-height: 62px;
-        padding-right: 10%;
-        width: 65%;
+        margin-right: 24px;
+        padding-right: 42px;
+        width: 700px;
         .OrangeTitle {
           color: #FF5C00;
         }
       }
       .TasksBarsBlock {
-        width: 35%;
+        width: 338px;
         .TaskOne {
           @include font-default;
           display: flex;
           font-size: $text21px;
           justify-content: space-between;
           line-height: 25px;
-          margin-top: 2vh;
+          margin-top: 12px;
           .ant-progress {
             width: 70%;
           }
@@ -266,11 +271,6 @@ body {
         height: 48px;
         transition: 0.5s all;
         width: 48px;
-      }
-      .moodChoiceItem:hover {
-          // background-color: $base-color;
-      }
-      .moodChoiceItem svg {
       }
       .left {
         background-color: $base-color-green;

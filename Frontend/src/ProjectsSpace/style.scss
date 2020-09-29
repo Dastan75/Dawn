@@ -3,11 +3,9 @@
 
 .ProjectSpace {
     animation: fade-in .3s forwards;
-    background: #EFF0F3;
-    margin-left: $left-menu-size;
+    margin: 0 auto;
     min-height: 100vh;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    width: 1050px;
     .newProject {
         align-items: center;
         background-color: $base-color;

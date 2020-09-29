@@ -2,6 +2,7 @@ import React from 'react';
 
 import LeftMenu from './LeftMenu';
 import MainBody from './MainBody';
+import MyWork from './MyWork';
 import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
@@ -69,9 +70,13 @@ class App extends React.PureComponent {
                             <Route exact path='/Home'>
                                 <MainBody/>
                             </Route>
-
+{/* 
                             <Route path='/Overview'>
                                 <CompanySpace />
+                            </Route> */}
+
+                            <Route path='/MyWork'>
+                                <MyWork />
                             </Route>
 
                             <Route exact path='/Planner'>

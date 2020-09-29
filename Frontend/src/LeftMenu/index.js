@@ -5,6 +5,7 @@ import SVGPlanner from './SvgIcons/Planner';
 import SVGProjects from './SvgIcons/Projects';
 import SVGFaves from './SvgIcons/Faves';
 import SVGNotifications from './SvgIcons/Notifications';
+import SVGHelp from './SvgIcons/Help';
 import {
     withRouter
 } from 'react-router-dom';
@@ -15,8 +16,8 @@ function LeftMenu(props) {
             <div className={`MenuBlockOne ${props.location.pathname === '/Home' ? 'current' : ''}`} onClick={() => props.history.push('/Home')}>
                 <SVGLogo fill={`${props.location.pathname === '/Home' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/Overview' ? 'current' : ''}`} onClick={() => props.history.push('/Overview')}>
-                <SVGMyWork fill={`${props.location.pathname === '/Overview' ? 'white' : 'black'}`}/>
+            <div className={`MenuBlockOne ${props.location.pathname === '/MyWork' ? 'current' : ''}`} onClick={() => props.history.push('/MyWork')}>
+                <SVGMyWork fill={`${props.location.pathname === '/MyWork' ? 'white' : 'black'}`}/>
             </div>
             <div className={`MenuBlockOne ${props.location.pathname === '/Planner' ? 'current' : ''}`} onClick={() => props.history.push('/Planner')}>
                 <SVGPlanner fill={`${props.location.pathname === '/Planner' ? 'white' : 'black'}`}/>
@@ -30,7 +31,12 @@ function LeftMenu(props) {
             <div className={`MenuBlockOne ${props.location.pathname === '/Projects' ? 'current' : ''}`} onClick={() => props.history.push('/Projects')}>
                 <SVGProjects fill={`${props.location.pathname === '/Projects' ? 'white' : 'black'}`}/>
             </div>
-            <div className='MenuSettings' />
+            <div className='MenuSettings'>
+                <div className='helpCenter clickable'>
+                    <SVGHelp/>
+                </div>
+                <div className='settingsCenter clickable'></div>
+            </div>
         </div>
     );
 }

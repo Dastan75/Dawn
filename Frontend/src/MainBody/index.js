@@ -134,7 +134,7 @@ class MainBody extends React.PureComponent {
                                 2 HRS
                               </div>
                           </div>
-                          <div className='seeMore'>
+                          <div className='seeMore clickable'>
                             See your tasks
                           </div>
                       </div>
@@ -185,7 +185,7 @@ class MainBody extends React.PureComponent {
                                   <div className='dayItem'>Fri</div>
                               </div>
                           </div>
-                          <div className='seeMore'>
+                          <div className='seeMore clickable'>
                             See your tasks
                           </div>
                       </div>

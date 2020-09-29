@@ -46,8 +46,8 @@ class CompanySpace extends React.PureComponent {
                         <div className='tableBlock'>
                             <div className='navTabs'>
                                 <div className='dualTabs'>
-                                    <div className='tabItem'>New</div>
-                                    <div className='tabItem'>Cleared</div>
+                                    <div className='tabItem clickable'>New</div>
+                                    <div className='tabItem clickable'>Cleared</div>
                                 </div>
                                 <div className='clearBtn'>Clear all</div>
                             </div>

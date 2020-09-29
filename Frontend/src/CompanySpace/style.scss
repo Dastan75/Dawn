@@ -1,15 +1,11 @@
 @import '../global.scss';
 
-body {
-  background: $base-color-lightgrey;
-}
 .CompanySpace {
   @include font-default;
   font-weight: bold;  
-  margin-left: $left-menu-size;
+  margin: 0 auto;
   min-height: 100vh;
-  padding-left: 4vw;
-  padding-right: 4vw;
+  width: 1050px;
   
     .tableBlock {
       .menuBlock {
@@ -110,7 +106,7 @@ body {
     .Introduction {
       @include font-default;
       font-size: $text21px;
-      margin-top: 80px;
+      padding-top: 80px;
     }
     .boxesBlock {      
       display: flex;

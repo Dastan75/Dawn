@@ -1,14 +1,11 @@
 @import '../global.scss';
 
-body {
-  background-color: $base-color-lightgrey;
-}
 .NotifsSpace {
     font-weight: bold;
-    margin-left: $left-menu-size;
+    margin: 0 auto;
     min-height: 100vh;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    padding-top: 80px;
+    width: 1050px;
 }
 .BigTitle {
   @include big-title;

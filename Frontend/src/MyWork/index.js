@@ -1,11 +1,5 @@
 import React from 'react';
-import SVGDetails from './SvgIcons/Details';
-import SVGConversation from './SvgIcons/Conversation';
-import SVGTasks from './SvgIcons/Tasks';
-import SVGFiles from './SvgIcons/Files';
-import SVGLink from './SvgIcons/Link';
 import SVGSearch from './SvgIcons/Search';
-import SVGClose from './SvgIcons/Close';
 import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
@@ -218,47 +212,7 @@ class ProjectsTasks extends React.Component {
                 >
                     <Input onChange={this.changeModalValue} placeholder='Name your task' value={imputNameValue}/>
                 </Modal>
-                <div className='projectBar'>
-                    <div className='progressBar'/>
-                    <div className='barLeft'>
-                        <div className='backButton clickable' onClick={this.props.history.goBack}>Back</div>
-                        <div className='projectTitle'>{projectName}</div>
-                        <div className='members'>
-                            <div className='memberBox'>
-                                <div className='oneMember'>
-                                    M
-                                </div>
-                            </div>
-                            <div className='memberBox'>
-                                <div className='oneMember'>
-                                    B
-                                </div>
-                            </div>
-                        </div>
-                        <div className='faveButton' />
-                    </div>
-                    <div className='barRight'>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGDetails/></div>
-                            <div className='navTitle'>Details</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGTasks/></div>
-                            <div className='navTitle'>Tasks</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGConversation/></div>
-                            <div className='navTitle'>Conversation</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGFiles/></div>
-                            <div className='navTitle'>Files</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGLink/></div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div className='projectWrapper'>
                     <div className='orgNav'>
                         <div className='filterBy'>Sort by: Priority</div>
@@ -272,23 +226,7 @@ class ProjectsTasks extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className='createNew'>
-                        <button
-                            className='clickable'
-                            onClick={() => this.showModal('newGroup')}
-                            type='button'
-                        >
-                            Add new group
-                        </button>
-                        {/* <button
-                            type="button"
-                            className="clickable"
-                            onClick={() => this.showModal('newItem')}
-                        >
-                            Add new item
-                        </button> */}
-                        {/* <button className="circleAdd"><SVGClose/></button> */}
-                    </div>
+                    
                     <div className='dragBlock'>
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             {columns && columns.map((column, index) => (
