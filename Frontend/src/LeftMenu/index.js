@@ -1,6 +1,6 @@
 import React from 'react';
 import SVGLogo from './SvgIcons/Logo';
-import SVGMyWork from './SvgIcons/MyWork';
+import SVGWork from './SvgIcons/MyWork';
 import SVGPlanner from './SvgIcons/Planner';
 import SVGProjects from './SvgIcons/Projects';
 import SVGFaves from './SvgIcons/Faves';
@@ -16,13 +16,13 @@ function LeftMenu(props) {
             <div className={`MenuBlockOne ${props.location.pathname === '/Home' ? 'current' : ''}`} onClick={() => props.history.push('/Home')}>
                 <SVGLogo fill={`${props.location.pathname === '/Home' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/MyWork' ? 'current' : ''}`} onClick={() => props.history.push('/MyWork')}>
-                <SVGMyWork fill={`${props.location.pathname === '/MyWork' ? 'white' : 'black'}`}/>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Work' ? 'current' : ''}`} onClick={() => props.history.push('/Work')}>
+                <SVGWork fill={`${props.location.pathname === '/Work' ? 'white' : 'black'}`}/>
             </div>
             <div className={`MenuBlockOne ${props.location.pathname === '/Planner' ? 'current' : ''}`} onClick={() => props.history.push('/Planner')}>
                 <SVGPlanner fill={`${props.location.pathname === '/Planner' ? 'white' : 'black'}`}/>
             </div>
-            <div className={`MenuBlockOne ${props.location.pathname === '/Notifications' ? 'current' : ''}`}>
+            <div className={`MenuBlockOne ${props.location.pathname === '/Notifications' ? 'current' : ''}`} onClick={() => props.history.push('/Notifications')}>
                 <SVGNotifications fill={`${props.location.pathname === '/Notifications' ? 'white' : 'black'}`}/>
             </div>
             <div className={`MenuBlockOne ${props.location.pathname === '/Favorites' ? 'current' : ''}`}>
@@ -35,7 +35,10 @@ function LeftMenu(props) {
                 <div className='helpCenter clickable'>
                     <SVGHelp/>
                 </div>
-                <div className='settingsCenter clickable' />
+                {/* <div className='settingsCenter clickable' /></div> */}
+                <div className='settingsCenter clickable' onClick={() => props.history.push('/Settings')}>
+                    {/* <SVGHelp fill={`${props.location.pathname === '/Settings' ? 'white' : 'black'}`}/> */}
+                </div>
             </div>
         </div>
     );

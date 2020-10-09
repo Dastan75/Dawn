@@ -2,12 +2,13 @@ import React from 'react';
 
 import LeftMenu from './LeftMenu';
 import MainBody from './MainBody';
-import MyWork from './MyWork';
+import Work from './Work';
 import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
 import Notifications from './Notifications';
 import PersonalPlanner from './PersonalPlanner';
+import Settings from './Settings';
 
 import ProjectSpace from './ProjectsSpace';
 import { connect } from 'react-redux';
@@ -75,8 +76,8 @@ class App extends React.PureComponent {
                                 <CompanySpace />
                             </Route> */}
 
-                            <Route path='/MyWork'>
-                                <MyWork />
+                            <Route path='/Work'>
+                                <Work />
                             </Route>
 
                             <Route exact path='/Planner'>
@@ -89,6 +90,10 @@ class App extends React.PureComponent {
 
                             <Route path='/Projects'>
                                 <ProjectSpace getData={this.getData}/>
+                            </Route>
+
+                            <Route exact path='/Settings'>
+                                <Settings />
                             </Route>
 
                             <Route component={ProjectsTasks} path='/Tasks/:projectId'/>

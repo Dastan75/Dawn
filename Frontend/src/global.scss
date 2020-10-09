@@ -201,9 +201,10 @@ body {
 		width: 32px;
 	}
 	.settingsCenter {
-		background-color: fuchsia;
+		background: url("https://previews.dropbox.com/p/thumb/AA9e3TmSIY6LFw9dTApDyB19RkZHpCMVtXaUTBosqrkplHc5u6QX9YfGN_T5oFbp6UAOiZ-ov3T5dMSMK8GMgSRoxffFaqePIZ9LgMbDrIlXNGm6WFG6YPqaiRSo7ttwSDRwTu6vKacUqFubSAVsBJmswfgGqDvu9-f-KQhgNGvXfaA5oXgUcUODnV9X0IkUmK5z__ybJe8z5eZAZm4f91Z78FVwSgnFvpwVVcqvPhEoJY4lepuUsiyKRtW0MUcXMedH8oE5dzn6P3RqAPSG6E1_4NoTm3DbqcER6fCz8JDCuc11SPQB4SiKiKiRJLCAyZJfYGpOUj_Pnh5YpOcOZ0qq/p.png?fv_content=true&size_mode=5") no-repeat;
+		background-size: 32px 32px;
 		border-radius: 150px;
-		background-size: 400% 400%;
+		// background-size: 400% 400%;
 		height: 32px;
 		line-height: 32px;
 		margin: 12px;
@@ -222,7 +223,7 @@ body {
 @mixin big-title {
 	@include font-default;
 	font-size: $text52px;
-	margin-bottom: 40px;
+	margin: 24px 0 40px 0;
 }
 
 @keyframes menu-background {
@@ -233,3 +234,20 @@ body {
 		background-position: 100% 50%;
 	}
 }
+
+.tabbedNav {
+	display: flex;
+	flex-direction: row;
+	height: 32px;
+	margin-bottom: 32px;
+	.tabElement {
+	  @include font-default;
+	  border-radius: 3px;
+	  font-size: $text18px;
+	  line-height: 32px;
+	  margin-right: 8px;
+	  padding: 0 12px;
+	  &:last-child { margin-right: 0 }
+	}
+	.tabCurrent { background-color: $base-color-darkergrey }
+  }

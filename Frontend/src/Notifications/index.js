@@ -35,22 +35,18 @@ class CompanySpace extends React.PureComponent {
             <>
                 {
                     user && user.company &&
-                    <div className='NotifsSpace'>
+                    <div className='screenSpace'>
                         <div className='Introduction'>
                         Catch up on what happened
                         </div>
                         <div className='BigTitle'>
                         Notifications
                         </div>
-
+                        <div className='tabbedNav'>
+                            <div className='tabElement tabCurrent clickable'>New</div>
+                            <div className='tabElement clickable'>Cleared</div>
+                        </div>
                         <div className='tableBlock'>
-                            <div className='navTabs'>
-                                <div className='dualTabs'>
-                                    <div className='tabItem clickable'>New</div>
-                                    <div className='tabItem clickable'>Cleared</div>
-                                </div>
-                                <div className='clearBtn'>Clear all</div>
-                            </div>
                             <div className='dayContainer'>
                                 <div className='dayTitle'>Today</div>
                                 <div className='notifContainer'>
