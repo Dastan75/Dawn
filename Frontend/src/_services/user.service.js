@@ -182,5 +182,5 @@ export const userService = {
     loginUser,
     createEvent,
     getEvent,
-    getTasks
+    getTasks,
 };

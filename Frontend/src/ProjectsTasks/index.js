@@ -195,9 +195,9 @@ class ProjectsTasks extends React.Component {
         });
     }
 
-    openTaskDetails = (task) => {
+    openTaskDetails = (task, column) => {
         this.setState({
-            taskDetail: task
+            taskDetail: { ...task, column }
         });
     }
 

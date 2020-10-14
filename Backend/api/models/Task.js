@@ -22,6 +22,7 @@ module.exports = {
     allDay:               { type: 'boolean' },
     onPlanner:            { type: 'boolean', defaultsTo: false },
     isTask:               { type: 'boolean', defaultsTo: true },
+    subtask:              { type: 'string' },
     category: {
       model: 'taskcategory'
     },

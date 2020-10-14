@@ -13,6 +13,9 @@
     z-index: 2;
 }
     .taskDetails {
+        .emptyText {
+            color: grey;
+        }
         @include font-default;
         background: white;
         border-radius: 3px;

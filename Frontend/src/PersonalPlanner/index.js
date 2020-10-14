@@ -90,22 +90,27 @@ class PersonalPlanner extends React.Component {
   };
 
   componentDidMount = async () => {
-      const { user } = this.props;
-      const ret = await userService.getEvent();
-      let ret2 = await userService.getTasks(user.id);
+    const { user } = this.props
+    let ret = await userService.getEvent()
+    let ret2 = await userService.getTasks(user.id)
 
-      if (!ret2 || !ret2.tasks) {
-          ret2 = { tasks: [] };
-      }
-      console.log('TASKS', ret2);
+    if (!ret2 || !ret2.tasks) {
+      ret2 = { tasks: [] }
+    }
+    if (!ret) {
+      ret = []
+    }
+    // console.log('TASKS', ret2);
 
       const taksCal = ret2.tasks.filter((item) => item.onPlanner === true);
       const taksBack = ret2.tasks.filter((item) => item.onPlanner === false);
 
-      this.setState({
-          data: [...ret, ...taksCal],
-          backlogList: taksBack
-      });
+
+
+    this.setState({
+      data: [ ...ret, ...taksCal ],
+      backlogList: taksBack
+    })
   }
 
   TimeTableCell = (props) => <WeekView.TimeTableCell className='bouh' onClick={async () => {
@@ -218,11 +223,11 @@ class PersonalPlanner extends React.Component {
       });
   };
 
-onClose = () => {
-    this.setState({
-        backlogVisible: false,
-    });
-};
+  onClose = () => {
+      this.setState({
+          backlogVisible: false,
+      });
+  };
 
 render() {
     const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;

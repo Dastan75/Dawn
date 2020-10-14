@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress } from 'antd';
+import { Progress, DatePicker, Input } from 'antd';
 import SVGConversation from './SvgIcons/Conversation';
 import SVGSubtasks from './SvgIcons/Subtasks';
 import SVGFiles from './SvgIcons/Files';
@@ -8,22 +8,92 @@ import SVGClose from './SvgIcons/Close';
 import SVGAvatar from './SvgIcons/Avatar';
 import SVGTime from './SvgIcons/Time';
 import SVGStatus from './SvgIcons/Status';
+import moment from 'moment';
+import { userService } from '../_services';
 
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import './style.scss';
 
+const dateFormatList = ['DD/MM/YYYY'];
+
+
+
 class TaskDetails extends React.Component {
     defaulState = {
-        openPanel: 'viewSubTasks'
+        openPanel: 'viewSubTasks',
+        onUpdate: true,
+        task: {},
+        subtasks: []
     };
+
 
     state = {
         ...this.defaulState,
+        task: this.props.data || {},
     };
 
+    componentDidMount () {
+        let subtasks = []
+        if (this.props.data.subtask) {
+            subtasks = JSON.parse(this.props.data.subtask)
+            if (!Array.isArray(subtasks)) {
+                subtasks = []
+            }
+        }
+        this.setState({
+            subtasks
+        })
+    }
+
+    addNewSubT = () => {
+        const { subtasks } = this.state
+        const newSubt = [ ...subtasks, { name: 'New sub task', checklistItems: [], id: Math.random() }]
+        this.setState({
+            subtasks: newSubt
+        })
+    }
+
+    addSubTask = (subId) => {
+        let { subtasks } = this.state
+        for (let index = 0; index < subtasks.length; index++) {
+            if (subtasks[index].id === subId) {
+                subtasks[index].checklistItems.push( { name: 'This is a checklist item', id: Math.random(), checked: false })
+            }
+        }
+        const newSubt = [ ...subtasks ]
+        this.setState({
+            subtasks: newSubt
+        })
+    }
+
+    checkItem = (checkItemId, subTaskItemId) => {
+        let { subtasks, task } = this.state
+        for (let index = 0; index < subtasks.length; index++) {
+            if (subtasks[index].id === subTaskItemId) {
+                for (let index2 = 0; index2 < subtasks[index].checklistItems.length; index2++) {
+                    if (subtasks[index].checklistItems[index2].id === checkItemId) {
+                        subtasks[index].checklistItems[index2].checked = !subtasks[index].checklistItems[index2].checked
+                    }
+                }
+            }
+        }
+        userService.updateTask({ subtask: JSON.stringify(subtasks) }, task.id);
+        // subtasks[subTaskItemId].checklistItems[checkItemId].checked = !subtasks[subTaskItemId].checklistItems[checkItemId].checked
+        const newSubt = [ ...subtasks ]
+        this.setState({
+            subtasks: newSubt
+        })
+    }
+
+    changeTitle = (e) => {
+        const { value } = e.target
+        // userService.updateTask({ subtask: JSON.stringify(subtasks) }, task.id);
+        console.log(value);
+    }
+
     render() {
-        const { data } = this.props;
-        const { openPanel } = this.state;
+        const { openPanel, onUpdate, task, subtasks } = this.state;
+        console.log('TASK DETAILS STATE', this.state);
         return (
             <div className='taskOverlay'>
                 <div className='taskDetails'>
@@ -36,7 +106,15 @@ class TaskDetails extends React.Component {
                     </div>
                     <div className='taskTopBar'>
                         <div className='topBarLeft'>
-                            <div className='taskTitle'>{ data.name }</div>
+                            
+                            <div className='taskTitle'>
+                            {
+                                !onUpdate && task.title
+                            }
+                            {
+                                onUpdate && <Input onChange={this.changeTitle} value={task.title}/>
+                            }
+                            </div>
                             <div className='members'>
                                 <div className='memberBox'>
                                     <div className='oneMember'>M</div>
@@ -48,12 +126,19 @@ class TaskDetails extends React.Component {
                                     <div className='oneMember'>C</div>
                                 </div>
                             </div>
-                            <div className='moreNav' />
+                            <div className='moreNav clickable' onClick={() => this.setState({ onUpdate: !onUpdate })} />
                         </div>
                         <div className='topBarRight'>
                             <div className='twoRows'>
                                 <div className='rowTitle'>Due date</div>
-                                <div className='dueDate'>03 Jun</div>
+                                <div className='dueDate'>
+                                    {
+                                        onUpdate && <DatePicker defaultValue={moment('01/01/2020', dateFormatList[0])} format={dateFormatList} />
+                                    }
+                                    {
+                                        !onUpdate && <span>5:10pm</span>
+                                    }
+                                </div>
                             </div>
                             <div className='twoRows'>
                                 <div className='rowTitle'>Est. time</div>
@@ -69,7 +154,7 @@ class TaskDetails extends React.Component {
                             </div>
                             <div className='twoRows'>
                                 <div className='rowTitle'>Status</div>
-                                <div className='statusLabel'>In review</div>
+                                <div className='statusLabel'>{task.column.name}</div>
                             </div>
                         </div>
                     </div>
@@ -78,11 +163,23 @@ class TaskDetails extends React.Component {
                             <div className='title'>Important details</div>
                             <div className='smallTitle'>Objectives</div>
                             <div className='description'>
-                                Switch the messaging of the homepage to be targeted towards marketers a lot more than it used to but we need to cater for agencies still.
+                                {
+                                    onUpdate && <Input.TextArea placeholder="Please write a objective" value={task.objectives}/>
+                                }
+                                {
+                                    !onUpdate &&
+                                    (task.objectives || <span className="emptyText">No objectives</span>)
+                                }
                             </div>
                             <div className='smallTitle'>Description</div>
                             <div className='description'>
-                                We need to rethink, restructure and redesign our current homepage to make sure its whole messaging is targeting marketers.
+                                {
+                                    onUpdate && <Input.TextArea placeholder="Please write a description" value={task.notes }/>
+                                }
+                                {
+                                    !onUpdate && 
+                                    (task.notes || <span className="emptyText">No description</span>)
+                                }
                             </div>
                             <div className='smallTitle'>Stakeholders</div>
                             <div className='members'>
@@ -173,9 +270,9 @@ class TaskDetails extends React.Component {
                             <div className='viewSubTasks'>
                                 <div className='contents'>
                                     <div className='title'>List of things to do</div>
-                                    <div className='taskRow'>
+                                    {/* <div className='taskRow'>
                                         <div className='taskItem'>
-                                            <div className='avatar' />
+                                            <div className='avatar' /> 
                                             <div className='subtaskTitle'>This is a sub-task example (1/3)</div>
                                             <div className='timeEstimated'>3 hrs</div>
                                             <div className='statusSquare' />
@@ -193,24 +290,35 @@ class TaskDetails extends React.Component {
                                                 <div className='subtaskTitle'>Add a new checklist item</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className='taskRow'>
-                                        <div className='taskItem'>
-                                            <div className='avatar' />
-                                            <div className='subtaskTitle'>This is a sub-task example (1/3)</div>
-                                            <div className='timeEstimated'>3 hrs</div>
-                                            <div className='statusSquare' />
-                                        </div>
-                                        <div className='checklist'>
-                                            <div className='checklistItem'>
-                                                <div className='checkbox' />
-                                                <div className='subtaskTitle'>This is checklist item</div>
+                                    </div> */}
+                                    {
+                                        subtasks && subtasks.map(subTaskItem => (
+                                            <div className='taskRow' key={subTaskItem.id}>
+                                                <div className='taskItem'>  
+                                                    <div className='avatar' />
+                                                    <div className='subtaskTitle'>{subTaskItem.name} ({subTaskItem.checklistItems.filter(item => item.checked === true).length}/{subTaskItem.checklistItems.length})</div>
+                                                    {/* <div className='timeEstimated'>3 hrs</div> */}
+                                                    <div className='statusSquare' />
+                                                </div>
+                                                <div className='checklist'>
+                                                    {
+                                                        subTaskItem.checklistItems && subTaskItem.checklistItems.map(checkItem => (
+                                                            <div key={checkItem.id} className='checklistItem clickable'>
+                                                                <div onClick={() => this.checkItem(checkItem.id, subTaskItem.id)} className={`checkbox ${checkItem.checked ? 'completed' : ''}`} />
+                                                                <div className='subtaskTitle'>{checkItem.name}</div>
+                                                            </div>
+                                                        ))
+                                                    }
+                                                    <div className='checklistAdd clickable' onClick={() => this.addSubTask(subTaskItem.id)}>
+                                                        <div className='subtaskTitle'>Add a new checklist item</div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        ))
+                                    }
                                     <div className='subtaskAdd'>
-                                        <div className='avatarAdd'><SVGAvatar/></div>
-                                        <div className='subtaskTitle'>This is where to add a new sub-task</div>
+                                        <div className='avatarAdd clickable' onClick={() => this.addNewSubT()}><SVGAvatar/></div>
+                                        <div className='subtaskTitle clickable' onClick={() => this.addNewSubT()}>This is where to add a new sub-task</div>
                                         <div className='addMoreBox'>
                                             <div className='addTime'><SVGTime/></div>
                                             <div className='addStatus'><SVGStatus/></div>
@@ -220,9 +328,7 @@ class TaskDetails extends React.Component {
                             </div>
                             }
                         </div>
-
                     </div>
-
                 </div>
             </div>
         );
