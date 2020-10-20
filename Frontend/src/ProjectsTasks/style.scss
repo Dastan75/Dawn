@@ -179,6 +179,13 @@
         .columnBlock {
             margin-right: 24px;
             width: 260px;
+            // border: red solid 1px;
+            &:hover .task {
+                &.new{
+                    background: $base-color-darkergrey;
+                    opacity: 1;
+                }
+            }
             .title {
                 font-size: $text-caps;
                 font-weight: bold;
@@ -204,19 +211,16 @@
                     .content {
                         font-size: $text18px;
                     }
-                    &:hover{
-                        background: $base-color-darkergrey;
-                        opacity: 1;
-                    }
                 }
             }
             .column {
                 // border-bottom-left-radius: 10px;
                 // border-bottom-right-radius: 10px;
                 // min-height: 60px;
+                min-height: 60px;
                 &.isDraggedOn {
                     border:solid 2px $base-color-darkergrey;
-                    min-height: 60px;
+                    // min-height: 20px;
                 }
                 .task {
                     align-items: center;
@@ -232,7 +236,7 @@
                     width: 260px;
                     &.isDragging {
                         box-shadow: $shadow-bigger;
-                    }
+                     }
                     .contentTask {
                         align-items: center;
                         display: flex;

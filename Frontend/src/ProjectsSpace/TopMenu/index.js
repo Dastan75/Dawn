@@ -3,79 +3,99 @@ import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
-import SVGSearch from './SvgIcons/Search';
 import './style.scss';
 import { Menu, Dropdown, Button } from 'antd';
 import {
     DownOutlined,
-    UserOutlined,
 } from '@ant-design/icons';
-
+import {
+    withRouter
+} from 'react-router-dom';
 // const { TabPane } = Tabs;
 
-const menu = (
+const menuDis = (
     <Menu>
-        <Menu.Item key='1'>
-        1st menu item
-        </Menu.Item>
-        <Menu.Item key='2'>
-        2nd menu item
-        </Menu.Item>
-        <Menu.Item key='3'>
-        3rd item
+        <Menu.Item key='1' disabled>
+            Disabled
         </Menu.Item>
     </Menu>
 );
 
 class TopMenu extends React.Component {
     defaulState = {
-
+        projects: []
     };
 
     state = {
         ...this.defaulState,
     };
 
+    componentDidMount = () => {
+        const { data } = this.props
+        console.log('TOP', data);
+        const projects = []
+        for (let index = 0; index < data.teams.length; index++) {
+            const team = data.teams[index];
+            for (let index2 = 0; index2 < team.projects.length; index2++) {
+                projects.push(team.projects[index2])
+            }
+        }
+        this.setState({
+            projects
+        })
+    }
+
     render() {
+        const { projects } = this.state 
         return (
             <div className='TopMenu'>
                 <div className='projectChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={
+                        <Menu>
+                            {
+                                projects && projects.map(item => (
+                                    <Menu.Item key={item.id} onClick={() => this.props.history.push(`/tasks/${item.id}`)}>
+                                        {item.name}
+                                    </Menu.Item>
+                                ))
+                            }
+                        </Menu>
+                    }>
                         <Button>
                             All Projects <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='teamChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={menuDis}>
                         <Button>
                             Team <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='assigneeChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={menuDis}>
                         <Button>
                             Assignee <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='duedateChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={menuDis}>
                         <Button>
                             Due Date <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='priorityChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={menuDis}>
                         <Button>
                             Priority <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='statusChoice'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={menuDis}>
                         <Button>
                             Status <DownOutlined />
                         </Button>
@@ -103,4 +123,4 @@ class TopMenu extends React.Component {
     }
 }
 
-export default TopMenu;
+export default withRouter(TopMenu);

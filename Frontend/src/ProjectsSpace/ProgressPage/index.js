@@ -1,11 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import './style.scss';
-import {
-    DownOutlined,
-} from '@ant-design/icons';
 
 // const { TabPane } = Tabs;
 import {

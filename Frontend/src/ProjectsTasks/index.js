@@ -206,7 +206,7 @@ class ProjectsTasks extends React.Component {
     }
 
     render() {
-        const { columns, projectName, modalVisible, imputNameValue, taskDetail } = this.state;
+        const { columns, projectName, modalVisible, imputNameValue, taskDetail, modalType } = this.state;
 
         console.log('COLS', columns);
         return (
@@ -219,10 +219,10 @@ class ProjectsTasks extends React.Component {
                 <Modal
                     onCancel={this.handleCancel}
                     onOk={this.handleOk}
-                    title='Name your task'
+                    title={`Name your ${modalType === 'newGroup' ? 'group' : 'task'}`}
                     visible={modalVisible}
                 >
-                    <Input onChange={this.changeModalValue} placeholder='Name your task' value={imputNameValue}/>
+                    <Input onChange={this.changeModalValue} placeholder={`Name your ${modalType === 'newGroup' ? 'group' : 'task'}`} value={imputNameValue}/>
                 </Modal>
                 <div className='projectBar'>
                     <div className='progressBar'/>

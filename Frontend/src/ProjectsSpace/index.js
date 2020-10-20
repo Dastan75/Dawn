@@ -75,7 +75,10 @@ class ProjectSpace extends React.Component {
         const { user } = this.props;
         return (
             <div className='ProjectSpace'>
-                <TopMenu changeType={this.changePage}/>
+                {
+                    user &&
+                    <TopMenu changeType={this.changePage} data={user.company} />
+                }
                 {/* <ProgressPage /> */}
                 {
                     user && user.company && this.state.type === 'cards' &&

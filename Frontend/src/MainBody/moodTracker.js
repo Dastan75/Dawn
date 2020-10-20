@@ -9,7 +9,13 @@ import SVGMood05 from './SvgIcons/Mood05';
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 
 class MoodTracker extends React.Component {
+
+    state = {
+        mood: 0
+    }
+
     render() {
+        const { mood } = this.state
         return (
             <div className='moodTracker'>
                 <div className='moodContainer'>
@@ -17,11 +23,11 @@ class MoodTracker extends React.Component {
                     <div className='moodBox'>
                         <div className='question'>Hey { this.props.user.firstName }, how do you feel today?</div>
                         <div className='moodChoices'>
-                            <div className='moodChoiceItem left'><SVGMood01/></div>
-                            <div className='moodChoiceItem leftmid'><SVGMood02/></div>
-                            <div className='moodChoiceItem mid'><SVGMood03/></div>
-                            <div className='moodChoiceItem rightmid'><SVGMood04/></div>
-                            <div className='moodChoiceItem right'><SVGMood05/></div>
+                            <div onClick={() => this.setState({ mood: 1 })} className={`moodChoiceItem left ${mood === 1 ? 'selected' : ''}`}><SVGMood01/></div>
+                            <div onClick={() => this.setState({ mood: 2 })} className={`moodChoiceItem leftmid ${mood === 2 ? 'selected' : ''}`}><SVGMood02/></div>
+                            <div onClick={() => this.setState({ mood: 3 })} className={`moodChoiceItem mid ${mood === 3 ? 'selected' : ''}`}><SVGMood03/></div>
+                            <div onClick={() => this.setState({ mood: 4 })} className={`moodChoiceItem rightmid ${mood === 4 ? 'selected' : ''}`}><SVGMood04/></div>
+                            <div onClick={() => this.setState({ mood: 5 })} className={`moodChoiceItem right ${mood === 5 ? 'selected' : ''}`}><SVGMood05/></div>
                         </div>
                         <div className='tickBox'>
                             {/* <form>
