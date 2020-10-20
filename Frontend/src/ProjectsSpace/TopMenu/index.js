@@ -11,11 +11,12 @@ import {
 import {
     withRouter
 } from 'react-router-dom';
+
 // const { TabPane } = Tabs;
 
 const menuDis = (
     <Menu>
-        <Menu.Item key='1' disabled>
+        <Menu.Item disabled key='1'>
             Disabled
         </Menu.Item>
     </Menu>
@@ -31,29 +32,29 @@ class TopMenu extends React.Component {
     };
 
     componentDidMount = () => {
-        const { data } = this.props
+        const { data } = this.props;
         console.log('TOP', data);
-        const projects = []
+        const projects = [];
         for (let index = 0; index < data.teams.length; index++) {
             const team = data.teams[index];
             for (let index2 = 0; index2 < team.projects.length; index2++) {
-                projects.push(team.projects[index2])
+                projects.push(team.projects[index2]);
             }
         }
         this.setState({
             projects
-        })
+        });
     }
 
     render() {
-        const { projects } = this.state 
+        const { projects } = this.state;
         return (
             <div className='TopMenu'>
                 <div className='projectChoice'>
                     <Dropdown overlay={
                         <Menu>
                             {
-                                projects && projects.map(item => (
+                                projects && projects.map((item) => (
                                     <Menu.Item key={item.id} onClick={() => this.props.history.push(`/tasks/${item.id}`)}>
                                         {item.name}
                                     </Menu.Item>

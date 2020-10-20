@@ -91,31 +91,31 @@ class PersonalPlanner extends React.Component {
   };
 
   componentDidMount = async () => {
-    const { user } = this.props
-    let ret = await userService.getEvent()
-    let ret2 = await userService.getTasks(user.id)
+      const { user } = this.props;
+      let ret = await userService.getEvent();
+      let ret2 = await userService.getTasks(user.id);
 
-    if (!ret2 || !ret2.tasks) {
-      ret2 = { tasks: [] }
-    }
-    if (!ret) {
-      ret = []
-    }
-    // console.log('TASKS', ret2);
+      if (!ret2 || !ret2.tasks) {
+          ret2 = { tasks: [] };
+      }
+      if (!ret) {
+          ret = [];
+      }
+
+      // console.log('TASKS', ret2);
 
       const taksCal = ret2.tasks.filter((item) => item.onPlanner === true);
       const taksBack = ret2.tasks.filter((item) => item.onPlanner === false);
 
-
-
-    this.setState({
-      data: [ ...ret, ...taksCal ],
-      backlogList: taksBack
-    })
+      this.setState({
+          data: [...ret, ...taksCal],
+          backlogList: taksBack
+      });
   }
 
-  TimeTableCell = (props) => <WeekView.TimeTableCell className="clickable" onClick={async () => {
+  TimeTableCell = (props) => <WeekView.TimeTableCell className='clickable' onClick={async () => {
       let { data, backlogVisible, selectedBacklog, backlogList } = this.state;
+
       // console.log('CLICK', bouh)
       // console.log(bouh.view);
       // console.log(bouh.currentTarget);
@@ -141,9 +141,9 @@ class PersonalPlanner extends React.Component {
           //   endDate: props.endDate
           // }
           if (backlog.estTime) {
-            backlog.endDate = moment(props.endDate).add(backlog.estTime, 'hours').toDate();
+              backlog.endDate = moment(props.endDate).add(backlog.estTime, 'hours').toDate();
           } else {
-            backlog.endDate = props.endDate;
+              backlog.endDate = props.endDate;
           }
           backlog.startDate = props.startDate;
           backlog.onPlanner = true;
@@ -188,9 +188,9 @@ class PersonalPlanner extends React.Component {
 
       // console.log('Data', data);
 
-    //   console.log('commitChanges Add', added);
-    //   console.log('commitChanges Change', changed);
-    //   console.log('commitChanges Delete', deleted);
+      //   console.log('commitChanges Add', added);
+      //   console.log('commitChanges Change', changed);
+      //   console.log('commitChanges Delete', deleted);
 
       if (added) {
           const copyTask = { ...added };
@@ -233,71 +233,73 @@ class PersonalPlanner extends React.Component {
       });
   };
 
-render() {
-    const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
-    // console.log('PLANNER STATE', this.state);
-    return (
-        <div className={`PersonalPlanner ${this.state.selectedBacklog.length === 0 ? '' : 'clickedBacklog'}`}>
-            {
-                backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectedBacklog={this.state.selectedBacklog} selectBacklog={this.selectBacklog}/>
-            }
-            {/* <div className='clickable' onClick={this.showDrawer}>Start planning your week</div> */}
-            {/* <div>My personal planner</div> */}
-            <div className="headerBlock">
-                <div className="subTitle">
+  render() {
+      const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
+
+      // console.log('PLANNER STATE', this.state);
+      return (
+          <div className={`PersonalPlanner ${this.state.selectedBacklog.length === 0 ? '' : 'clickedBacklog'}`}>
+              {
+                  backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectBacklog={this.selectBacklog} selectedBacklog={this.state.selectedBacklog}/>
+              }
+              {/* <div className='clickable' onClick={this.showDrawer}>Start planning your week</div> */}
+              {/* <div>My personal planner</div> */}
+              <div className='headerBlock'>
+                  <div className='subTitle'>
                     Start planning your week
-                </div>
-                <div className="titleBlock">
-                    <div className="title">
+                  </div>
+                  <div className='titleBlock'>
+                      <div className='title'>
                         My personal planner
-                    </div>
-                    <div className="backlogButton clickable" onClick={this.showDrawer}>
+                      </div>
+                      <div className='backlogButton clickable' onClick={this.showDrawer}>
                         See my backlog
-                    </div>
-                </div>
-            </div>
-            <Paper>
-                <Scheduler
-                    data={data}
-                    firstDayOfWeek={1}
-                >
-                    <ViewState
-                        defaultCurrentDate={today}
-                    />
-                    <EditingState
+                      </div>
+                  </div>
+              </div>
+              <Paper>
+                  <Scheduler
+                      data={data}
+                      firstDayOfWeek={1}
+                  >
+                      <ViewState
+                          defaultCurrentDate={today}
+                      />
+                      <EditingState
 
-                        // addedAppointment={addedAppointment}
+                          // addedAppointment={addedAppointment}
 
-                        // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
-                        // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
-                        onCommitChanges={this.commitChanges}
-                    />
-                    <WeekView
-                        endDayHour={18}
-                        startDayHour={8}
-                        cellDuration={60}
-                        // onClick={() => console.log(2)}
-                        timeTableCellComponent={this.TimeTableCell}
-                    />
-                    <MonthView />
-                    <Appointments/>
+                          // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
+                          // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
+                          onCommitChanges={this.commitChanges}
+                      />
+                      <WeekView
+                          cellDuration={60}
+                          endDayHour={18}
+                          startDayHour={8}
 
-                    <Toolbar />
-                    <ViewSwitcher />
-                    <DateNavigator />
-                    <TodayButton />
-                    <EditRecurrenceMenu />
+                          // onClick={() => console.log(2)}
+                          timeTableCellComponent={this.TimeTableCell}
+                      />
+                      <MonthView />
+                      <Appointments/>
 
-                    <DragDropProvider />
-                    <AppointmentForm
-                        basicLayoutComponent={BasicLayout}
-                    />
-                </Scheduler>
-            </Paper>
+                      <Toolbar />
+                      <ViewSwitcher />
+                      <DateNavigator />
+                      <TodayButton />
+                      <EditRecurrenceMenu />
 
-        </div>
-    );
-}
+                      <DragDropProvider />
+                      <AppointmentForm
+                          basicLayoutComponent={BasicLayout}
+                      />
+                  </Scheduler>
+              </Paper>
+
+          </div>
+      );
+  }
 }
 
 const mapStateToProps = (state) => {

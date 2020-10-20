@@ -8,6 +8,7 @@ import { userService } from '../_services';
 import {
     withRouter
 } from 'react-router-dom';
+
 // const { TabPane } = Tabs;
 let defmoodModal = true;
 
@@ -23,25 +24,26 @@ class MainBody extends React.PureComponent {
     };
 
     componentDidMount = async () => {
-        const { user } = this.props
-        let ret2 = await userService.getTasks(user.id)
-        let workTime = 0
+        const { user } = this.props;
+        let ret2 = await userService.getTasks(user.id);
+        let workTime = 0;
         if (!ret2 || !ret2.tasks) {
-          ret2 = { tasks: [] }
+            ret2 = { tasks: [] };
         }
+
         // moment(SpecialToDate).isSame(moment(), 'day');
-    
+
         const taskCal = ret2.tasks.filter((item) => (item.onPlanner === true && moment(item.startDate).isSame(moment(), 'day')));
         for (let index = 0; index < taskCal.length; index++) {
             if (taskCal[index].estTime) {
-                workTime += taskCal[index].estTime
+                workTime = workTime + taskCal[index].estTime;
             }
         }
         this.setState({
-          tasks: taskCal,
-          workTime
-        })
-      }
+            tasks: taskCal,
+            workTime
+        });
+    }
 
     showModal = () => {
         this.setState({
@@ -134,19 +136,19 @@ class MainBody extends React.PureComponent {
                           </div>
                           {
                               tasks && tasks.map((item, index) => {
-                                if (index < 3) {
-                                    return (
-                                        <div key={item.id} className='task task2' onClick={() => this.props.history.push('/Planner')}>
-                                            <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
-                                            <div className='name'>
-                                                {item.title}
-                                            </div>
-                                            <div className='duration'>
-                                                {item.estTime} HR
-                                            </div>
-                                        </div>
-                                    )
-                                }                                  
+                                  if (index < 3) {
+                                      return (
+                                          <div className='task task2' key={item.id} onClick={() => this.props.history.push('/Planner')}>
+                                              <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
+                                              <div className='name'>
+                                                  {item.title}
+                                              </div>
+                                              <div className='duration'>
+                                                  {item.estTime} HR
+                                              </div>
+                                          </div>
+                                      );
+                                  }
 
                               })
                           }

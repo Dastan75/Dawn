@@ -29,11 +29,11 @@ class Backlog extends React.Component {
                         backlogList && backlogList.length > 0 &&
                         backlogList.map((item) => (
                             <div className={`task ${selectedBacklog === item.id ? 'selected' : ''}`} key={item.id} onClick={() => this.props.selectBacklog(item.id)}>
-                                <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
+                                <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
                                 <div className='name'>
                                     { item.title }
                                 </div>
-                                <div className="duration">
+                                <div className='duration'>
                                     {item.estTime} HRS
                                 </div>
                             </div>

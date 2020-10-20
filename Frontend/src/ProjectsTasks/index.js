@@ -10,7 +10,8 @@ import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
-import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from './SvgIcons/Priority'
+import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from './SvgIcons/Priority';
+
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Modal, Input } from 'antd';
@@ -37,7 +38,7 @@ class ProjectsTasks extends React.Component {
     };
 
     componentDidMount = () => {
-        this.getData()
+        this.getData();
     }
 
     getData = async () => {
@@ -328,7 +329,7 @@ class ProjectsTasks extends React.Component {
                                                                     {...provided.draggableProps}
                                                                     {...provided.dragHandleProps}
                                                                     className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
+                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
                                                                     <div className='contentTask'>
                                                                         {item.title}
                                                                         {/* <div className='avatar nomargin' /> */}
