@@ -7,6 +7,85 @@
     float: left;
     margin-left: 4vw;
     height: 100vh;
+    [class^="makeStyles-appointment-"] {
+        // background: #FFFFFF;
+        box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
+        color: black;
+    }
+    
+    &.clickedBacklog .MuiTableCell-root:hover::after {
+        // border: red solid 1px;
+        // border: 2px solid red;
+        // border-radius: 30px;
+        content: "+";
+        font-size: 3em;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        // color: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+        color:rgb(66, 165, 245);
+        // border: red solid 1px;
+        // right: -100px;
+        text-align: center;
+        // padding: 0 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .headerBlock {
+        background: white;
+        padding-top: 3vh;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        padding-bottom: 3vh;
+        .subTitle {
+            font-family: Greycliff CF;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 21px;
+            line-height: 25px;
+            letter-spacing: 0.0035em;
+            color: #272343;
+        }
+
+        .titleBlock {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .title {
+                font-family: Greycliff CF;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 52px;
+                line-height: 60px;
+                letter-spacing: 0.01em;
+                color: #272343;
+                float: left;
+                // width: 100%;
+                // border: red solid 1px;
+            }
+            .backlogButton {
+                // border: red solid 1px;
+                display: flex;
+                justify-content: center;
+                align-items: center;        
+                float: right;
+                background: #272343;
+                border-radius: 3px;
+                width: 180px;
+                color: white;
+                height: 40px;
+                font-family: Greycliff CF;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 21px;
+            }
+        
+        }
+
+    }
     .colorGroup {
         margin-top: 10px;
         // background: red;
@@ -45,15 +124,12 @@
             background: #FFBD3B;
         }
         .color6 {
-            background: #272343;
-        }
-        .color7 {
             background: #FF7D49;
         }
-        .color8 {
+        .color7 {
             background: #E152B9;
         }
-        .color9 {
+        .color8 {
             background: #17BEBB;
         }
     }

@@ -68,11 +68,12 @@
             width: 40%;
         }
         .moreNav {
-            background-color: rebeccapurple;
+            // background-color: rebeccapurple;
+            text-align: center;
             height: 32px;
             position: absolute;
-            right: 24px;
-            top: 24px;
+            right: 36px;
+            top: 16px;
             width: 32px;
         }
         .topBarRight {
@@ -102,13 +103,38 @@
             letter-spacing: 0.007em;
             text-transform: uppercase;
         }
+        .menuPrioOne {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .priorityLabel, .statusLabel {
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // color: lightgray;
             background-color: salmon;
             border-radius: 2px;
             font-weight: bold;
-            height: 19px;
+            height: 22px;
             line-height: 18px;
             padding: 0 8px;
+        }
+        .priorityLabel {
+            &.urgent {
+                background-color: #D62246;
+                color: rgba(0, 0, 0, 0.7);
+            }
+            &.high {
+                background-color: #FF7D49;
+            }
+            &.medium {
+                background-color: #FFBD3B;
+            }
+            &.low {
+                background-color: #00C47C;
+            }
         }
     .taskTitle {
         font-size: $text24px;

@@ -10,7 +10,7 @@ import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
-
+import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from './SvgIcons/Priority'
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Modal, Input } from 'antd';
@@ -36,7 +36,11 @@ class ProjectsTasks extends React.Component {
         ...this.defaulState,
     };
 
-    componentDidMount = async () => {
+    componentDidMount = () => {
+        this.getData()
+    }
+
+    getData = async () => {
         const { params: { projectId } } = this.props.match;
         const project = await userService.getProjectById(projectId);
         if (!project) {
@@ -203,10 +207,12 @@ class ProjectsTasks extends React.Component {
 
     render() {
         const { columns, projectName, modalVisible, imputNameValue, taskDetail } = this.state;
+
+        console.log('COLS', columns);
         return (
             <>
                 {
-                    taskDetail && <TaskDetail closeDetails={() => this.setState({ taskDetail: null })} data={taskDetail}/>
+                    taskDetail && <TaskDetail closeDetails={() => this.setState({ taskDetail: null })} data={taskDetail} getData={this.getData}/>
                 }
                 {!taskDetail &&
             <div className='ProjectsTasks'>
@@ -322,10 +328,15 @@ class ProjectsTasks extends React.Component {
                                                                     {...provided.draggableProps}
                                                                     {...provided.dragHandleProps}
                                                                     className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                                    <div className='progressBar'/>
+                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
                                                                     <div className='contentTask'>
                                                                         {item.title}
-                                                                        <div className='avatar nomargin' />
+                                                                        {/* <div className='avatar nomargin' /> */}
+                                                                        {item.priority === 'urgent' && <PriorityUrgent />}
+                                                                        {item.priority === 'high' && <PriorityHigh />}
+                                                                        {item.priority === 'medium' && <PriorityMedium />}
+                                                                        {item.priority === 'low' && <PriorityLow />}
+                                                                        {!item.priority && <PriorityMedium/>}
                                                                     </div>
                                                                 </div>
                                                             )}

@@ -16,7 +16,7 @@ class Backlog extends React.Component {
     };
 
     render() {
-        const { backlogList } = this.props;
+        const { backlogList, selectedBacklog } = this.props;
         return (
             <div className='backlogContainer'>
                 <div className='backlogTitle'>My backlog</div>
@@ -28,14 +28,14 @@ class Backlog extends React.Component {
                     {
                         backlogList && backlogList.length > 0 &&
                         backlogList.map((item) => (
-                            <div className='task task1' id={item.id} onClick={() => this.props.selectBacklog(item.id)}>
-                                <div className='workBar'/>
+                            <div className={`task ${selectedBacklog === item.id ? 'selected' : ''}`} key={item.id} onClick={() => this.props.selectBacklog(item.id)}>
+                                <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
                                 <div className='name'>
                                     { item.title }
                                 </div>
-                                {/* <div className="duration">
-                                    3 HRS
-                                </div> */}
+                                <div className="duration">
+                                    {item.estTime} HRS
+                                </div>
                             </div>
                         ))
                     }

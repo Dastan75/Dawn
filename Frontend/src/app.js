@@ -2,8 +2,8 @@ import React from 'react';
 
 import LeftMenu from './LeftMenu';
 import MainBody from './MainBody';
-import Work from './Work';
-import CompanySpace from './CompanySpace';
+// import Work from './Work';
+// import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
 import Notifications from './Notifications';
@@ -77,7 +77,7 @@ class App extends React.PureComponent {
                             </Route> */}
 
                             <Route path='/Work'>
-                                <Work />
+                                {/* <Work /> */}
                             </Route>
 
                             <Route exact path='/Planner'>

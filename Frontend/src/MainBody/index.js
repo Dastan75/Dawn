@@ -3,18 +3,45 @@ import { Progress } from 'antd';
 import './style.scss';
 import { connect } from 'react-redux';
 import MoodTracker from './moodTracker';
-
+import moment from 'moment';
+import { userService } from '../_services';
+import {
+    withRouter
+} from 'react-router-dom';
 // const { TabPane } = Tabs;
 let defmoodModal = true;
 
 class MainBody extends React.PureComponent {
     defaulState = {
-        moodModal: defmoodModal
+        moodModal: defmoodModal,
+        tasks: [],
+        workTime: 0
     };
 
     state = {
         ...this.defaulState,
     };
+
+    componentDidMount = async () => {
+        const { user } = this.props
+        let ret2 = await userService.getTasks(user.id)
+        let workTime = 0
+        if (!ret2 || !ret2.tasks) {
+          ret2 = { tasks: [] }
+        }
+        // moment(SpecialToDate).isSame(moment(), 'day');
+    
+        const taskCal = ret2.tasks.filter((item) => (item.onPlanner === true && moment(item.startDate).isSame(moment(), 'day')));
+        for (let index = 0; index < taskCal.length; index++) {
+            if (taskCal[index].estTime) {
+                workTime += taskCal[index].estTime
+            }
+        }
+        this.setState({
+          tasks: taskCal,
+          workTime
+        })
+      }
 
     showModal = () => {
         this.setState({
@@ -38,7 +65,7 @@ class MainBody extends React.PureComponent {
 
       render() {
           const { user } = this.props;
-          const { moodModal } = this.state;
+          const { moodModal, tasks, workTime } = this.state;
           return (
               <div className='MainBody'>
                   {
@@ -54,7 +81,7 @@ class MainBody extends React.PureComponent {
                   </div>
                   <div className='TasksBlock'>
                       <div className='TasksTitle'>
-                        You have <span className='OrangeTitle'>3 tasks</span> due today for an estimated total of <span className='OrangeTitle'>6 hours</span>.
+                        You have <span className='OrangeTitle'>{tasks.length} tasks</span> due today for an estimated total of <span className='OrangeTitle'>{workTime} hours</span>.
                       </div>
                       <div className='TasksBarsBlock'>
                           <div className='TaskOne'>
@@ -97,7 +124,6 @@ class MainBody extends React.PureComponent {
                                   }}
                               />
                           </div>
-
                       </div>
                   </div>
 
@@ -106,7 +132,25 @@ class MainBody extends React.PureComponent {
                           <div className='title'>
                             Today's tasks
                           </div>
-                          <div className='task task1'>
+                          {
+                              tasks && tasks.map((item, index) => {
+                                if (index < 3) {
+                                    return (
+                                        <div key={item.id} className='task task2' onClick={() => this.props.history.push('/Planner')}>
+                                            <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%`}}/>
+                                            <div className='name'>
+                                                {item.title}
+                                            </div>
+                                            <div className='duration'>
+                                                {item.estTime} HR
+                                            </div>
+                                        </div>
+                                    )
+                                }                                  
+
+                              })
+                          }
+                          {/* <div className='task task1'>
                               <div className='workBar'/>
                               <div className='name'>
                                 Figure out channels
@@ -133,8 +177,8 @@ class MainBody extends React.PureComponent {
                               <div className='duration'>
                                 2 HRS
                               </div>
-                          </div>
-                          <div className='seeMore clickable'>
+                          </div> */}
+                          <div className='seeMore clickable' onClick={() => this.props.history.push('/Planner')}>
                             See your tasks
                           </div>
                       </div>
@@ -185,7 +229,7 @@ class MainBody extends React.PureComponent {
                                   <div className='dayItem'>Fri</div>
                               </div>
                           </div>
-                          <div className='seeMore clickable'>
+                          <div className='seeMore clickable' onClick={() => this.props.history.push('/Planner')}>
                             See your tasks
                           </div>
                       </div>
@@ -213,4 +257,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(MainBody);
+export default withRouter(connect(mapStateToProps)(MainBody));

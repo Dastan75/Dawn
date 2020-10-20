@@ -13,7 +13,9 @@ import {
     Toolbar,
     DragDropProvider,
     EditRecurrenceMenu,
-    AppointmentForm
+    AppointmentForm,
+    TodayButton,
+    DateNavigator
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Backlog from './Backlog';
 import './style.scss';
@@ -72,7 +74,6 @@ const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
                 <div className={`color6 circleButton ${appointmentData.choosedColor === 'color6' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color6')}/>
                 <div className={`color7 circleButton ${appointmentData.choosedColor === 'color7' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color7')}/>
                 <div className={`color8 circleButton ${appointmentData.choosedColor === 'color8' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color8')}/>
-                <div className={`color9 circleButton ${appointmentData.choosedColor === 'color9' ? 'selected' : ''}`} onClick={() => onCustomFieldChange('color9')}/>
             </div>
         </AppointmentForm.BasicLayout>
     );
@@ -113,9 +114,8 @@ class PersonalPlanner extends React.Component {
     })
   }
 
-  TimeTableCell = (props) => <WeekView.TimeTableCell className='bouh' onClick={async () => {
+  TimeTableCell = (props) => <WeekView.TimeTableCell className="clickable" onClick={async () => {
       let { data, backlogVisible, selectedBacklog, backlogList } = this.state;
-
       // console.log('CLICK', bouh)
       // console.log(bouh.view);
       // console.log(bouh.currentTarget);
@@ -140,8 +140,12 @@ class PersonalPlanner extends React.Component {
           //   startDate: props.startDate,
           //   endDate: props.endDate
           // }
+          if (backlog.estTime) {
+            backlog.endDate = moment(props.endDate).add(backlog.estTime, 'hours').toDate();
+          } else {
+            backlog.endDate = props.endDate;
+          }
           backlog.startDate = props.startDate;
-          backlog.endDate = props.endDate;
           backlog.onPlanner = true;
           data = [...data, { id: backlog.id, ...backlog }];
           const ret = await userService.updateTask(backlog, backlog.id);
@@ -184,15 +188,14 @@ class PersonalPlanner extends React.Component {
 
       // console.log('Data', data);
 
-      // console.log('commitChanges Add', added);
-      // console.log('commitChanges Change', changed);
-      // console.log('commitChanges Delete', deleted);
+    //   console.log('commitChanges Add', added);
+    //   console.log('commitChanges Change', changed);
+    //   console.log('commitChanges Delete', deleted);
 
       if (added) {
           const copyTask = { ...added };
           copyTask.owner = user.id;
           const ret = await userService.createEvent(copyTask);
-          console.log(ret);
           data = [...data, ret];
       }
       if (changed) {
@@ -226,50 +229,63 @@ class PersonalPlanner extends React.Component {
   onClose = () => {
       this.setState({
           backlogVisible: false,
+          selectedBacklog: ''
       });
   };
 
 render() {
     const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
-    console.log('PLANNER STATE', this.state);
+    // console.log('PLANNER STATE', this.state);
     return (
-        <div className='PersonalPlanner'>
+        <div className={`PersonalPlanner ${this.state.selectedBacklog.length === 0 ? '' : 'clickedBacklog'}`}>
             {
-                backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectBacklog={this.selectBacklog}/>
+                backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectedBacklog={this.state.selectedBacklog} selectBacklog={this.selectBacklog}/>
             }
-            <div className='clickable' onClick={this.showDrawer}>Start planning your week</div>
-            <div>My personal planner</div>
+            {/* <div className='clickable' onClick={this.showDrawer}>Start planning your week</div> */}
+            {/* <div>My personal planner</div> */}
+            <div className="headerBlock">
+                <div className="subTitle">
+                    Start planning your week
+                </div>
+                <div className="titleBlock">
+                    <div className="title">
+                        My personal planner
+                    </div>
+                    <div className="backlogButton clickable" onClick={this.showDrawer}>
+                        See my backlog
+                    </div>
+                </div>
+            </div>
             <Paper>
                 <Scheduler
                     data={data}
-                    onClick={() => console.log(3)}
+                    firstDayOfWeek={1}
                 >
                     <ViewState
                         defaultCurrentDate={today}
-                        onClick={() => console.log(1)}
                     />
                     <EditingState
 
                         // addedAppointment={addedAppointment}
-                        onClick={() => console.log(4)}
 
                         // onAddedAppointmentChange={(bouh)=>console.log("bouh2", bouh)}
                         // onDoubleClick={(bouh)=>console.log("bouh", bouh)}
                         onCommitChanges={this.commitChanges}
                     />
                     <WeekView
-                        endDayHour={20}
-                        startDayHour={7}
-
+                        endDayHour={18}
+                        startDayHour={8}
+                        cellDuration={60}
                         // onClick={() => console.log(2)}
                         timeTableCellComponent={this.TimeTableCell}
                     />
                     <MonthView />
-                    <Appointments />
+                    <Appointments/>
 
                     <Toolbar />
                     <ViewSwitcher />
-
+                    <DateNavigator />
+                    <TodayButton />
                     <EditRecurrenceMenu />
 
                     <DragDropProvider />
