@@ -1,17 +1,24 @@
+@import '../global.scss';
+
 .PersonalPlanner {
     // border: red solid 1px;
     // padding-top: 10vh;
-    width: 95vw;
+    // width: 95vw;
     z-index: 10;
-    position: relative;
-    float: left;
-    margin-left: 4vw;
-    height: 100vh;
+    // position: relative;
+    // float: left;
+    // margin-left: 4vw;
+    @include font-default;
+    font-family: Greycliff CF !important;
+    font-weight: bold;  
+    margin: 0 auto;
+    min-height: 100vh;
+    width: 1050px;
     [class^="makeStyles-appointment-"] {
         // background: #FFFFFF;
         box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
         border-radius: 3px;
-        color: black;
+        color: $base-color;
     }
     
     &.clickedBacklog .MuiTableCell-root:hover::after {
@@ -19,7 +26,7 @@
         // border: 2px solid red;
         // border-radius: 30px;
         content: "+";
-        font-size: 3em;
+        // font-size: 3em;
         height: 100%;
         width: 100%;
         position: absolute;
@@ -35,11 +42,8 @@
         align-items: center;
     }
     .headerBlock {
-        background: white;
-        padding-top: 3vh;
-        padding-left: 3vw;
-        padding-right: 3vw;
-        padding-bottom: 3vh;
+        padding-top: 80px;
+        padding-bottom: 40px;
         .subTitle {
             font-family: Greycliff CF;
             font-style: normal;
@@ -55,51 +59,49 @@
             justify-content: space-between;
             align-items: center;
             .title {
-                font-family: Greycliff CF;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 52px;
-                line-height: 60px;
-                letter-spacing: 0.01em;
                 color: #272343;
                 float: left;
-                // width: 100%;
-                // border: red solid 1px;
-            }
-            .backlogButton {
-                // border: red solid 1px;
-                display: flex;
-                justify-content: center;
-                align-items: center;        
-                float: right;
-                background: #272343;
-                border-radius: 3px;
-                width: 180px;
-                color: white;
-                height: 40px;
                 font-family: Greycliff CF;
+                font-size: 52px;
                 font-style: normal;
                 font-weight: bold;
+                letter-spacing: 0.01em;
+                line-height: 60px;
+            }
+            .backlogButton {
+                align-items: center;        
+                background: #272343;
+                border-radius: 3px;
+                color: white;
+                display: flex;
+                float: right;
+                font-family: Greycliff CF;
                 font-size: 21px;
+                font-style: normal;
+                font-weight: bold;
+                height: 32px;
+                justify-content: center;
+                line-height: 28px;
+                padding: 0 12px;
+                width: 180px;
             }
         
         }
 
     }
     .colorGroup {
-        margin-top: 10px;
-        // background: red;
-        height: 5%;
         display: flex;
-        width: 70%;
+        height: 28px;
         justify-content: space-evenly;
+        margin-top: 10px;
+        width: 70%;
         .circleButton {
+            border-radius: 100%;
+            height: 28px;
             margin-left: 10px;
             margin-right: 10px;
-            width: 10%;
-            height: 100%;
-            border-radius: 100%;
             transition: all .5s;
+            width: 28px;
             cursor: pointer;
             &:hover {
                 box-shadow:  0px 0px 5px 2px #FFA800;
@@ -142,3 +144,102 @@
 .bouh {
     // border: red solid 1px;
 }
+
+.makeStyles-stickyElement-30,
+  .makeStyles-background-41 {
+      background: none !important;
+  }
+  .MuiPaper-root {
+      background: none !important;
+  }
+  .MuiPaper-elevation1 {
+      box-shadow: none !important
+  }
+  .MuiButton-outlined,
+  .memo-inputRoot-20 {
+      background-color: $base-color-darkergrey !important;
+      color: $base-color !important;
+      border: none !important;
+  }
+  .TodayButtonBase-button-13 {
+    height: 32px !important;
+    padding: 0 16px !important;
+  }
+  .memo-inputRoot-20 {
+    height: 32px !important;
+  }
+  .Toolbar-toolbar-12 {
+    border-bottom: 1px solid $base-color !important;
+    color: $base-color !important;
+  }
+  .MuiTableCell-body,
+  .Cell-dayOfWeek-47,
+  .Cell-dayOfMonth-48  {
+      color: $base-color !important;
+      font-size: $text-caps !important;
+      text-transform: uppercase !important;
+  }
+  .makeStyles-cell-66 {
+    border-right: 1px solid $base-color !important;
+    border-bottom: 1px solid #ACABB9 !important;
+  }
+  .Label-label-58,
+  .makeStyles-cell-66,
+  .TickCell-cell-62 {
+    height: 60px !important;
+    line-height: 60px !important;
+  }
+  .makeStyles-cell-66,
+  .Cell-cell-46 {
+    width: 268px;
+  }
+  .MuiTableCell-root {
+    text-transform: uppercase !important;
+  }
+  .MuiButton-root {
+      color: $base-color !important;
+  }
+  .MuiIconButton-root {
+    border-radius: 3px !important;
+    height: 32px !important;
+    padding: none !important;
+    width: 32px !important;
+    &:hover {
+        background-color: $base-color-darkergrey !important;
+    }
+  }
+  .MuiSvgIcon-root {
+    fill: $base-color !important;
+  }
+  .MuiButton-text {
+      padding: none !important;
+      &:hover {
+        background-color: $base-color-darkergrey !important;
+    }
+  }
+  .Label-text-59 {
+    color: $base-color !important;
+    font-size: $text-caps !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+  }
+  .makeStyles-timeScaleContainer-52 {
+      background: $base-color-lightgrey !important;
+  }
+  .makeStyles-ticks-53 {
+      width: 0 !important;
+  }
+  .makeStyles-dayScaleEmptyCell-42 {
+    min-width: 73px !important;  
+    width: 73px !important;
+  }
+  .MuiDrawer-paper {
+      background: white !important;
+  }
+  .memo-button-150 {
+      background-color: $base-color !important;
+      color: white !important;
+      &:hover {
+          background-color: $base-color-orange !important;
+      }
+  }
