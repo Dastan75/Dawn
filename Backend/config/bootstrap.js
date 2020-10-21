@@ -202,7 +202,7 @@ module.exports.bootstrap = async function (done) {
       email: 'Nouhou',
       password: 'Nsouf',
       name: 'B',
-      firstName: 'Kristian',
+      firstName: 'Nouhou',
       gender: '1',
       state: '2',
       avatarUrl: '',
