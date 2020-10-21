@@ -50,7 +50,45 @@ module.exports.bootstrap = async function (done) {
     sails.log.debug('Err creating Admin user', err);
   }
 
+  let createdCompanySleeknote = null
+  try {
+    createdCompanySleeknote = await Company.findOrCreate({ name: 'Sleeknote' }, {
+      name: 'Sleeknote'
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  let createdCompanySNCF = null
+  try {
+    createdCompanySNCF = await Company.findOrCreate({ name: 'SNCF' }, {
+      name: 'SNCF'
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
   //******************* CREATE USERS *******************//
+
+  let createdTeamB = null
+  try {
+    createdTeamA = await Team.findOrCreate({ name: 'Sleeknote Team' }, {
+      name: 'Agency Team',
+      company: createdCompanySleeknote.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  let createdTeamC = null
+  try {
+    createdTeamA = await Team.findOrCreate({ name: 'SNCF Team' }, {
+      name: 'Agency Team',
+      company: createdCompanySNCF.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
 
   let createdTeamA = null
   try {
@@ -62,11 +100,31 @@ module.exports.bootstrap = async function (done) {
     sails.log.debug('Err creating Admin user', err);
   }
 
-  let createdSubTeam = null
+  let createdSubTeamA = null
   try {
     createdSubTeam = await SubTeam.findOrCreate({ name: 'Design' }, {
       name: 'Design',
       team: createdTeamA.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  let createdSubTeamB = null
+  try {
+    createdSubTeam = await SubTeam.findOrCreate({ name: 'Team A' }, {
+      name: 'Team A',
+      team: createdTeamB.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  let createdSubTeam = null
+  try {
+    createdSubTeam = await SubTeam.findOrCreate({ name: 'Team 1' }, {
+      name: 'Team 1',
+      team: createdTeamC.id
     });
   } catch (err) {
     sails.log.debug('Err creating Admin user', err);
@@ -118,6 +176,38 @@ module.exports.bootstrap = async function (done) {
       avatarUrl: '',
       profile: createdAdmin.id,
       company: createdCompany.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  try {
+    await User.findOrCreate({ email: 'Kristian' }, {
+      email: 'Kristian',
+      password: 'Sleeknote',
+      name: 'B',
+      firstName: 'Kristian',
+      gender: '1',
+      state: '2',
+      avatarUrl: '',
+      profile: createdAdmin.id,
+      company: createdCompanySleeknote.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  try {
+    await User.findOrCreate({ email: 'Nouhou' }, {
+      email: 'Nouhou',
+      password: 'Nsouf',
+      name: 'B',
+      firstName: 'Kristian',
+      gender: '1',
+      state: '2',
+      avatarUrl: '',
+      profile: createdAdmin.id,
+      company: createdCompanySNCF.id
     });
   } catch (err) {
     sails.log.debug('Err creating Admin user', err);
