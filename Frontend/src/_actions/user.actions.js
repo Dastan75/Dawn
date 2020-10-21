@@ -18,10 +18,11 @@ const getUser = (userId) => async (dispatch) => {
         }
         newUser.company = newCompany;
     }
+    console.log('NEW U', newUser);
     if (newUser) {
         localStorage.setItem('user', JSON.stringify({ ...newUser, loggedIn: true }));
+        dispatch(saveUser(newUser));
     }
-    dispatch(saveUser(newUser));
 };
 
 export const userActions = {
