@@ -22,6 +22,8 @@ const getUser = (userId) => async (dispatch) => {
     if (newUser) {
         localStorage.setItem('user', JSON.stringify({ ...newUser, loggedIn: true }));
         dispatch(saveUser(newUser));
+    } else {
+        return { };
     }
 };
 
