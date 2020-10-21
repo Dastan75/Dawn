@@ -2,8 +2,8 @@
 import axios from 'axios';
 import { getToken } from '../_helpers';
 
-// const apiUrl = 'https://gold-bond-287007.ew.r.appspot.com'
-const apiUrl = 'http://localhost:1337';
+const apiUrl = 'https://gold-bond-287007.ew.r.appspot.com'
+// const apiUrl = 'http://localhost:1337';
 
 const getUserById = async (userId) => {
     try {
