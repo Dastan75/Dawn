@@ -3,7 +3,7 @@ import React from 'react';
 import LeftMenu from './LeftMenu';
 import MainBody from './MainBody';
 
-// import Work from './Work';
+import Mood1 from './Mood1';
 // import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
@@ -44,7 +44,8 @@ class App extends React.PureComponent {
     }
 
     componentDidMount = () => {
-        // this.getData()
+        console.log('VERSION 1');
+        this.getData()
     }
 
     render() {
@@ -78,7 +79,7 @@ class App extends React.PureComponent {
                             </Route> */}
 
                             <Route path='/Work'>
-                                {/* <Work /> */}
+                                <Mood1 />
                             </Route>
 
                             <Route exact path='/Planner'>
