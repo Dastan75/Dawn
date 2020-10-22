@@ -73,7 +73,7 @@ module.exports.bootstrap = async function (done) {
   let createdTeamB = null
   try {
     createdTeamB = await Team.findOrCreate({ name: 'Sleeknote Team' }, {
-      name: 'Agency Team',
+      name: 'Sleeknote Team',
       company: createdCompanySleeknote.id
     });
   } catch (err) {
@@ -83,7 +83,7 @@ module.exports.bootstrap = async function (done) {
   let createdTeamC = null
   try {
     createdTeamC = await Team.findOrCreate({ name: 'SNCF Team' }, {
-      name: 'Agency Team',
+      name: 'SNCF Team',
       company: createdCompanySNCF.id
     });
   } catch (err) {
@@ -102,7 +102,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdSubTeamA = null
   try {
-    createdSubTeam = await SubTeam.findOrCreate({ name: 'Design' }, {
+    createdSubTeamA = await SubTeam.findOrCreate({ name: 'Design' }, {
       name: 'Design',
       team: createdTeamA.id
     });
@@ -112,7 +112,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdSubTeamB = null
   try {
-    createdSubTeam = await SubTeam.findOrCreate({ name: 'Team A' }, {
+    createdSubTeamB = await SubTeam.findOrCreate({ name: 'Team A' }, {
       name: 'Team A',
       team: createdTeamB.id
     });
