@@ -72,7 +72,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdTeamB = null
   try {
-    createdTeamA = await Team.findOrCreate({ name: 'Sleeknote Team' }, {
+    createdTeamB = await Team.findOrCreate({ name: 'Sleeknote Team' }, {
       name: 'Agency Team',
       company: createdCompanySleeknote.id
     });
@@ -82,7 +82,7 @@ module.exports.bootstrap = async function (done) {
 
   let createdTeamC = null
   try {
-    createdTeamA = await Team.findOrCreate({ name: 'SNCF Team' }, {
+    createdTeamC = await Team.findOrCreate({ name: 'SNCF Team' }, {
       name: 'Agency Team',
       company: createdCompanySNCF.id
     });
