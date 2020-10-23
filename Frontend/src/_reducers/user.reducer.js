@@ -2,7 +2,7 @@ import { userConstants } from '../_constants';
 
 let savedUser = localStorage.getItem('user');
 savedUser = JSON.parse(savedUser);
-console.log('SAVED', savedUser);
+// console.log('SAVED', savedUser);
 const initialState = {
     loggedIn: false,
     ...savedUser
