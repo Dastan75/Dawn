@@ -3,13 +3,16 @@ import React from 'react';
 import LeftMenu from './LeftMenu';
 import MainBody from './MainBody';
 
-import Mood1 from './Mood1';
+import Mood1 from './Soon/Mood1';
+import Mood2 from './Soon/Mood2';
+import MyWork from './Soon/MyWork'
 // import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';
-import Notifications from './Notifications';
+import Notifications from './Soon/Notifications';
 import PersonalPlanner from './PersonalPlanner';
-import Settings from './Settings';
+import Settings from './Soon/Settings';
+import Favourites from './Soon/Favourites'
 
 import ProjectSpace from './ProjectsSpace';
 import { connect } from 'react-redux';
@@ -79,13 +82,25 @@ class App extends React.PureComponent {
                             </Route> */}
 
                             <Route path='/Work'>
-                                <Mood1 />
+                                <MyWork />
                             </Route>
 
                             <Route exact path='/Planner'>
                                 <PersonalPlanner />
                             </Route>
 
+                            <Route exact path='/Mood1'>
+                                <Mood1 />
+                            </Route>
+
+                            <Route exact path='/Mood2'>
+                                <Mood2 />
+                            </Route>
+
+                            <Route exact path='/Favourites'>
+                                <Favourites />
+                            </Route>
+                            
                             <Route exact path='/Notifications'>
                                 <Notifications />
                             </Route>

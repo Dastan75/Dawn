@@ -239,7 +239,7 @@ body {
 		width: 32px;
 	}
 	.settingsCenter {
-		background: url("https://previews.dropbox.com/p/thumb/AA9e3TmSIY6LFw9dTApDyB19RkZHpCMVtXaUTBosqrkplHc5u6QX9YfGN_T5oFbp6UAOiZ-ov3T5dMSMK8GMgSRoxffFaqePIZ9LgMbDrIlXNGm6WFG6YPqaiRSo7ttwSDRwTu6vKacUqFubSAVsBJmswfgGqDvu9-f-KQhgNGvXfaA5oXgUcUODnV9X0IkUmK5z__ybJe8z5eZAZm4f91Z78FVwSgnFvpwVVcqvPhEoJY4lepuUsiyKRtW0MUcXMedH8oE5dzn6P3RqAPSG6E1_4NoTm3DbqcER6fCz8JDCuc11SPQB4SiKiKiRJLCAyZJfYGpOUj_Pnh5YpOcOZ0qq/p.png?fv_content=true&size_mode=5") no-repeat;
+		background: url("https://avatars1.githubusercontent.com/u/8749397?s=60&v=4") no-repeat;
 		background-size: 32px 32px;
 		border-radius: 150px;
 		// background-size: 400% 400%;
@@ -289,3 +289,24 @@ body {
 	}
 	.tabCurrent { background-color: $base-color-darkergrey }
   }
+
+  .comingSoonBLock {
+    height: 100vh;
+    width: 100%;
+    // border: red solid 1px;
+    padding-left: 5vw;
+    .comingSoonLogo {
+        position: absolute;
+        width: 150px;
+        right: 40px;
+        img {
+            width: 100%;
+        }
+    }
+    .pic {
+        // border: blue solid 1px;
+        img {
+            width: 100%;
+        }
+    }
+}

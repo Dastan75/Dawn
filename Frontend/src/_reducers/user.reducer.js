@@ -5,7 +5,7 @@ savedUser = JSON.parse(savedUser);
 console.log('SAVED', savedUser);
 const initialState = {
     loggedIn: false,
-    // ...savedUser
+    ...savedUser
 };
 
 export function user(state = initialState, action) {
