@@ -71,7 +71,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     // migrate: 'drop',
-    migrate: 'alter', 
+    migrate: 'drop', 
 
 
 
@@ -141,6 +141,7 @@ module.exports = {
         'http://localhost',
         'http://localhost:8081',
         'http://localhost:3000',
+        'http://192.99.1.101:3000'
       ]
     },
 
