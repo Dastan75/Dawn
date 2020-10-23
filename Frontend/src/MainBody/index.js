@@ -1,179 +1,262 @@
 import React from 'react';
 import { Progress } from 'antd';
-import './style.scss'
-import { connect } from 'react-redux'
-import MoodTracker from './moodTracker'
+import './style.scss';
+import { connect } from 'react-redux';
+import MoodTracker from './moodTracker';
+import moment from 'moment';
+import { userService } from '../_services';
+import {
+    withRouter
+} from 'react-router-dom';
 
 // const { TabPane } = Tabs;
-let defmoodModal = true
+let defmoodModal = true;
 
 class MainBody extends React.PureComponent {
     defaulState = {
-        moodModal: defmoodModal
+        moodModal: defmoodModal,
+        tasks: [],
+        workTime: 0
     };
 
     state = {
         ...this.defaulState,
     };
 
+    componentDidMount = async () => {
+        const { user } = this.props;
+        let ret2 = await userService.getTasks(user.id);
+        let workTime = 0;
+        if (!ret2 || !ret2.tasks) {
+            ret2 = { tasks: [] };
+        }
+
+        // moment(SpecialToDate).isSame(moment(), 'day');
+
+        const taskCal = ret2.tasks.filter((item) => (item.onPlanner === true && moment(item.startDate).isSame(moment(), 'day')));
+        for (let index = 0; index < taskCal.length; index++) {
+            if (taskCal[index].estTime) {
+                workTime = workTime + taskCal[index].estTime;
+            }
+        }
+        this.setState({
+            tasks: taskCal,
+            workTime
+        });
+    }
+
     showModal = () => {
         this.setState({
             moodModal: true,
         });
-      };
-    
+    };
+
       handleOk = () => {
-        defmoodModal = false
-        this.setState({
-            moodModal: false,
-        });
+          defmoodModal = false;
+          this.setState({
+              moodModal: false,
+          });
       };
-    
+
       handleCancel = () => {
-        defmoodModal = false
-        this.setState({
-            moodModal: false,
-        });
+          defmoodModal = false;
+          this.setState({
+              moodModal: false,
+          });
       };
 
-    render() {
-        const { user } = this.props
-        const { moodModal } = this.state
-        return (
-            <div className="MainBody">
-                    {
-                        moodModal && <MoodTracker user={user} onOk={this.handleOk} onCancel={this.handleCancel}/>
-                    }
-                <div className="TitlesBlock">
-                    <div className="Greetings">
+      render() {
+          const { user } = this.props;
+          const { moodModal, tasks, workTime } = this.state;
+          return (
+              <div className='MainBody'>
+                  {
+                      moodModal && <MoodTracker onCancel={this.handleCancel} onOk={this.handleOk} user={user}/>
+                  }
+                  <div className='TitlesBlock'>
+                      <div className='Greetings'>
                         Good morning, { user.firstName }
-                    </div>
-                    <div className="Workload">
+                      </div>
+                      <div className='Workload'>
                         Your weekly workload
-                    </div>
-                </div>
-                <div className="TasksBlock">
-                    <div className="TasksTitle">
-                        You have <span className="OrangeTitle">3 tasks</span> due today for an estimated total of <span className="OrangeTitle">6 hours</span>.
-                    </div>
-                    <div className="TasksBarsBlock">
-                        <div className="TaskOne">
+                      </div>
+                  </div>
+                  <div className='TasksBlock'>
+                      <div className='TasksTitle'>
+                        You have <span className='OrangeTitle'>{tasks.length} tasks</span> due today for an estimated total of <span className='OrangeTitle'>{workTime} hours</span>.
+                      </div>
+                      <div className='TasksBarsBlock'>
+                          <div className='TaskOne'>
                             This week
-                            <Progress
-                                strokeColor={{
-                                    '0%': '#FFD950',
-                                    '100%': '#FF9C41',
-                                }}
-                                percent={90}
-                            />
-                        </div>
-                        <div className="TaskOne">
+                              <Progress
+                                  percent={90}
+                                  strokeColor={{
+                                      '0%': '#FFD950',
+                                      '100%': '#FF9C41',
+                                  }}
+                              />
+                          </div>
+                          <div className='TaskOne'>
                             Week 32
-                            <Progress
-                                strokeColor={{
-                                    '0%': '#FFD950',
-                                    '100%': '#FF9C41',
-                                }}
-                                percent={80}
-                            />
-                        </div>
-                        <div className="TaskOne">
+                              <Progress
+                                  percent={80}
+                                  strokeColor={{
+                                      '0%': '#FFD950',
+                                      '100%': '#FF9C41',
+                                  }}
+                              />
+                          </div>
+                          <div className='TaskOne'>
                             Week 33
-                            <Progress
-                                strokeColor={{
-                                    '0%': '#FFD950',
-                                    '100%': '#FF3D00',
-                                }}
-                                percent={100}
-                            />
-                        </div>
-                        <div className="TaskOne">
+                              <Progress
+                                  percent={100}
+                                  strokeColor={{
+                                      '0%': '#FFD950',
+                                      '100%': '#FF3D00',
+                                  }}
+                              />
+                          </div>
+                          <div className='TaskOne'>
                             Week 34
-                            <Progress
-                                strokeColor={{
-                                    '0%': '#FFF7AC',
-                                    '100%': '#FFB26B',
-                                }}
-                                percent={40}
-                            />
-                        </div>
-                        
-                    </div>
-                </div>
+                              <Progress
+                                  percent={40}
+                                  strokeColor={{
+                                      '0%': '#FFF7AC',
+                                      '100%': '#FFB26B',
+                                  }}
+                              />
+                          </div>
+                      </div>
+                  </div>
 
-                <div className="boxesBlock">
-                    <div className="todaysBlock block">
-                        <div className="title">
+                  <div className='boxesBlock'>
+                      <div className='todayBlock block'>
+                          <div className='title'>
                             Today's tasks
-                        </div>
-                        <div className="task task1">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Figure out channels
-                            </div>
-                            <div className="duration">
-                                3 HRS
-                            </div>
-                        </div>
-                        <div className="task task2">
-                            <div className="workBar"/>
-                            <div className="name">
-                                Setup FB
-                            </div>
-                            <div className="duration">
-                                1 HR
-                            </div>
-                        </div>
+                          </div>
+                          {
+                              tasks && tasks.map((item, index) => {
+                                  if (index < 3) {
+                                      return (
+                                          <div className='task task2' key={item.id} onClick={() => this.props.history.push('/Planner')}>
+                                              <div className={`workBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
+                                              <div className='name'>
+                                                  {item.title}
+                                              </div>
+                                              <div className='duration'>
+                                                  {item.estTime} HR
+                                              </div>
+                                          </div>
+                                      );
+                                  }
 
-                        <div className="task task3">
-                            <div className="workBar"/>
-                            <div className="name">
+                              })
+                          }
+                          {/* <div className='task task1'>
+                              <div className='workBar'/>
+                              <div className='name'>
+                                Figure out channels
+                              </div>
+                              <div className='duration'>
+                                3 HRS
+                              </div>
+                          </div>
+                          <div className='task task2'>
+                              <div className='workBar'/>
+                              <div className='name'>
+                                Setup FB
+                              </div>
+                              <div className='duration'>
+                                1 HR
+                              </div>
+                          </div>
+
+                          <div className='task task3'>
+                              <div className='workBar'/>
+                              <div className='name'>
                                 Specs for LinkedIn
-                            </div>
-                            <div className="duration">
+                              </div>
+                              <div className='duration'>
                                 2 HRS
-                            </div>
-                        </div>
-                        <div className="seeTasks">
+                              </div>
+                          </div> */}
+                          <div className='seeMore clickable' onClick={() => this.props.history.push('/Planner')}>
                             See your tasks
-                        </div>
-                    </div>
-                    <div className="weekBlock block">
-                        {/* <div className="title">
+                          </div>
+                      </div>
+                      <div className='weekBlock block'>
+                          <div className='title'>
                             This week at a glance
-                        </div>
-                        <div className="tasksBlock">
-                            <div className="todo">
-                                Tasks to do
-                            </div>
-                            <div className="done">
-                                Tasks done
-                            </div>
-                        </div> */}
-                    </div>
-                    <div className="inspirationBlock block">
-                        <div className="title">
+                          </div>
+                          <div className='graphBlock'>
+                              <div className='graphLegend'>
+                                  <div className='todo'>
+                                    Tasks to do
+                                  </div>
+                                  <div className='done'>
+                                    Tasks done
+                                  </div>
+                              </div>
+                              <div className='graphContent'>
+                                  <div className='graphBars'>
+                                      <div className='graphBarItems'>
+                                          <div className='graphBarItem'>
+                                              <div className='graphBarItemTodo' />
+                                              <div className='graphBarItemDone' />
+                                          </div>
+                                          <div className='graphBarItem'>
+                                              <div className='graphBarItemTodo' />
+                                              <div className='graphBarItemDone' />
+                                          </div>
+                                          <div className='graphBarItem'>
+                                              <div className='graphBarItemTodo' />
+                                              <div className='graphBarItemDone' />
+                                          </div>
+                                          <div className='graphBarItem'>
+                                              <div className='graphBarItemTodo' />
+                                              <div className='graphBarItemDone' />
+                                          </div>
+                                          <div className='graphBarItem'>
+                                              <div className='graphBarItemTodo' />
+                                              <div className='graphBarItemDone' />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div className='graphDays'>
+                                  <div className='dayItem'>Mon</div>
+                                  <div className='dayItem'>Tue</div>
+                                  <div className='dayItem'>Wed</div>
+                                  <div className='dayItem'>Thu</div>
+                                  <div className='dayItem'>Fri</div>
+                              </div>
+                          </div>
+                          <div className='seeMore clickable' onClick={() => this.props.history.push('/Planner')}>
+                            See your tasks
+                          </div>
+                      </div>
+                      <div className='inspirationBlock block'>
+                          <div className='title'>
                             Inspiration of the day
-                        </div>
-                        <div className="content">
+                          </div>
+                          <div className='content'>
                             Our greatest glory is not in never falling, but in rising every time we fall.
-                        </div>
-                        <div className="author">
+                          </div>
+                          <div className='author'>
                             - Confucius
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          );
+      }
 }
 
 const mapStateToProps = (state) => {
-    const { user } = state
+    const { user } = state;
     return {
         user
-    }
-}
+    };
+};
 
-
-export default connect(mapStateToProps)(MainBody)
+export default withRouter(connect(mapStateToProps)(MainBody));

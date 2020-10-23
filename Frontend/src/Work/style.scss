@@ -1,0 +1,255 @@
+@import '../global.scss';
+
+.MenuBlock {
+    z-index: 1;
+}
+.ProjectsTasks {
+    @include font-default;
+    animation: fade-in .3s forwards;
+    background: $base-color-lightgrey;
+    font-weight: bold;
+    height: 100vh;
+    margin-left: $left-menu-size;
+    .projectWrapper {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+    .createNew {
+        bottom: 32px;
+        position: absolute;
+        right: 32px;
+    }
+    .projectBar {
+        background-color: white;
+        box-shadow: $shadow-bigger;
+        display: flex;
+        height: 80px;
+        line-height: 80px;
+        margin-bottom: 56px;
+        padding: 0 48px;
+        position: relative;
+        width: 100%;
+    }
+    .progressBar {
+        bottom: 0px;
+        height: 3px;
+        left: 0px;
+        position: absolute;
+        top: 0;
+        width: 70%;
+    }
+    .barLeft {
+        display: flex;
+        width: 40%;
+    }
+    .backButton {
+        border-right: 1px solid $base-color;
+        font-size: $text14px;
+        height: 32px;
+        line-height: 32px;
+        margin: 24px 0;
+        padding-right: 24px;
+    }
+    .projectTitle {
+        font-size: $text21px;
+        margin: 0 24px;
+    }
+    .members {
+        align-items: center;
+        bottom: 24px;
+        display: flex;
+        padding: 0px 7px 0px 0px;
+        right: 24px;
+        z-index: 1;
+        .memberBox {
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            position: relative;
+            width: 32px;
+        }
+        .memberBox:nth-child( 1 ) { z-index: 9 ; }
+        .memberBox:nth-child( 2 ) { z-index: 8 ; }
+        .memberBox:nth-child( 3 ) { z-index: 7 ; }
+        .oneMember {
+            @include font-default;
+            align-items: center;
+            background: #FFBD3B;;
+            border-radius: 50%;
+            border: 2px solid white ;
+            color: white;
+            display: flex;
+            font-size: 12px ;
+            font-weight: 100 ;
+            height: 40px ;
+            justify-content: center;
+            line-height: 40px ;
+            text-align: center ;
+            width: 40px ;
+        }
+    }
+    .barRight {
+        display: flex;
+        padding: 20px 48px;
+        position: absolute;
+        right: 0;
+    }
+    .navBtn {
+        border-radius: 3px;
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        padding: 4px 12px;
+        &:hover {
+            background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+            color: white;
+        }
+    }
+    .icon {
+        height: 32px;
+        margin-right: 4px;
+        width: 32px;
+    }
+    .navTitle {
+        font-size: $text-caps;
+        font-weight: bold;
+        line-height: 32px;
+        text-transform: uppercase;
+    }
+    .orgNav {
+        border-bottom: 1px solid $base-color;
+        display: flex;
+        height: 56px;
+        line-height: 56px;
+        padding: 12px 0;
+        position: relative;
+        width: 100%;
+    }
+    .filterBy {
+        background-color: $base-color-darkergrey;
+        border-radius: 3px;
+        font-size: $text-caps;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 8px;
+        text-transform: uppercase;
+    }
+    .rightNav {
+        display: flex;
+        height: 32px;
+        position: absolute;
+        right: 0;
+    }
+    .search {
+        border-right: 1px solid $base-color;
+        line-height: 32px;
+        padding-right: 24px;
+        width: 56px;
+    }
+    .viewFilters {
+        display: flex;
+        padding-left: 24px;
+    }
+    .viewButton {
+        height: 32px;
+        width: 32px;
+    }
+    .createNew {
+        background-color: $base-color;
+        border-radius: 150px;
+        display: flex;
+        height: 52px;
+    }
+    .createNew button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: $text14px;
+        font-weight: bold;
+        padding: 12px 20px;
+    }
+    .createNew button.circleAdd {
+        background: orange;
+        border-radius: 150px;
+        height: 52px;
+    }
+    .dragBlock {
+        display: flex;
+        margin-top: 40px;
+        .columnBlock {
+            margin-right: 24px;
+            width: 260px;
+            .title {
+                font-size: $text-caps;
+                font-weight: bold;
+                padding-bottom: 2px;
+                text-transform: uppercase;
+            }
+            .task {
+                &.new {
+                    align-items: center;
+                    background: none;
+                    border-radius: 3px;
+                    box-shadow: none;
+                    color: $base-color;
+                    display: flex;
+                    font-weight: bold;
+                    height: 60px;
+                    margin-bottom: 10px;
+                    opacity: 0;
+                    padding-left: 12px;
+                    text-align: left;
+                    transition: all .5s;
+                    width: 260px;
+                    .content {
+                        font-size: $text18px;
+                    }
+                    &:hover{
+                        background: $base-color-darkergrey;
+                        opacity: 1;
+                    }
+                }
+            }
+            .column {
+                // border-bottom-left-radius: 10px;
+                // border-bottom-right-radius: 10px;
+                // min-height: 60px;
+                &.isDraggedOn {
+                    border:solid 2px $base-color-darkergrey;
+                    min-height: 60px;
+                }
+                .task {
+                    align-items: center;
+                    background: white;
+                    border-radius: 3px;
+                    box-shadow: $shadow-smaller;
+                    display: flex;
+                    font-size: $text18px;
+                    font-weight: bold;
+                    height: 60px;
+                    margin-bottom: 16px;
+                    padding-left: 1vw;
+                    width: 260px;
+                    &.isDragging {
+                        box-shadow: $shadow-bigger;
+                    }
+                    .contentTask {
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// @keyframes jiggle {
+//     0% {
+//         transform: rotate(-1deg);
+// 	}
+// 	50% {
+//     	transform: rotate(1deg);
+// 	}
+// }

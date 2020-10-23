@@ -1,0 +1,133 @@
+@import '../global.scss';
+
+.NotifsSpace {
+    font-weight: bold;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-top: 80px;
+    width: 1050px;
+}
+.BigTitle {
+  @include big-title;
+}
+.navTabs {
+  display: flex;
+  margin-bottom: 32px;
+  position: relative;
+}
+.dualTabs {
+  display: flex;
+  font-size: $text18px;
+
+  .tabItem{
+    background-color: $base-color-darkergrey;
+    border-radius: 3px;
+    margin-right: 4px;
+    padding: 4px 12px;
+    width: auto;
+  }
+}
+.clearBtn {
+  position: absolute;
+  right: 0;
+}
+.dayContainer {
+  margin-bottom: 48px;
+  .notifRow {
+    display: flex;
+    flex-direction: column;
+    height: 64px;
+    line-height: 64px;
+    position: relative;
+    width: 100%;
+  }
+  .dayTitle {
+    border-bottom: 1px solid $base-color;
+    font-size: $text-caps;
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .notifContainer {
+    margin-bottom: 32px;
+    .breadcrumbTitle {
+      font-weight: 600;
+      letter-spacing: $letterspacing-tight;
+      margin: 0 0 12px 24px;
+    }
+  }
+  .notifTickbox {
+    background-color: $base-color;
+    border-radius: 150px;
+    height: 24px;
+    margin-left: 24px;
+    position: absolute;
+    right: 0;
+    top: 21px;
+    width: 24px;
+  }
+}
+.notifBox {
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: $shadow-smaller;
+  display: flex;
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  position: relative;
+  width: calc(100% - 48px);
+
+  .notifLeft {
+    align-items: center;
+    display: flex;
+
+    .notifTitle {
+      font-size: $text21px;
+    }
+    .notifAvatar {
+      background-color: rebeccapurple;
+      height: 28px;
+      margin-right: 24px;
+      width: 28px;
+    }
+    .notifReview {
+      background: image("quotemarks.svg");
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .notifRight {
+    align-items: center;
+    display: flex;
+    height: 64px;
+    position: absolute;
+    right: 0;
+
+    .notifNote {
+      height: 100%;
+      font-size: $text-caps;
+      text-transform: uppercase;
+    }
+    .notifTag {
+      background-color: $base-color;
+      border-radius: 2px;
+      color: white;
+      display: flex;
+      font-size: $text-caps;
+      height: 20px;
+      letter-spacing: -0.035em;
+      line-height: 19px;
+      margin-left: 12px;
+      padding: 0 8px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .notifIcon {
+      height: 42px;
+      margin: 0 24px;
+      width: 32px;
+    }
+  }
+}

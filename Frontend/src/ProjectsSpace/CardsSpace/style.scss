@@ -2,111 +2,97 @@
 @import '../../global.scss';
 
 .CardsPage {
-    padding-top: 72px;
     font-weight: bold;
+    padding-top: 72px;
     .oneTeamBlock {
+        display: flex;
+        flex-direction: column;
         padding-top: 5vh;
-        padding-bottom: 5vh;
-        // border: red solid 1px;
         .teamName {
-            font-family: Greycliff CF;
-            font-size: $text-caps;
-            padding-bottom: 1vh;
+            @include font-default;
             border-bottom: 1px solid $base-color;
-            margin-bottom: 4vh;
+            font-size: $text-caps;
+            margin-bottom: 24px;
+            padding-bottom: 1vh;
+            text-transform: uppercase;
         }
         .projectsBlock {
             display: flex;
-            // border: red solid 1px;
             flex-wrap: wrap;
+            justify-content: space-between;
             .oneProjectBlock {
-                opacity: 0;
-                animation: fade-in .5s forwards;
-                margin-top: 2vh;
-                margin-left: .5vw;
-                margin-right: .5vw;
                 background: white;
-                box-shadow: $shadow-smaller;
                 border-radius: 3px;
-                height: 242px;
+                box-shadow: $shadow-smaller;
+                height: 232px;
+                margin-bottom: 24px;
                 padding: 24px;
-                width: 32%;
-                // display: flex;
                 position: relative;
+                transition: 0.35s all;
+                width: 32%;
                 .progressBar {
-                    position: absolute;
-                    background: linear-gradient(90deg,  lighten($base-color-red, 35%) 0%, $base-color-red 100%);
-                    height: .5vh;
-                    width: percentage((random(80) + 10) / 100);
-                    top: 0px;
-                    left: 0px;
+                    background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
                     border-radius: 3px 0 0 0;
+                    height: 3px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    width: 70%;
                 }
                 .name {
-                    display: flex;
-                    // height: 20%;
+                    @include font-default;
                     align-items: center;
-                    width: 70%;
-                    // border: red solid 1px;
-                    font-family: Greycliff CF;
-                    font-style: normal;
+                    display: flex;
+                    float: left;
                     font-size: $text21px;
                     padding-right: 1.5vh;
-                    float: left;
-
+                    width: 70%;
                 }
                 .deadline {
-                    height: 20%;
-                    display: flex;
+                    @include font-default;
                     align-items: center;
-                    width: 30%;
-                    // border: red solid 1px;
-                    font-family: Greycliff CF;
-                    font-style: normal;
-                    font-size: $text-caps;
-                    text-transform: uppercase;
-                    padding-left: 1.5vh;
-                    float: left;
+                    display: flex;
                     flex-direction: row-reverse;
+                    float: left;
+                    font-size: $text-caps;
+                    height: 20%;
+                    padding-left: 1.5vh;
+                    text-transform: uppercase;
+                    width: 30%;
                 }
                 .desc {
-                    height: 50%;
-                    float: left;
-                    width: 85%;
+                    @include font-default;
                     display: flex;
-                    // align-items: center;
-                    // border: red solid 1px;
-                    font-family: Greycliff CF;
-                    font-style: normal;
-                    font-weight: 300;
+                    float: left;
                     font-size: $text-parag-normal;
+                    font-weight: 300;
+                    height: 50%;
+                    line-height: 1.25em;
                     padding-right: 1.5vh;
+                    width: 85%;
                 }
                 .team {
-                    float: left;
-                    display: flex;
+                    @include font-default;
                     align-items: center;
-                    width: 70%;
-                    font-family: Greycliff CF;
-                    font-style: normal;
+                    bottom: 32px;
+                    display: flex;
+                    float: left;
                     font-size: $text-caps;
                     position: absolute;
-                    bottom: 32px;
+                    width: 70%;
                     .oneTeam {
                         margin-right: 1.5vh;
                     }
                 }
                 .members {
                     align-items: center;
-                    width: 30%;
-                    position: absolute;
                     bottom: 24px;
-                    right: 0;
                     display: flex ;
                     padding: 0px 7px 0px 0px ;
+                    position: absolute;
+                    right: 24px;
                     z-index: 1 ;
                     .memberBox {
-                        // height: 44px ;
                         margin: 0px 0px 0px 0px ;
                         padding: 0px 0px 0px 0px ;
                         position: relative ;
@@ -116,17 +102,17 @@
                     .memberBox:nth-child( 2 ) { z-index: 8 ; }
                     .memberBox:nth-child( 3 ) { z-index: 7 ; }
                     .oneMember {
-                        color: white;
+                        @include font-default;
+                        align-items: center;
                         background: #FFBD3B;;
                         border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
                         border: 2px solid white ;
-                        font-family: Greycliff CF;
+                        color: white;
+                        display: flex;
                         font-size: 12px ;
                         font-weight: 100 ;
                         height: 40px ;
+                        justify-content: center;
                         line-height: 40px ;
                         text-align: center ;
                         width: 40px ;
@@ -134,47 +120,19 @@
                 }
                 &.p2 {
                     .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-purple, 35%) 0%, $base-color-purple 100%) !important;
+                        background: linear-gradient(90deg, #EAB9FF 0%, #9139B6 100%) !important;
+                        width: 40%;
                     }
                 }
                 &.p3 {
                     .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-blue, 35%) 0%, $base-color-blue 100%) !important;
-                    }
-                }
-                &.p4 {
-                    .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-green, 35%) 0%, $base-color-green 100%) !important;
-                    }
-                }
-                &.p5 {
-                    .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-orange, 35%) 0%, $base-color-orange 100%) !important;
-                    }
-                }
-                &.p6 {
-                    .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-yellow, 35%) 0%, $base-color-yellow 100%) !important;
-                    }
-                }
-                &.p7 {
-                    .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-pink, 35%) 0%, $base-color-pink 100%) !important;
-                    }
-                }
-                &.p8 {
-                    .progressBar {
-                        width: percentage((random(80) + 10) / 100);
-                        background: linear-gradient(90deg, lighten($base-color-emerald, 35%) 0%, $base-color-emerald 100%) !important;
+                        background: linear-gradient(90deg, #95F5F4 0%, #17BEBB 100%) !important;
+                        width: 90%;
                     }
                 }
             }
+            .oneProjectBlock:hover { box-shadow: $shadow-large; }
+            .oneProjectBlock:last-child { margin-right: 0; }
         }
     }
 

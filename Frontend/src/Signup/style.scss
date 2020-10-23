@@ -5,62 +5,58 @@
     z-index: 1;
 }
 .signupDetails {
+    @include font-default;
+    align-items: center;
     background: linear-gradient(113.61deg, #FFF2AA 0%, #FF8A5B 100%);
     display: flex;
+    font-weight: bold;
     height: 100vh;
+    justify-content: center;
     margin: 0;
     padding: 0;
-    align-items: center;
-    font-family: Greycliff CF;
-    font-weight: bold;
-    font-size: $text18px;
-    justify-content: center;
     position: absolute;
     width: 100vw;
     z-index: 2;
 }
 .loginBlock {
-    width: 200px;
-    height: 48px;
+    @include font-default;
+    align-items: center;
     background: #272343;
     border-radius: 100px;
-    font-family: Greycliff CF;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    /* identical to box height */
     color: white;
     display: flex;
-    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 48px;
     justify-content: center;
     letter-spacing: 0.0035em;
+    line-height: 22px;
+    width: 200px;
 }
     .fifty {
+        @include font-default;
+        align-items: center;
         background-color: white;
         box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
         display: flex;
-        font-family: Greycliff CF;
         font-weight: bold;
         height: 100vh;
+        justify-content: center;
         left: 0;
         margin-left: 48px;
-        padding: 84px 48px;
-        align-items: center;
-        justify-content: center;
+        padding: 84px;
         position: absolute;
         width: calc(50% - 24px);
     }
     .illustration {
-        background-color: $base-color-darkergrey;
+        // background-color: $base-color-darkergrey;
         height: 100vh;
         position: absolute;
         right: 0;
         width: calc(50% - 24px);
     }
     .smallText {
-        font-size: $text14px;
-        margin-bottom: 24px;
+        font-size: $text18px;
     }
     .mainTitle {
         font-family: Eurostile;
@@ -72,13 +68,26 @@
     form {
         display: flex;
         flex-direction: column;
+        font-size: $text18px;
+        margin-top: 24px;
     }
     label {
-        height: 56px;
         margin: 0 12px 12px 0;
     }
     input {
+        background-color: $base-color-lightgrey;
+        border-radius: 3px;
+        border: none;
+        box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+        color: $base-color;
+        font-weight: bold;
+        height: 56px;
         margin-left: 12px;
+        padding: 0 12px;
+        width: 432px;
+    }
+    .loginBlock {
+        margin-top: 12px;
     }
     .question {
         margin: 32px;
@@ -129,8 +138,8 @@
         width: 50%;
     }
     .buttonChoice {
-        border: 2px solid $base-color;
         border-radius: 6px;
+        border: 2px solid $base-color;
         font-size: $text14px;
         height: 40px;
         letter-spacing: -0.035em;
@@ -152,8 +161,8 @@
         background-color: $base-color-lightgrey;
         border-radius: 150px;
         height: 56px;
-        line-height: 56px;
         left: 0;
+        line-height: 56px;
         padding: 0 32px;
         position: absolute;
     }

@@ -13,14 +13,17 @@
     z-index: 2;
 }
     .taskDetails {
+        .emptyText {
+            color: grey;
+        }
+        @include font-default;
         background: white;
+        border-radius: 3px;
+        box-shadow: $shadow-smaller;
+        font-weight: bold;
+        height: calc(100vh - 80px);;
         margin-left: $left-menu-size;
         margin: 40px;
-        height: calc(100vh - 80px);;
-        font-family: Greycliff CF;
-        font-weight: bold;
-        box-shadow: $shadow-smaller;
-        border-radius: 3px;
         overflow: auto;
     }
         .closeButton {
@@ -51,25 +54,26 @@
         }
         .taskTopBar {
             background-color: white;;
-            display: flex;
-            box-shadow: $shadow-bigger;
-            // margin: 40px 0;
             border-radius: 3px 3px 0 0;
-            z-index: 10;
+            box-shadow: $shadow-bigger;
+            display: flex;
+            height: 80px;
             position: relative;
+            z-index: 10;
         }
         .topBarLeft {
             display: flex;
             padding-left: $scale32;
-            width: 40%;
             position: relative;
+            width: 40%;
         }
         .moreNav {
-            background-color: rebeccapurple;
+            // background-color: rebeccapurple;
+            text-align: center;
             height: 32px;
             position: absolute;
-            right: 24px;
-            top: 24px;
+            right: 36px;
+            top: 16px;
             width: 32px;
         }
         .topBarRight {
@@ -78,13 +82,13 @@
             width: 60%;
         }
         .twoRows {
+            border-right: 1px solid $base-color;
             display: flex;
+            flex-direction: column;
             height: 32px;
             justify-content: space-evenly;
-            padding: 0 24px;
-            flex-direction: column;
-            border-right: 1px solid $base-color;
             margin-top: 24px;
+            padding: 0 24px;
         }
         .twoRows:last-child {
             border: none;
@@ -96,27 +100,50 @@
         }
         .dueDate, .trackedTime, .estimatedTime, .priorityLabel, .statusLabel {
             font-size: $text-caps;
-            text-transform: uppercase;
             letter-spacing: 0.007em;
+            text-transform: uppercase;
+        }
+        .menuPrioOne {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .priorityLabel, .statusLabel {
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // color: lightgray;
             background-color: salmon;
             border-radius: 2px;
-            height: 19px;
+            font-weight: bold;
+            height: 22px;
             line-height: 18px;
             padding: 0 8px;
-            font-weight: bold;
-            // position: relative;
-            // left: -8px;
+        }
+        .priorityLabel {
+            &.urgent {
+                background-color: #D62246;
+                color: rgba(0, 0, 0, 0.7);
+            }
+            &.high {
+                background-color: #FF7D49;
+            }
+            &.medium {
+                background-color: #FFBD3B;
+            }
+            &.low {
+                background-color: #00C47C;
+            }
         }
     .taskTitle {
         font-size: $text24px;
-        margin-right: $scale24;
         line-height: 80px;
+        margin-right: $scale24;
     }
     .taskMainDetails {
-        height: calc(100vh - 160px);
         display: flex;
+        height: calc(100vh - 160px);
         z-index: 5;
     }
         .leftDetails {
@@ -128,13 +155,14 @@
         }
         .smallTitle {
             font-size: $text-caps;
-            text-transform: uppercase;
             letter-spacing: 0.007em;
             margin: 32px 0 8px 0;
+            text-transform: uppercase;
         }
         .description {
             font-size: $text-parag-normal;
             font-weight: 500;
+            line-height: 1.25em;
         }
         .rightDetails {
             background-color: $base-color-lightgrey;
@@ -146,14 +174,12 @@
                 width: 100%;
             }
             .contents {
-                height: calc(100% - 80px);
-                padding: $scale32;
                 display: flex;
                 flex-direction: column;
+                height: calc(100% - 80px);
+                padding: $scale32;
             }
             .converseRow, .taskRow {
-                // display: flex;
-                // height: 80px;
                 font-size: $text-parag-normal;
                 font-weight: 500;
                 margin: 12px 0;
@@ -179,17 +205,17 @@
                 width: calc(100% - 200px);
             }
             .timeStamp, .timeEstimated {
+                letter-spacing: -0.035em;
                 position: absolute;
                 right: 12px;
-                letter-spacing: -0.035em;
                 text-align: right;
                 width: 150px;
             }
             .timeEstimated {
                 font-size: $text-caps;
                 font-weight: bold;
-                text-transform: uppercase;
                 letter-spacing: 0.007em;
+                text-transform: uppercase;
             }
             .action {
                 width: calc(100% - 150px);
@@ -219,10 +245,10 @@
                 width: 100%;
             }
             .checklist {
+                display: flex;
                 flex-direction: column;
                 margin: 24px 0 0 42px;
                 width: calc(100% - 42px);
-                display: flex;
             }
             .checklistItem {
                 display: flex;
@@ -259,8 +285,8 @@
             }
             .commentButton {
                 font-size: $text-caps;
-                text-transform: uppercase;
                 letter-spacing: 0.007em;
+                text-transform: uppercase;
             }
             .filesList {
                 display: flex;
@@ -290,18 +316,16 @@
 
     .members {
         align-items: center;
-        width: 30%;
         bottom: 24px;
-        right: 0;
-        display: flex ;
-        padding: 0px 7px 0px 0px ;
-        z-index: 1 ;
+        display: flex;
+        padding: 0px 7px 0px 0px;
+        right: 24px;
+        z-index: 1;
         .memberBox {
-            // height: 44px ;
-            margin: 0px 0px 0px 0px ;
-            padding: 0px 0px 0px 0px ;
-            position: relative ;
-            width: 22px ;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            position: relative;
+            width: 22px;
         }
         .membersBoxSmall {
             width: 22px;
@@ -310,24 +334,24 @@
         .memberBox:nth-child( 2 ) { z-index: 8 ; }
         .memberBox:nth-child( 3 ) { z-index: 7 ; }
         .oneMember {
-            color: white;
-            background: #FFBD3B;;
-            border-radius: 50%;
-            display: flex;
+            @include font-default;
             align-items: center;
+            background: #FFBD3B;
+            border-radius: 50%;
+            border: 2px solid white;
+            color: white;
+            display: flex;
+            font-size: 12px;
+            font-weight: 100;
+            height: 40px;
             justify-content: center;
-            border: 2px solid white ;
-            font-family: Greycliff CF;
-            font-size: 12px ;
-            font-weight: 100 ;
-            height: 40px ;
-            line-height: 40px ;
-            text-align: center ;
-            width: 40px ;
+            line-height: 40px;
+            text-align: center;
+            width: 40px;
         }
         .oneMemberSmall {
-            height: 30px ;
-            line-height: 30px ;
-            width: 30px ;
+            height: 30px;
+            line-height: 30px;
+            width: 30px;
         }
     }

@@ -1,31 +1,36 @@
 import React from 'react';
-import SVGClose from './SvgIcons/Close'
-import SVGMood01 from './SvgIcons/Mood01'
-import SVGMood02 from './SvgIcons/Mood02'
-import SVGMood03 from './SvgIcons/Mood03'
-import SVGMood04 from './SvgIcons/Mood04'
-import SVGMood05 from './SvgIcons/Mood05'
+import SVGClose from './SvgIcons/Close';
+import SVGMood01 from './SvgIcons/Mood01';
+import SVGMood02 from './SvgIcons/Mood02';
+import SVGMood03 from './SvgIcons/Mood03';
+import SVGMood04 from './SvgIcons/Mood04';
+import SVGMood05 from './SvgIcons/Mood05';
+
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 
-
-
 class MoodTracker extends React.Component {
+
+    state = {
+        mood: 0
+    }
+
     render() {
+        const { mood } = this.state;
         return (
-            <div className="moodTracker">
-            <div className="moodContainer">
-                {/* <div className="closeButton"><SVGClose/></div> */}
-                <div className="moodBox">
-                    <div className="question">Hey { this.props.user.firstName }, how do you feel today?</div>
-                    <div className="moodChoices">
-                        <div className="moodChoiceItem left"><SVGMood01/></div>
-                        <div className="moodChoiceItem leftmid"><SVGMood02/></div>
-                        <div className="moodChoiceItem mid"><SVGMood03/></div>
-                        <div className="moodChoiceItem rightmid"><SVGMood04/></div>
-                        <div className="moodChoiceItem right"><SVGMood05/></div>
-                    </div>
-                    <div className="tickBox">
-                    {/* <form>
+            <div className='moodTracker'>
+                <div className='moodContainer'>
+                    {/* <div className="closeButton"><SVGClose/></div> */}
+                    <div className='moodBox'>
+                        <div className='question'>Hey { this.props.user.firstName }, how do you feel today?</div>
+                        <div className='moodChoices'>
+                            <div className={`moodChoiceItem left ${mood === 1 ? 'selected' : ''}`} onClick={() => this.setState({ mood: 1 })}><SVGMood01/></div>
+                            <div className={`moodChoiceItem leftmid ${mood === 2 ? 'selected' : ''}`} onClick={() => this.setState({ mood: 2 })}><SVGMood02/></div>
+                            <div className={`moodChoiceItem mid ${mood === 3 ? 'selected' : ''}`} onClick={() => this.setState({ mood: 3 })}><SVGMood03/></div>
+                            <div className={`moodChoiceItem rightmid ${mood === 4 ? 'selected' : ''}`} onClick={() => this.setState({ mood: 4 })}><SVGMood04/></div>
+                            <div className={`moodChoiceItem right ${mood === 5 ? 'selected' : ''}`} onClick={() => this.setState({ mood: 5 })}><SVGMood05/></div>
+                        </div>
+                        <div className='tickBox'>
+                            {/* <form>
                         <label>
                         Let my manager know:
                         <input
@@ -35,13 +40,13 @@ class MoodTracker extends React.Component {
                             onChange={this.handleInputChange} />
                         </label>
                     </form> */}
-                    </div>
-                    <div className="bottomBar">
-                        <div onClick={this.props.onOk} className="primaryCTA clickable">Save your mood</div>
-                        <div onClick={this.props.onCancel} className="secondaryCTA clickable">Skip today</div>
+                        </div>
+                        <div className='bottomBar'>
+                            <div className='primaryCTA clickable' onClick={this.props.onOk}>Save your mood</div>
+                            <div className='secondaryCTA clickable' onClick={this.props.onCancel}>Skip today</div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         );
     }

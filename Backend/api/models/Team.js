@@ -13,7 +13,7 @@ module.exports = {
   // schema: true,
   attributes: {
     id:                 { type: 'string', autoIncrement: true, unique:true },
-    name:              { type: 'string', required: true, unique:true },
+    name:              { type: 'string', required: true },
     company: {
       model: 'company'
     },

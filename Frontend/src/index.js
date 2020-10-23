@@ -9,4 +9,4 @@ import './global.scss';
 import { toast } from 'react-toastify';
 toast.configure();
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById(`app`));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));

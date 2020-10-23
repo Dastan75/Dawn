@@ -12,8 +12,23 @@ const { v4: uuid } = require('uuid');
 module.exports = {
   // schema: true,
   attributes: {
-    id:                 { type: 'string', autoIncrement: true, unique:true },
-    name:              { type: 'string', required: true },
+    id:                   { type: 'string', autoIncrement: true, unique:true },
+    title:                { type: 'string', required: true },
+    rRule:                { type: 'string' },
+    notes:                { type: 'string' },
+    choosedColor:         { type: 'string' },
+    startDate:            { type: 'string' },
+    endDate:              { type: 'string' },
+    allDay:               { type: 'boolean' },
+    onPlanner:            { type: 'boolean', defaultsTo: false },
+    isTask:               { type: 'boolean', defaultsTo: true },
+    subtask:              { type: 'string' },
+    estTime:              { type: 'number', defaultsTo: 1 },
+    trackedTime:          { type: 'number' },
+    dueDate:              { type: 'string' },
+    percent:              { type: 'number', defaultsTo: 0 },
+    priority:             { type: 'string', defaultsTo: 'medium' },
+    objectives:           { type: 'string' },
     category: {
       model: 'taskcategory'
     },

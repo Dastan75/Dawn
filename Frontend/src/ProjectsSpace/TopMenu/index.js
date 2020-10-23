@@ -1,105 +1,127 @@
 import React from 'react';
-import SVGCards from './SvgIcons/View_Cards'
-import SVGTimeline from './SvgIcons/View_Timeline'
-import SVGList from './SvgIcons/View_List'
-import SVGColumns from './SvgIcons/View_Columns'
-import SVGSearch from './SvgIcons/Search'
-import './style.scss'
+import SVGCards from './SvgIcons/View_Cards';
+import SVGTimeline from './SvgIcons/View_Timeline';
+import SVGList from './SvgIcons/View_List';
+import SVGColumns from './SvgIcons/View_Columns';
+import './style.scss';
 import { Menu, Dropdown, Button } from 'antd';
-import { 
+import {
     DownOutlined,
-    UserOutlined,
 } from '@ant-design/icons';
+import {
+    withRouter
+} from 'react-router-dom';
+
 // const { TabPane } = Tabs;
 
-const menu = (
+const menuDis = (
     <Menu>
-      <Menu.Item key="1" icon={<UserOutlined />}>
-        1st menu item
-      </Menu.Item>
-      <Menu.Item key="2" icon={<UserOutlined />}>
-        2nd menu item
-      </Menu.Item>
-      <Menu.Item key="3" icon={<UserOutlined />}>
-        3rd item
-      </Menu.Item>
+        <Menu.Item disabled key='1'>
+            Disabled
+        </Menu.Item>
     </Menu>
-  );
+);
 
 class TopMenu extends React.Component {
     defaulState = {
-
+        projects: []
     };
 
     state = {
         ...this.defaulState,
     };
 
+    componentDidMount = () => {
+        const { data } = this.props;
+        console.log('TOP', data);
+        const projects = [];
+        for (let index = 0; index < data.teams.length; index++) {
+            const team = data.teams[index];
+            for (let index2 = 0; index2 < team.projects.length; index2++) {
+                projects.push(team.projects[index2]);
+            }
+        }
+        this.setState({
+            projects
+        });
+    }
+
     render() {
+        const { projects } = this.state;
         return (
-            <div className="TopMenu">
-                <div className="projectChoice">
-                    <Dropdown overlay={menu}>
+            <div className='TopMenu'>
+                <div className='projectChoice'>
+                    <Dropdown overlay={
+                        <Menu>
+                            {
+                                projects && projects.map((item) => (
+                                    <Menu.Item key={item.id} onClick={() => this.props.history.push(`/tasks/${item.id}`)}>
+                                        {item.name}
+                                    </Menu.Item>
+                                ))
+                            }
+                        </Menu>
+                    }>
                         <Button>
                             All Projects <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="teamChoice">
-                    <Dropdown overlay={menu}>
+                <div className='teamChoice'>
+                    <Dropdown overlay={menuDis}>
                         <Button>
-                            TEAM <DownOutlined />
+                            Team <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="assigneeChoice">
-                    <Dropdown overlay={menu}>
+                <div className='assigneeChoice'>
+                    <Dropdown overlay={menuDis}>
                         <Button>
-                            ASSIGNEE <DownOutlined />
+                            Assignee <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="duedateChoice">
-                    <Dropdown overlay={menu}>
+                <div className='duedateChoice'>
+                    <Dropdown overlay={menuDis}>
                         <Button>
-                            DUE DATE <DownOutlined />
+                            Due Date <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="priorityChoice">
-                    <Dropdown overlay={menu}>
+                <div className='priorityChoice'>
+                    <Dropdown overlay={menuDis}>
                         <Button>
-                            PRIORITY <DownOutlined />
+                            Priority <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="statusChoice">
-                    <Dropdown overlay={menu}>
+                <div className='statusChoice'>
+                    <Dropdown overlay={menuDis}>
                         <Button>
-                            STATUS <DownOutlined />
+                            Status <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
-                <div className="searchBar">
+                {/* <div className='searchBar'>
                     <SVGSearch/>
-                </div>
-                <div className="switchViewBlock">
-                    <div onClick={() => this.props.changeType('cards')} className="oneView current clickable">
+                </div> */}
+                <div className='switchViewBlock'>
+                    <div className='oneView current clickable' onClick={() => this.props.changeType('cards')}>
                         <SVGCards/>
                     </div>
-                    <div onClick={() => this.props.changeType('progress')} className="oneView clickable">
+                    <div className='oneView clickable' onClick={() => this.props.changeType('progress')}>
                         <SVGList/>
                     </div>
-                    <div className="oneView">
+                    <div className='oneView'>
                         <SVGColumns/>
                     </div>
-                    <div className="oneView">
+                    <div className='oneView'>
                         <SVGTimeline/>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default TopMenu;
+export default withRouter(TopMenu);

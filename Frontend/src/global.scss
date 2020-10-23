@@ -1,27 +1,56 @@
 $base-color: rgb(39, 35, 67);
-$base-color-lightgrey: rgb(243, 244, 248);
 $base-color-darkergrey: rgb(212, 213, 221);
+$base-color-lightgrey: rgb(243, 244, 248);
 
 $base-color-red: rgb(214, 34, 70);
 $base-color-purple: rgb(145, 57, 182);
 $base-color-blue: rgb(0, 129, 202);
 $base-color-green: rgb(2, 195, 126);
-$base-color-orange: rgb(255, 125, 73);
 $base-color-yellow: rgb(255, 189, 59);
+$base-color-orange: rgb(255, 125, 73);
 $base-color-pink: rgb(225, 82, 185);
 $base-color-emerald: rgb(23, 190, 187);
+
+$base-color-opacity: 0.3;
+
+.BGcolor1 {
+	background: linear-gradient(90deg, rgba($base-color-red, $base-color-opacity) 0%, $base-color-red 100%);
+}
+
+.BGcolor2 {
+	background: linear-gradient(90deg, rgba($base-color-purple, $base-color-opacity) 0%, $base-color-purple 100%);
+}
+.BGcolor3 {
+	background: linear-gradient(90deg, rgba($base-color-blue, $base-color-opacity) 0%, $base-color-blue 100%);
+}
+.BGcolor4 {
+	background: linear-gradient(90deg, rgba($base-color-green, $base-color-opacity) 0%, $base-color-green 100%);
+}
+.BGcolor5 {
+	background: linear-gradient(90deg, rgba($base-color-yellow, $base-color-opacity) 0%, $base-color-yellow 100%);
+}
+.BGcolor6 {
+	background: linear-gradient(90deg, rgba($base-color-orange, $base-color-opacity) 0%, $base-color-orange 100%);
+}
+.BGcolor7 {
+	background: linear-gradient(90deg, rgba($base-color-pink, $base-color-opacity) 0%, $base-color-pink 100%);
+}
+.BGcolor8 {
+	background: linear-gradient(90deg, rgba($base-color-emerald, $base-color-opacity) 0%, $base-color-emerald 100%);
+}
+
 
 $left-menu-size: 56px;
 $left-menu-icon-size: 70%;
 $left-menu-icon-space: 48px;
 $left-menu-size-open: 10vw;
 
-$text-caps: 0.9em;
+$text-caps: 0.92em;
 $text-parag-normal: 1.125em;
 $text14px: 1em;
-$text18px: 1.25em;
+$text18px: 1.285em;
 $text21px: 1.5em;
-$text24px: 1.75em;
+$text24px: 1.715em;
 $text52px: 3.715em;
 
 $scale8: 8px;
@@ -32,140 +61,207 @@ $scale32: 32px;
 $scale40px: 40px;
 $scale48px: 48px;
 
-$shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
-$shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15), 0px 0px 6px rgba(0, 0, 0, 0.15);
+$shadow-large: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1),
+	0px 4px 24px rgba(0, 0, 0, 0.15);
+$shadow-bigger: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1),
+	0px 2px 12px rgba(0, 0, 0, 0.15);
+$shadow-smaller: 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.15),
+	0px 0px 6px rgba(0, 0, 0, 0.15);
 
-$letterspacing-tight: -0.035em;
 $letterspacing-normal: 0.0035em;
+$letterspacing-tight: -0.035em;
 
 @font-face {
-  font-family: 'Greycliff CF';
-  src: url('greycliff-cf-bold.ttf')  format('truetype');
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'Greycliff CF';
+	src: url('greycliff-cf-medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
 }
-
 @font-face {
-  font-family: 'Greycliff CF';
-  src: url('greycliff-cf-medium.ttf')  format('truetype');
-  font-weight: 500;
-  font-style: normal;
+	font-family: 'Greycliff CF';
+	src: url('greycliff-cf-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Kalam';
+	src: url('Kalam-Regular.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
 }
 
 @keyframes fade-in-scale {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
-@keyframes spin { 
-  100% { 
-    transform: rotate(360deg); 
-  } 
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes come-from-left {
-  from {
-      margin-left: -4000px;
-  }
-  to {
-      margin-left: 0px;
-  }
+	from {
+		margin-left: -4000px;
+	}
+	to {
+		margin-left: 0px;
+	}
 }
 
 @keyframes come-from-top {
-  from {
-    margin-top: -4000px;
-  }
-  to {
-    margin-top: 0px;
-  }
+	from {
+		margin-top: -4000px;
+	}
+	to {
+		margin-top: 0px;
+	}
 }
 
 @keyframes come-from-right {
-  from {
-    margin-left: 4000px;
-  }
-  to {
-    margin-left: 0px;
-  }
+	from {
+		margin-left: 4000px;
+	}
+	to {
+		margin-left: 0px;
+	}
+}
+
+@keyframes come-from-right2 {
+	from {
+		right: -4000px;
+	}
+	to {
+		right: 0px;
+	}
 }
 
 @keyframes come-from-bottom {
-  from {
-    margin-top: 4000px;
-  }
-  to {
-    margin-top: 0px;
-  }
+	from {
+		margin-top: 4000px;
+	}
+	to {
+		margin-top: 0px;
+	}
 }
 
 .clickable {
-  cursor: pointer !important;
+	cursor: pointer !important;
 }
 
 .SwapBody {
-  color: $base-color;
-  min-height: 100vh;
-  min-width: 100vw;
+	color: $base-color;
+	min-height: 100vh;
+	min-width: 100vw;
 }
 
 .MenuBlock {
-  transition: 1s all;
-  z-index: 10;
-  top: 0px;
-  // animation: come-from-left ease-in-out 1s;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: $left-menu-size;
-  padding: 1vh 0vw;
-  height: 100vw;
-  background: #FFFFFF;
-  box-shadow: $shadow-bigger;
-
-
+	align-items: flex-start;
+	animation: ease-in-out 1s;
+	background: white;
+	box-shadow: $shadow-bigger;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Greycliff CF';
+	font-weight: bold;
+	height: 100%;
+	min-height: 100vh;
+	padding: 1vh 0;
+	position: fixed;
+	top: 0px;
+	transition: 1s all;
+	width: auto;
 }
 
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	background: $base-color-lightgrey;
+	line-height: 1 !important;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 .MenuBlockOne {
-  height: $left-menu-icon-space;
-  width: $left-menu-icon-size;
-  padding-left: 1px;
-  padding-right: 1px;
-  border-radius: 3px;
-  background: linear-gradient(-45deg, #FF5C00, #FFA800, white, white);
-  background-size: 400% 400%;
-  &.current {
-    animation: menu-background .5s forwards;
-  }
+	background-size: 400% 400%;
+	// background: linear-gradient(-45deg, #FF5C00, #FFA800, white, white);
+	display: flex;
+	height: 32px;
+	line-height: 32px;
+	margin: 12px;
+	// padding: 12px;
+	width: 32px;
+	&.current {
+		animation: menu-background 0.5s forwards;
+		background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+		border-radius: 3px;
+	}
 }
 
 .LeftMenuSVG {
-  width: 100%;
-  height: 100%;
+	height: 32px;
+	width: 32px;
+}
+.LeftMenuSVG:hover {
+	// fill: red;
+}
+.MenuSettings {
+	align-items: flex-end;
+	bottom: 12px;
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	position: absolute;
+	width: 100%;
+	.helpCenter {
+		// background-color: #FF5C00;
+		background-size: 400% 400%;
+		height: 32px;
+		line-height: 32px;
+		margin: 0 12px;
+		width: 32px;
+	}
+	.settingsCenter {
+		background: url("https://avatars1.githubusercontent.com/u/8749397?s=60&v=4") no-repeat;
+		background-size: 32px 32px;
+		border-radius: 150px;
+		// background-size: 400% 400%;
+		height: 32px;
+		line-height: 32px;
+		margin: 12px;
+		width: 32px;
+	}
+}
+.nomargin { margin: 0 }
+
+@mixin font-default {
+	color: $base-color;
+	font-family: Greycliff CF;
+	font-style: normal;
+	letter-spacing: 0.0035em;
+}
+
+@mixin big-title {
+	@include font-default;
+	font-size: $text52px;
+	margin: 24px 0 40px 0;
 }
 
 @keyframes menu-background {
@@ -177,19 +273,40 @@ body {
 	}
 }
 
+.tabbedNav {
+	display: flex;
+	flex-direction: row;
+	height: 32px;
+	margin-bottom: 32px;
+	.tabElement {
+	  @include font-default;
+	  border-radius: 3px;
+	  font-size: $text18px;
+	  line-height: 32px;
+	  margin-right: 8px;
+	  padding: 0 12px;
+	  &:last-child { margin-right: 0 }
+	}
+	.tabCurrent { background-color: $base-color-darkergrey }
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .comingSoonBLock {
+    height: 100vh;
+    width: 100%;
+    // border: red solid 1px;
+    padding-left: 5vw;
+    .comingSoonLogo {
+        position: absolute;
+        width: 150px;
+        right: 40px;
+        img {
+            width: 100%;
+        }
+    }
+    .pic {
+        // border: blue solid 1px;
+        img {
+            width: 100%;
+        }
+    }
+}

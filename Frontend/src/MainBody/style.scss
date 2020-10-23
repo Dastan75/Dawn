@@ -1,278 +1,396 @@
 @import '../global.scss';
 
-
+.whitebg {
+  background: white;
+}
 .MainBody {
-    margin-left: $left-menu-size;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    @include font-default;
+    font-weight: bold;
+    // margin-left: $left-menu-size;
+    margin: 0 auto;
     min-height: 100vh;
-    animation: fade-in .3s forwards;
+    width: 1050px;
+    padding-bottom: 10px;
     .boxesBlock {
-      // border: green solid 1px;
-      margin-top: 5vh;
       display: flex;
       justify-content: space-evenly;
+      margin-top: 40px;
       .block {
-        padding: 1% 2%;
-        width: 30%;
         border-radius: 16px;
-        height: 50vh;
+        height: 346px;
+        margin: 0 24px 0 0;
+        padding: $scale24;
+        width: 338px;
+      }
+      .title {
+        @include font-default;
+        color: $base-color;
+        font-size: $text21px;
+        margin-bottom: $scale32;
       }
       .weekBlock {
-        background: #95E4EB;;
+        background: #FFE7B9;
       }
       .inspirationBlock {
-        background: #FCDDBC;
-        .title {
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.6vw;
-          color: black;
-        }
+        background: #FFD7C7;
+        margin-right: 0;;
         .content {
-          margin-top: 5vh;
-          font-family: Greycliff CF;
+          @include font-default;
+          color: $base-color;
+          font-size: $text21px;
           font-style: italic;
-          font-size: 1.4vw;
-          color: black;
+          margin-top: 5vh;
         }
-        .author {
+        .author {          
+          @include font-default;
+          color: $base-color;
+          font-size: $text21px;
           margin-top: 3vh;
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.4vw;
-          color: black;
         }
       }
-      .todaysBlock {
-        background: #EFF0F3;
-        .title {
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.4vw;
-          color: black;
-        }
+      .seeMore {
+        @include font-default;
+        color: $base-color;
+        font-size: $text14px;
+        font-style: normal;
+        margin-top: 20px;
+      }
+      .todayBlock {
+        background: $base-color-lightgrey;
         .task {
-          position: relative;
-          display: flex;
           align-items: center;
-          margin-top: 2vh;
-          box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 0px rgba(0, 0, 0, 0.05);
-          border-radius: 3px;
-          height: 9vh;
           background: white;
-          padding: 0px 4%;
+          border-radius: 3px;
+          box-shadow: $shadow-smaller;
           display: flex;
+          height: 60px;
           justify-content: space-between;
-          transition: all 1s;
+          margin-top: $scale16;
+          padding: 0px $scale12;
+          position: relative;
+          transition: all 0.35s;
+          &:hover {
+            box-shadow: $shadow-large;
+          }
           .name {
-            color: black;
-            font-family: Greycliff CF;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 1.2vw;
+            @include font-default;
+            color: $base-color;
+            font-size: $text18px;
             line-height: 22px;
           }
           .duration {
-            color: black;
-            font-family: Greycliff CF;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 1.2vw;
+            @include font-default;
+            color: $base-color;
+            font-size: $text-caps;
           }
           .workBar {
-            position: absolute;
             border-radius: 3px 0px 0px 0px;
-            height: .6vh;
-            top: 0px;
+            height: 3px;
             left: 0px;
+            position: absolute;
+            top: 0px;
           }
-          &.task1 {
-            margin-top: 3vh;
-            .workBar {
-              width: 50%;
-              background: #129EAF;
-            }
-          }
-          &.task2 {
-            .workBar {
-              width: 90%;
-              background: #23D0CD;
-            }
-          }
-          &.task3 {
-            .workBar {
-              width: 20%;
-              background: #EC365A;
-            }
-          }
-        }
-        .seeTasks {
-          margin-top: 2vh;
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.2vw;
-          color: black;
         }
       }
     }
-  
-    .TitlesBlock {
-      // border: 1px blue solid;
-      margin-top: 5vh;
+    .graphBlock {
+      background-color: white;
+      border-radius: 3px;
+      box-shadow: $shadow-smaller;
+      height: 212px;
+    }
+    .graphLegend {
       display: flex;
+      padding: 18px 24px;
+      width: 100%;
+    }
+    .todo, .done {
+      width: 50%;
+    }
+    .graphBarItems {
+      border-bottom: 1px solid $base-color;
+      display: flex;
+      height: 114px;
+      margin: 0 12px;
+    }
+    .graphBarItem {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 20%;
+    }
+    .graphBarItemTodo {
+      background: linear-gradient(113.61deg, #FFF2AA 0%, #FF8A5B 100%);
+      border-radius: 150px 150px 0 0;
+      bottom: 0;
+      height: 84px;
+      left: 26px;
+      max-height: 114px;
+      position: absolute;
+      width: 12px;
+      z-index: 9;
+    }
+    .graphBarItemDone {
+      background-color: $base-color-red;
+      border-radius: 150px 150px 0 0;
+      bottom: 0;
+      height: 114px;
+      left: 34px;
+      max-height: 114px;
+      position: absolute;
+      width: 12px;
+      z-index: 8;
+    }
+    .graphDays {
+      display: flex;
+      margin: 4px 12px;
+    }
+    .dayItem {
+      font-size: $text-caps;
+      text-align: center;
+      text-transform: uppercase;
+      width: 20%;
+    }
+    .TitlesBlock {
+      display: flex;
+      padding-top: 40px;
       .Greetings {
-        color: black;
-        width: 60%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
+        @include font-default;
         font-size: $text21px;
+        margin-right: 24px;
+        width: 700px;
       }
       .Workload {
-        color: black;
-        // border: 1px yellow solid;
-        width: 40%;
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
+        @include font-default;
         font-size: $text21px;
+        width: 338px;
       }
     }
     .TasksBlock {
-      // border: red solid 1px;
-      margin-top: 2vh;
       display: flex;
+      margin-top: $scale12;
       .TasksTitle {
-        font-family: Greycliff CF;
-        font-style: normal;
-        font-weight: bold;
+        @include font-default;
         font-size: $text52px;
         line-height: 62px;
-        width: 60%;
-        padding-right: 10%;
-        color: black;
+        margin-right: 24px;
+        padding-right: 42px;
+        width: 700px;
         .OrangeTitle {
           color: #FF5C00;
         }
-        // border: blue solid 1px;
       }
       .TasksBarsBlock {
-        // border: solid 1px green;
-        width: 40%;
+        width: 338px;
         .TaskOne {
-          margin-top: 2vh;
+          @include font-default;
           display: flex;
+          font-size: $text21px;
           justify-content: space-between;
-          color: black;
-          font-family: Greycliff CF;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 21px;
           line-height: 25px;
-          // padding-right: 10%;
+          margin-top: 12px;
           .ant-progress {
-            // border: blue solid 1px;
             width: 70%;
+          }
+          .ant-progress-bg {
+            height: 12px !important;
           }
         }
       }
     }
   }
   
-.moodTracker{
-  background-color: rgba(39, 35, 67, .5);
-  display: flex;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 100vw;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  .moodContainer {
+  .moodTracker{
+    align-items: center;
+    background-color: rgba(39, 35, 67, .5);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+    .moodContainer {
+      @include font-default;  
       display: flex;
-      font-family: Greycliff CF;
-      font-weight: bold;
-      padding: 14px;
-      position: relative;
-      width: 414px;
-      .closeButton {
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-    .moodBox {
-        background: white;
-        margin: 0 auto;
-        font-family: Greycliff CF;
         font-weight: bold;
-        font-size: $text18px;
-        height: 100%;
-        box-shadow: $shadow-bigger;
+        padding: 14px;
+        position: relative;
+        width: 414px;
+        .closeButton {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      .moodBox {
+        @include font-default;  
+        background: white;
         border-radius: 9px;
+        box-shadow: $shadow-bigger;
+        font-size: $text18px;
+        font-weight: bold;
+        height: 100%;
+        margin: 0 auto;
         width: 100%;
-    }
-    .question {
-        margin: 32px;
-    }
-    .moodChoices {
+      }
+      .question {
+          margin: 32px;
+      }
+      .moodChoices {
         background-color: $base-color-lightgrey;
         display: flex;
         height: 80px;
+        justify-content: space-evenly;
         margin-bottom: 24px;
         padding: 16px 8px;
-        justify-content: space-evenly;
         width: 100%;
-    }
-    .moodChoiceItem {
-        border-radius: 150px;
-        height: 48px;
-        width: 48px;
-        transition: 0.5s all;
+      }
+      .moodChoiceItem {
         animation: ease-in-out 0.5s;
-    }
-    .moodChoiceItem:hover {
-        background-color: $base-color;
-    }
-    .moodChoiceItem svg {
-    }
-    .left { background-color: $base-color-green;}
-    .leftmid { background-color: $base-color-emerald;}
-    .mid { background-color: $base-color-yellow;}
-    .rightmid { background-color: $base-color-orange;}
-    .right { background-color: $base-color-red;}
-    .moodChoiceItem:last-child {
-        margin-right: 0;
-    }
-    .bottomBar {
-        display: flex;
-        height: 48px;
-        line-height: 48px;
-        margin-bottom: 32px;
-        position: relative;
-        width: 100%;
-    }
-    .primaryCTA {
-        background-color: $base-color;
         border-radius: 150px;
-        color: white;
         height: 48px;
-        left: 32px;
-        line-height: 48px;
-        padding: 0 24px;
-        position: absolute;
-    }
-    .secondaryCTA {
-        position: absolute;
-        right: 32px;
+        transition: 0.5s all;
+        width: 48px;
+        &.selected {
+          &.left {
+            background-color: #009560;
+            &::after {
+              background-color: #009560;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+          &.leftmid {
+            background-color: #16A9A6;
+            &::after {
+              background-color: #16A9A6;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+          &.mid {
+            background-color: #D9A02F;
+            &::after {
+              background-color: #D9A02F;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+          &.rightmid {
+            background-color: #DB683A;
+            &::after {
+              background-color: #DB683A;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+          &.leftmid {
+            background-color: #16A9A6;
+            &::after {
+              background-color: #16A9A6;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+          &.right {
+            background-color: #991832;
+            &::after {
+              background-color: #991832;
+              content: '';
+              animation: fade-in .5s forwards;
+              margin-top: 60px;
+              margin-left: -48px;
+              position: absolute;
+              // background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+              width: 48px;
+              height: 4px;
+              transition: all .5s;
+            }
+          }
+        }
+      }
+      .left {
+        background-color: $base-color-green;
+        &:hover { background-color: #009560 }
+      }
+      .leftmid {
+        background-color: $base-color-emerald;
+        &:hover { background-color: #16A9A6 }
+      }
+      .mid {
+        background-color: $base-color-yellow;
+        &:hover { background-color: #D9A02F }
+      }
+      .rightmid {
+        background-color: $base-color-orange;
+        &:hover { background-color: #DB683A }
+      }
+      .right {
+        background-color: $base-color-red;
+        &:hover { background-color: #991832 }
+      }
+      .moodChoiceItem:last-child {
+          margin-right: 0;
+      }
+      .bottomBar {
+          display: flex;
+          height: 48px;
+          line-height: 48px;
+          margin-bottom: 32px;
+          position: relative;
+          width: 100%;
+      }
+      .primaryCTA {
+          background-color: $base-color;
+          border-radius: 150px;
+          color: white;
+          height: 48px;
+          left: 32px;
+          line-height: 48px;
+          padding: 0 24px;
+          position: absolute;
+      }
+      .secondaryCTA {
+          position: absolute;
+          right: 32px;
+      }
     }
   }
-}

@@ -29,6 +29,9 @@ module.exports = {
     company: {
       model: 'company'
     },
+    events: {
+      model: 'event'
+    }
   },
 
   customToJSON: function () {

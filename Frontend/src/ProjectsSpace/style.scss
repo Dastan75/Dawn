@@ -2,26 +2,34 @@
 
 
 .ProjectSpace {
-    margin-left: $left-menu-size;
-    padding-left: 4vw;
-    padding-right: 4vw;
-    min-height: 100vh;    
-    // border: red solid 1px;
-    background: #EFF0F3;
     animation: fade-in .3s forwards;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 0 0 80px 56px;
+    width: 1050px;
     .newProject {
-        position: fixed;
-        bottom: 30px;
-        right: 60px;
-        color: white;
-        font-size: $text18px;
-        font-weight: bold;
-        padding-left: 20px;
-        padding-right: 20px;
+        align-items: center;
         background-color: $base-color;
         border-radius: 150px;
+        bottom: 24px;
+        color: white;
         display: flex;
-        height: 60px;
-        align-items: center;
+        font-size: $text14px;
+        font-weight: bold;
+        height: 52px;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: fixed;
+        right: 24px;
+        z-index: 100;
+
+    
+    .projectTitle {
+        height: auto !important;
     }
+    .descProject {
+        font-size: $text18px !important;
+    }
+}
+
 }

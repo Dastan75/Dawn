@@ -2,21 +2,26 @@
 
 
 .backlogContainer {
-    background-color: $base-color-lightgrey;
-    box-shadow: $shadow-bigger;
-    font-family: Greycliff CF;
-    font-weight: bold;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    right: 0;
-    width: 314px;
-    z-index: 10;
-    transition: all 1s;
-    animation: fade-in 1s;
+  @include font-default;  
+  background-color: $base-color-lightgrey;
+  box-shadow: $shadow-bigger;
+  font-weight: bold;
+  height: 100vh;
+  // margin: 0;
+  // padding: 0;
+  position: fixed; 
+  right: 0;
+  width: 314px;
+  z-index: 10;
+  transition: all 1s;
+  animation: come-from-right2 .7s forwards;
 }
 .closeBacklog {
+  &:hover {
+    // box-shado w: $shadow-large
+  }
+  transition: .3s all;
+  box-shadow: $shadow-bigger;
   background-color: white;
   border-radius: 3px 0 0 3px;
   display: flex;
@@ -47,6 +52,19 @@
     text-transform: uppercase;
 }
 .task {
+    &.selected {
+      &:before {
+        animation: fade-in 1s;
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -2px; /* !importanté */
+        border-radius: inherit; /* !importanté */
+        background: linear-gradient(113.61deg, #FF5C00 0%, #FFA800 100%);
+      }
+    }
+    // z-index: 2;
     position: relative;
     cursor: pointer;
     display: flex;
@@ -61,16 +79,12 @@
     justify-content: space-between;
     transition: all 1s;
     .name {
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
+      @include font-default;
       font-size: $text18px;
       line-height: 22px;
     }
     .duration {
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
+      @include font-default;
       font-size: $text-caps;
     }
     .workBar {
@@ -80,37 +94,17 @@
       top: 0px;
       left: 0px;
     }
-    &.task1 {
-      .workBar {
-        width: 50%;
-        background: #129EAF;
-      }
-    }
-    &.task2 {
-      .workBar {
-        width: 90%;
-        background: #23D0CD;
-      }
-    }
-    &.task3 {
-      .workBar {
-        width: 20%;
-        background: #EC365A;
-      }
-    }
   }
 .TasksBarsBlock {
     // border: solid 1px green;
     width: 35%;
     .TaskOne {
-      margin-top: 2vh;
+      @include font-default;
       display: flex;
-      justify-content: space-between;
-      color: $base-color;
-      font-family: Greycliff CF;
-      font-style: normal;
       font-size: $text21px;
+      justify-content: space-between;
       line-height: 25px;
+      margin-top: 2vh;
       // padding-right: 10%;
       .ant-progress {
         // border: blue solid 1px;

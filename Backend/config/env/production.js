@@ -210,7 +210,7 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: ['http://goodasdawn.com/'],
+    onlyAllowOrigins: ['http://goodasdawn.com'],
   },
 
   http: {
