@@ -5,7 +5,9 @@ import MainBody from './MainBody';
 
 import Mood1 from './Soon/Mood1';
 import Mood2 from './Soon/Mood2';
-import MyWork from './Soon/MyWork'
+// import MyWork from './Soon/MyWork'
+import MyWork from './Work'
+
 // import CompanySpace from './CompanySpace';
 import ProjectsTasks from './ProjectsTasks';
 import Signup from './Signup';

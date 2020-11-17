@@ -15,7 +15,8 @@ import {
     EditRecurrenceMenu,
     AppointmentForm,
     TodayButton,
-    DateNavigator
+    DateNavigator,
+    AppointmentTooltip
 } from '@devexpress/dx-react-scheduler-material-ui';
 import Backlog from './Backlog';
 import './style.scss';
@@ -25,30 +26,8 @@ import { userService } from '../_services';
 const monthFormat = 'YYYY-MM-DD';
 
 const today = moment().format(monthFormat);
-console.log('Today', today);
-console.log(new Date(2020, 8, 7, 9, 35));
-
-// const appointments = [{
-//   title: 'Website Re-Design Plan',
-//   startDate: new Date(2020, 8, 7, 9, 35),
-//   endDate: new Date(2020, 10, 10, 9, 35),
-//   id: 0,
-//   rRule: 'FREQ=DAILY;COUNT=2',
-//   // exDate: '20180628T063500Z,20180626T063500Z',
-// }, {
-//   title: 'Book Flights to San Fran for Sales Trip',
-//   startDate: new Date(2020, 8, 7, 9, 35),
-//   endDate: new Date(2020, 10, 10, 9, 35),
-//   id: 1,
-//   rRule: 'FREQ=DAILY;COUNT=4',
-//   // exDate: '20210627T091100Z',
-// }, {
-//   title: 'Install New Router in Dev Room',
-//   startDate: new Date(2020, 8, 7, 9, 35),
-//   endDate: new Date(2020, 10, 10, 9, 35),
-//   id: 2,
-//   rRule: 'FREQ=WEEKLY;BYDAY=SU,TU,WE;INTERVAL=1;UNTIL=21210828T040000Z',
-// }];
+// console.log('Today', today);
+// console.log(new Date(2020, 8, 7, 9, 35));
 
 const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
     const onCustomFieldChange = (nextValue) => {
@@ -78,6 +57,21 @@ const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
         </AppointmentForm.BasicLayout>
     );
 };
+
+const Appointment = ({
+    children, style, ...restProps
+  }) => (
+    <Appointments.Appointment
+      {...restProps}
+      style={{
+        ...style,
+      }}
+      className={`personalPlannerTaskBlock ${restProps.data.choosedColor}`}
+    >
+        {/* {console.log('REST', restProps.data.choosedColor)} */}
+      {children}
+    </Appointments.Appointment>
+  );
 
 class PersonalPlanner extends React.Component {
 
@@ -282,13 +276,20 @@ class PersonalPlanner extends React.Component {
                           timeTableCellComponent={this.TimeTableCell}
                       />
                       <MonthView />
-                      <Appointments/>
+                      <Appointments
+                        appointmentComponent={Appointment}
+                        />
 
                       <Toolbar />
                       <ViewSwitcher />
                       <DateNavigator />
                       <TodayButton />
                       <EditRecurrenceMenu />
+
+                      <AppointmentTooltip
+                            showOpenButton
+                        //    showDeleteButton
+                        />
 
                       <DragDropProvider />
                       <AppointmentForm

@@ -10,8 +10,7 @@ import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
-import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from './SvgIcons/Priority';
-
+import OneTask from './oneTask'
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { Modal, Input } from 'antd';
@@ -322,25 +321,11 @@ class ProjectsTasks extends React.Component {
                                                             index={index}
                                                             key={item.id}
                                                         >
-                                                            {(provided, snapshot) => (
-                                                                <div
-                                                                    onClick={() => this.openTaskDetails(item)}
-                                                                    ref={provided.innerRef}
-                                                                    {...provided.draggableProps}
-                                                                    {...provided.dragHandleProps}
-                                                                    className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
-                                                                    <div className='contentTask'>
-                                                                        {item.title}
-                                                                        {/* <div className='avatar nomargin' /> */}
-                                                                        {item.priority === 'urgent' && <PriorityUrgent />}
-                                                                        {item.priority === 'high' && <PriorityHigh />}
-                                                                        {item.priority === 'medium' && <PriorityMedium />}
-                                                                        {item.priority === 'low' && <PriorityLow />}
-                                                                        {!item.priority && <PriorityMedium/>}
-                                                                    </div>
-                                                                </div>
-                                                            )}
+                                                            {(provided, snapshot) => {
+                                                                return (
+                                                                    <OneTask item={item} openTaskDetails={this.openTaskDetails} provided={provided} snapshot={snapshot} />
+                                                                )
+                                                            }}
                                                         </Draggable>
                                                     ))
                                                 }
@@ -348,11 +333,11 @@ class ProjectsTasks extends React.Component {
                                             </div>
                                         )}
                                     </Droppable>
-                                    <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
+                                    {/* <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
                                         <span className='contentTask'>
                                             + Create a new task
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </div>
                             ))}
                         </DragDropContext>

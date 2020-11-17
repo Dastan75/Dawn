@@ -10,7 +10,9 @@
     font-weight: bold;
     height: 100vh;
     margin-left: $left-menu-size;
+    // border: solid blue 1px;
     .projectWrapper {
+        height: calc(100% - 80px - 56px);
         padding-left: 4vw;
         padding-right: 4vw;
     }
@@ -117,6 +119,7 @@
         text-transform: uppercase;
     }
     .orgNav {
+        // border: red solid 1px;
         border-bottom: 1px solid $base-color;
         display: flex;
         height: 56px;
@@ -176,10 +179,17 @@
     .dragBlock {
         display: flex;
         margin-top: 40px;
+        // border: solid purple 1px;
+        // height: 100%;
+        min-height: calc(100% - 80px - 26px);
         .columnBlock {
-            margin-right: 24px;
-            width: 260px;
+            padding: 0px 20px;
             // border: red solid 1px;
+            // border-left: solid 1px #D4D5DD;
+            border-right: 1px solid #D4D5DD;
+            &:nth-last-of-type(1) {
+                border-right: 0 solid red;
+            }
             &:hover .task {
                 &.new{
                     background: $base-color-darkergrey;
@@ -187,12 +197,15 @@
                 }
             }
             .title {
+                margin-bottom: 20px;
                 font-size: $text-caps;
                 font-weight: bold;
                 padding-bottom: 2px;
                 text-transform: uppercase;
             }
             .task {
+                // position: fixed;
+                padding-right: 10px;
                 &.new {
                     align-items: center;
                     background: none;
@@ -214,13 +227,16 @@
                 }
             }
             .column {
+                width: 280px;
                 // border-bottom-left-radius: 10px;
                 // border-bottom-right-radius: 10px;
                 // min-height: 60px;
                 min-height: 60px;
+                height: 100%;
                 &.isDraggedOn {
-                    border:solid 2px $base-color-darkergrey;
+                    // border:solid 2px $base-color-darkergrey;
                     // min-height: 20px;
+
                 }
                 .task {
                     align-items: center;
@@ -235,8 +251,10 @@
                     padding-left: 1vw;
                     width: 260px;
                     &.isDragging {
-                        box-shadow: $shadow-bigger;
-                     }
+                        // box-shadow: $shadow-bigger;
+                        // transform: translate(50px, 100px);
+                        // transform: rotate(17deg) !important;
+                    }
                     .contentTask {
                         align-items: center;
                         display: flex;

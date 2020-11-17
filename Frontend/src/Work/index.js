@@ -1,9 +1,17 @@
 import React from 'react';
+import SVGDetails from './SvgIcons/Details';
+import SVGConversation from './SvgIcons/Conversation';
+import SVGTasks from './SvgIcons/Tasks';
+import SVGFiles from './SvgIcons/Files';
+import SVGLink from './SvgIcons/Link';
 import SVGSearch from './SvgIcons/Search';
+import SVGClose from './SvgIcons/Close';
 import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
+import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from '../TaskDetails/SvgIcons/Priority';
+import { connect } from 'react-redux';
 
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -13,7 +21,9 @@ import { userService } from '../_services';
 import {
     withRouter
 } from 'react-router-dom';
-import './style.scss';
+// import './style.scss';
+
+
 
 class ProjectsTasks extends React.Component {
     defaulState = {
@@ -21,8 +31,14 @@ class ProjectsTasks extends React.Component {
         imputNameValue: '',
         modalType: '',
         selectedCat: '',
-        columns: [
-        ],
+        columns: {
+            priority: {
+                urgent: { name: 'urgent', id: '4', tasks: [] },
+                high: { name: 'high', id: '3', tasks: [] },
+                medium: { name: 'medium', id: '2', tasks: [] },
+                low: { name: 'low', id: '1', tasks: [] },
+            }
+        },
         taskDetail: null,
     };
 
@@ -30,82 +46,94 @@ class ProjectsTasks extends React.Component {
         ...this.defaulState,
     };
 
-    componentDidMount = async () => {
-        const { params: { projectId } } = this.props.match;
-        const project = await userService.getProjectById(projectId);
-        if (!project) {
-            this.props.history.goBack();
-            return;
-        }
-        const tmpCat = [];
-        for (let index = 0; index < project.tasksCategories.length; index++) {
-            const category = project.tasksCategories[index];
-            if (!category.tasks) {
-                category.tasks = [];
-            }
-            if (category.tasksOrder !== 'empty') {
-                const listId = category.tasksOrder.split(',');
-                for (let ind2 = 0; ind2 < listId.length; ind2++) {
-                    const taskId = listId[ind2];
-                    const task = project.tasks.find((e) => e.id === taskId);
-                    if (task) {
-                        category.tasks.push(task);
-                    }
-                }
-            }
-            tmpCat.push(category);
-        }
-        tmpCat.sort((a, b) => a.createdAt - b.createdAt);
+    componentDidMount = () => {
+        this.getData();
+    }
+
+    getData = async () => {
+        // const { params: { projectId } } = this.props.match;
+        const { user } = this.props
+        const retProj = await userService.getAllProjects(user.id);
+        // console.log('RET', retProj);
+        // if (!retProj) {
+        //     this.props.history.goBack();
+        //     return;
+        // }
+        let tmpCat = { ...this.state.columns }
+        // tasks
+        for (let index = 0; index < retProj.tasks.length; index++) {
+            const element = retProj.tasks[index];
+            tmpCat.priority[element.priority].tasks.push(element)        }
+        // for (let index = 0; index < project.tasksCategories.length; index++) {
+        //     const category = project.tasksCategories[index];
+        //     if (!category.tasks) {
+        //         category.tasks = [];
+        //     }
+        //     if (category.tasksOrder !== 'empty') {
+        //         const listId = category.tasksOrder.split(',');
+        //         for (let ind2 = 0; ind2 < listId.length; ind2++) {
+        //             const taskId = listId[ind2];
+        //             const task = project.tasks.find((e) => e.id === taskId);
+        //             if (task) {
+        //                 category.tasks.push(task);
+        //             }
+        //         }
+        //     }
+        //     tmpCat.push(category);
+        // }
+        // tmpCat.sort((a, b) => a.createdAt - b.createdAt);
+        console.log("CAT", tmpCat);
+
         this.setState({
-            projectName: project.name,
-            projectId: project.id,
+            // projectName: project.name,
+            // projectId: project.id,
             columns: tmpCat
         });
     }
 
     onDragEnd = (result) => {
-        const { source, destination } = result;
-        const { columns } = this.state;
-        if (!destination) {
-            return;
-        }
+        // const { source, destination } = result;
+        // const { columns } = this.state;
+        // if (!destination) {
+        //     return;
+        // }
 
-        const newCol = [];
-        const tmpCol = columns.find((elemC) => elemC.id === source.droppableId);
-        const item = tmpCol.tasks[source.index];
-        for (let index = 0; index < columns.length; index++) {
-            const col = JSON.parse(JSON.stringify(columns[index]));
+        // const newCol = [];
+        // const tmpCol = columns.find((elemC) => elemC.id === source.droppableId);
+        // const item = tmpCol.tasks[source.index];
+        // for (let index = 0; index < columns.length; index++) {
+        //     const col = JSON.parse(JSON.stringify(columns[index]));
 
-            if (col.id === source.droppableId) {
-                col.tasks.splice(source.index, 1);
-            }
+        //     if (col.id === source.droppableId) {
+        //         col.tasks.splice(source.index, 1);
+        //     }
 
-            if (col.id === destination.droppableId) {
-                col.tasks.splice(destination.index, 0, item);
-                userService.updateTask({ category: col.id }, item.id);
+        //     if (col.id === destination.droppableId) {
+        //         col.tasks.splice(destination.index, 0, item);
+        //         userService.updateTask({ category: col.id }, item.id);
 
-            }
-            newCol.push(col);
-        }
-        for (let index = 0; index < newCol.length; index++) {
-            const col = newCol[index];
+        //     }
+        //     newCol.push(col);
+        // }
+        // for (let index = 0; index < newCol.length; index++) {
+        //     const col = newCol[index];
 
-            if (col.id === source.droppableId && source.droppableId !== destination.droppableId) {
-                let newTaskOrder = col.tasks.map((item2) => item2.id);
-                if (newTaskOrder.length === 0) {
-                    newTaskOrder = ['empty'];
-                }
-                userService.updateTaskCat({ tasksOrder: newTaskOrder.join() }, col.id);
-            }
+        //     if (col.id === source.droppableId && source.droppableId !== destination.droppableId) {
+        //         let newTaskOrder = col.tasks.map((item2) => item2.id);
+        //         if (newTaskOrder.length === 0) {
+        //             newTaskOrder = ['empty'];
+        //         }
+        //         userService.updateTaskCat({ tasksOrder: newTaskOrder.join() }, col.id);
+        //     }
 
-            if (col.id === destination.droppableId) {
-                const newTaskOrder = col.tasks.map((item) => item.id);
-                userService.updateTaskCat({ tasksOrder: newTaskOrder.join() }, col.id);
-            }
-        }
-        this.setState({
-            columns: newCol
-        });
+        //     if (col.id === destination.droppableId) {
+        //         const newTaskOrder = col.tasks.map((item) => item.id);
+        //         userService.updateTaskCat({ tasksOrder: newTaskOrder.join() }, col.id);
+        //     }
+        // }
+        // this.setState({
+        //     columns: newCol
+        // });
     }
 
     handleOk = async () => {
@@ -189,30 +217,70 @@ class ProjectsTasks extends React.Component {
         });
     }
 
-    openTaskDetails = (task) => {
+    openTaskDetails = (task, column) => {
         this.setState({
-            taskDetail: task
+            taskDetail: { ...task, column }
         });
     }
 
     render() {
-        const { columns, projectName, modalVisible, imputNameValue, taskDetail } = this.state;
+        const { columns, projectName, modalVisible, imputNameValue, taskDetail, modalType } = this.state;
         return (
             <>
                 {
-                    taskDetail && <TaskDetail closeDetails={() => this.setState({ taskDetail: null })} data={taskDetail}/>
+                    taskDetail && <TaskDetail closeDetails={() => this.setState({ taskDetail: null })} data={taskDetail} getData={this.getData}/>
                 }
                 {!taskDetail &&
             <div className='ProjectsTasks'>
                 <Modal
                     onCancel={this.handleCancel}
                     onOk={this.handleOk}
-                    title='Name your task'
+                    title={`Name your ${modalType === 'newGroup' ? 'group' : 'task'}`}
                     visible={modalVisible}
                 >
-                    <Input onChange={this.changeModalValue} placeholder='Name your task' value={imputNameValue}/>
+                    <Input onChange={this.changeModalValue} placeholder={`Name your ${modalType === 'newGroup' ? 'group' : 'task'}`} value={imputNameValue}/>
                 </Modal>
-
+                <div className='projectBar'>
+                    <div className='progressBar'/>
+                    <div className='barLeft'>
+                        <div className='backButton clickable' onClick={this.props.history.goBack}>Back</div>
+                        <div className='projectTitle'>{projectName}</div>
+                        <div className='members'>
+                            <div className='memberBox'>
+                                <div className='oneMember'>
+                                    M
+                                </div>
+                            </div>
+                            <div className='memberBox'>
+                                <div className='oneMember'>
+                                    B
+                                </div>
+                            </div>
+                        </div>
+                        <div className='faveButton' />
+                    </div>
+                    <div className='barRight'>
+                        <div className='navBtn clickable'>
+                            <div className='icon'><SVGDetails/></div>
+                            <div className='navTitle'>Details</div>
+                        </div>
+                        <div className='navBtn clickable'>
+                            <div className='icon'><SVGTasks/></div>
+                            <div className='navTitle'>Tasks</div>
+                        </div>
+                        <div className='navBtn clickable'>
+                            <div className='icon'><SVGConversation/></div>
+                            <div className='navTitle'>Conversation</div>
+                        </div>
+                        <div className='navBtn clickable'>
+                            <div className='icon'><SVGFiles/></div>
+                            <div className='navTitle'>Files</div>
+                        </div>
+                        <div className='navBtn clickable'>
+                            <div className='icon'><SVGLink/></div>
+                        </div>
+                    </div>
+                </div>
                 <div className='projectWrapper'>
                     <div className='orgNav'>
                         <div className='filterBy'>Sort by: Priority</div>
@@ -226,19 +294,15 @@ class ProjectsTasks extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className='dragBlock'>
                         <DragDropContext onDragEnd={this.onDragEnd}>
-                            {columns && columns.map((column, index) => (
+                            {columns && Object.keys(columns.priority).map((columnKey, index) => {
+                                const column = columns.priority[columnKey]
+                                return (
                                 <div className='columnBlock' key={column.id}>
                                     <div className='title'>
                                         {column.name}
                                     </div>
-                                    {/* <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
-                                        <span className='content'>
-                                            + Create a new task
-                                        </span>
-                                    </div> */}
                                     <Droppable droppableId={`${column.id}`}>
                                         {(provided, snapshot) => (
                                             <div
@@ -260,10 +324,14 @@ class ProjectsTasks extends React.Component {
                                                                     {...provided.draggableProps}
                                                                     {...provided.dragHandleProps}
                                                                     className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                                    <div className='progressBar'/>
+                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
                                                                     <div className='contentTask'>
                                                                         {item.title}
-                                                                        <div className='avatar nomargin' />
+                                                                        {item.priority === 'urgent' && <PriorityUrgent />}
+                                                                        {item.priority === 'high' && <PriorityHigh />}
+                                                                        {item.priority === 'medium' && <PriorityMedium />}
+                                                                        {item.priority === 'low' && <PriorityLow />}
+                                                                        {!item.priority && <PriorityMedium/>}
                                                                     </div>
                                                                 </div>
                                                             )}
@@ -274,13 +342,14 @@ class ProjectsTasks extends React.Component {
                                             </div>
                                         )}
                                     </Droppable>
-                                    <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
+                                    {/* <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
                                         <span className='contentTask'>
                                             + Create a new task
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </div>
-                            ))}
+                                )}
+                            )}
                         </DragDropContext>
                     </div>
                 </div>
@@ -290,4 +359,11 @@ class ProjectsTasks extends React.Component {
     }
 }
 
-export default withRouter(ProjectsTasks);
+const mapStateToProps = (state) => {
+    const { user } = state;
+    return {
+        user
+    };
+};
+
+export default withRouter(connect(mapStateToProps)(ProjectsTasks));

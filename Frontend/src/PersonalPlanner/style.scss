@@ -1,5 +1,7 @@
 @import '../global.scss';
 
+// $base-color-lightgrey
+
 .PersonalPlanner {
     // border: red solid 1px;
     // padding-top: 10vh;
@@ -11,9 +13,10 @@
     @include font-default;
     font-family: Greycliff CF !important;
     font-weight: bold;  
-    margin: 0 auto;
-    min-height: 100vh;
-    width: 1050px;
+    padding-left: 10px;
+    // min-height: 100vh;
+    width: calc(100vw - #{$left-menu-size});
+    margin-left: $left-menu-size;
     [class^="makeStyles-appointment-"] {
         // background: #FFFFFF;
         box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05), 0px 1px 1px rgba(0, 0, 0, 0.1), 0px 2px 12px rgba(0, 0, 0, 0.15);
@@ -26,7 +29,7 @@
         // border: 2px solid red;
         // border-radius: 30px;
         content: "+";
-        // font-size: 3em;
+        font-size: 2em;
         height: 100%;
         width: 100%;
         position: absolute;
@@ -41,8 +44,62 @@
         justify-content: center;
         align-items: center;
     }
+    .personalPlannerTaskBlock {
+        background: white;
+        .VerticalAppointment-container-162 {
+            color: #272343 !important;
+        }
+        &.color1 {
+            $base-color-red: rgb(214, 34, 70);
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color2 {
+            background: $base-color-purple;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color3 {
+            background: $base-color-blue;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color4 {
+            background: $base-color-green;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color5 {
+            background: $base-color-yellow;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color6 {
+            background: $base-color-orange;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color7 {
+            background: $base-color-pink;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+        &.color8 {
+            background: $base-color-emerald;
+            .VerticalAppointment-container-162 {
+                color: white !important;
+            }
+        }
+    }
     .headerBlock {
-        padding-top: 80px;
+        padding-top: 40px;
         padding-bottom: 40px;
         .subTitle {
             font-family: Greycliff CF;
@@ -135,111 +192,173 @@
             background: #17BEBB;
         }
     }
+    .MuiToolbar-root, .MuiToolbar-regular, .Toolbar-toolbar-12, .MuiToolbar-gutters, .MuiTableBody-root, .DayScaleEmptyCell-emptyCell-43
+    {
+        background: $base-color-lightgrey !important;
+    }
+    .TodayButtonBase-button-13 {
+        background: white !important;
+        &:hover {
+            border: solid 1px #272343 !important;
+        }
+    }
+    .MuiTableBody-root {
+        .MuiTableRow-root {
+            .MuiTableCell-root {
+                border-left: $base-color-lightgrey solid 1px !important;
+            }
+        }
+    }
+    .MuiTable-root {
+        .MuiTableBody-root {
+            .MuiTableRow-root {
+                .makeStyles-cell-66 {
+                    border: rgba(39, 35, 67, 1) solid 1px !important;
+                    // border-right: 0px solid red !important;
+                    border-bottom: rgba(39, 35, 67, .15) solid 1px !important;
+                    border-top: rgba(39, 35, 67, .15) solid 1px !important;
+
+                }
+            }
+        }
+    }
+    .MuiTableCell-root {
+        .Cell-dayView-50 {
+            color: #272343 !important;
+        }
+        .Label-text-59 {
+            color: #272343 !important;
+        }
+        .Cell-highlightedText-49 {
+            color: #272343 !important;
+            font-size: 20px;
+        }    
+    }
+    .MuiOutlinedInput-root {
+        &.memo-inputRoot-20 {
+            background: white !important;
+        }
+    }
+    .OverlayBase-absolutePosition-4 {
+        position: fixed !important;
+    }
 }
 
 .Schedule {
-    border: blue solid 1px;
+    // border: blue solid 1px;
 }
 
-.bouh {
-    // border: red solid 1px;
+
+.LayoutBase-visible-171 {
+    width: 35% !important;
 }
 
-.makeStyles-stickyElement-30,
-  .makeStyles-background-41 {
-      background: none !important;
-  }
-  .MuiPaper-root {
-      background: none !important;
-  }
-  .MuiPaper-elevation1 {
-      box-shadow: none !important
-  }
-  .MuiButton-outlined,
-  .memo-inputRoot-20 {
-      background-color: $base-color-darkergrey !important;
-      color: $base-color !important;
-      border: none !important;
-  }
-  .TodayButtonBase-button-13 {
-    height: 32px !important;
-    padding: 0 16px !important;
-  }
-  .memo-inputRoot-20 {
-    height: 32px !important;
-  }
-  .Toolbar-toolbar-12 {
-    border-bottom: 1px solid $base-color !important;
-    color: $base-color !important;
-  }
-  .MuiTableCell-body,
-  .Cell-dayOfWeek-47,
-  .Cell-dayOfMonth-48  {
-      color: $base-color !important;
-      font-size: $text-caps !important;
-      text-transform: uppercase !important;
-  }
-  .makeStyles-cell-66 {
-    border-right: 1px solid $base-color !important;
-    border-bottom: 1px solid #ACABB9 !important;
-  }
-  .Label-label-58,
-  .makeStyles-cell-66,
-  .TickCell-cell-62 {
-    height: 60px !important;
-    line-height: 60px !important;
-  }
-  .makeStyles-cell-66,
-  .Cell-cell-46 {
-    width: 268px;
-  }
-  .MuiTableCell-root {
-    text-transform: uppercase !important;
-  }
-  .MuiButton-root {
-      color: $base-color !important;
-  }
-  .MuiIconButton-root {
-    border-radius: 3px !important;
-    height: 32px !important;
-    padding: none !important;
-    width: 32px !important;
-    &:hover {
-        background-color: $base-color-darkergrey !important;
-    }
-  }
-  .MuiSvgIcon-root {
-    fill: $base-color !important;
-  }
-  .MuiButton-text {
-      padding: none !important;
-      &:hover {
-        background-color: $base-color-darkergrey !important;
-    }
-  }
-  .Label-text-59 {
-    color: $base-color !important;
-    font-size: $text-caps !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-  }
-  .makeStyles-timeScaleContainer-52 {
-      background: $base-color-lightgrey !important;
-  }
-  .makeStyles-ticks-53 {
-      width: 0 !important;
-  }
-  .makeStyles-dayScaleEmptyCell-42 {
-    min-width: 73px !important;  
-    width: 73px !important;
-  }
-  .MuiDrawer-paper {
-      background: white !important;
-  }
-  .memo-button-150 {
-      background-color: $base-color !important;
-      color: white !important;
-      &:hover {
-          background-color: $base-color-orange !important;
-      }
-  }
+.OverlayBase-fullSize-6, .LayoutBase-root-192, .LayoutBase-stickyContainer-194 {
+    width: fit-content !important;
+}
+
+// .makeStyles-stickyElement-30,
+//   .makeStyles-background-41 {
+//       background: none !important;
+//   }
+//   .MuiPaper-root {
+//       background: none !important;
+//   }
+// //   MuiList-root MuiMenu-list MuiList-padding
+//   .MuiPaper-elevation1 {
+//       box-shadow: none !important
+//   }
+//   .MuiListItem-button, .MuiList-root  {
+//     background-color: #fff !important;
+//   }
+//   .MuiListItem-button:hover {
+//     background-color: $base-color-darkergrey !important;
+//   }
+//   .MuiButton-outlined,
+//   .memo-inputRoot-20 {
+//       background-color: $base-color-darkergrey !important;
+//       color: $base-color !important;
+//       border: none !important;
+//   }
+//   .TodayButtonBase-button-13 {
+//     height: 32px !important;
+//     padding: 0 16px !important;
+//   }
+//   .memo-inputRoot-20 {
+//     height: 32px !important;
+//   }
+//   .Toolbar-toolbar-12 {
+//     border-bottom: 1px solid $base-color !important;
+//     color: $base-color !important;
+//   }
+//   .MuiTableCell-body,
+//   .Cell-dayOfWeek-47,
+//   .Cell-dayOfMonth-48  {
+//       color: $base-color !important;
+//       font-size: $text-caps !important;
+//       text-transform: uppercase !important;
+//   }
+//   .makeStyles-cell-66 {
+//     border-right: 1px solid $base-color !important;
+//     border-bottom: 1px solid #ACABB9 !important;
+//   }
+//   .Label-label-58,
+//   .makeStyles-cell-66,
+//   .TickCell-cell-62 {
+//     height: 60px !important;
+//     line-height: 60px !important;
+//   }
+//   .makeStyles-cell-66,
+//   .Cell-cell-46 {
+//     width: 268px;
+//   }
+//   .MuiTableCell-root {
+//     text-transform: uppercase !important;
+//   }
+//   .MuiButton-root {
+//       color: $base-color !important;
+//   }
+//   .MuiIconButton-root {
+//     border-radius: 3px !important;
+//     height: 32px !important;
+//     padding: none !important;
+//     width: 32px !important;
+//     &:hover {
+//         background-color: $base-color-darkergrey !important;
+//     }
+//   }
+//   .MuiSvgIcon-root {
+//     fill: $base-color !important;
+//   }
+//   .MuiButton-text {
+//       padding: none !important;
+//       &:hover {
+//         background-color: $base-color-darkergrey !important;
+//     }
+//   }
+//   .Label-text-59 {
+//     color: $base-color !important;
+//     font-size: $text-caps !important;
+//     font-weight: bold !important;
+//     text-transform: uppercase !important;
+//   }
+//   .makeStyles-timeScaleContainer-52 {
+//       background: $base-color-lightgrey !important;
+//   }
+//   .makeStyles-ticks-53 {
+//       width: 0 !important;
+//   }
+//   .makeStyles-dayScaleEmptyCell-42 {
+//     min-width: 73px !important;  
+//     width: 73px !important;
+//   }
+//   .MuiDrawer-paper {
+//       background: white !important;
+//   }
+//   .memo-button-150 {
+//       background-color: $base-color !important;
+//       color: white !important;
+//       &:hover {
+//           background-color: $base-color-orange !important;
+//       }
+//   }

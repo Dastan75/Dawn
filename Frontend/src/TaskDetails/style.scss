@@ -140,6 +140,13 @@
         font-size: $text24px;
         line-height: 80px;
         margin-right: $scale24;
+        // border: solid blue 1px;
+        min-width: 200px;
+        .title {
+            animation: fade-in .5;
+            // border: solid red 1px;
+            // padding: 4px 11px;
+        }
     }
     .taskMainDetails {
         display: flex;

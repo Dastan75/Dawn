@@ -3,7 +3,6 @@ import { Progress, DatePicker, Input, Menu, Dropdown } from 'antd';
 import SVGConversation from './SvgIcons/Conversation';
 import SVGSubtasks from './SvgIcons/Subtasks';
 import SVGFiles from './SvgIcons/Files';
-import SVGTimelog from './SvgIcons/Timelog';
 import SVGClose from './SvgIcons/Close';
 import SVGAvatar from './SvgIcons/Avatar';
 import SVGTime from './SvgIcons/Time';
@@ -199,10 +198,10 @@ class TaskDetails extends React.Component {
 
                             <div className='taskTitle'>
                                 {
-                                    !onUpdate && task.title
+                                    !onUpdate && <div className="title">{task.title}</div>
                                 }
                                 {
-                                    onUpdate && <Input name='title' onChange={this.changeValue} value={task.title}/>
+                                    onUpdate && <Input className="title" name='title' onChange={this.changeValue} value={task.title}/>
                                 }
                             </div>
                             <div className='members'>

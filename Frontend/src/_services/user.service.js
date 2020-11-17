@@ -168,11 +168,24 @@ const getTasks = async (userId) => {
     }
 };
 
+const getAllProjects = async (userId) => {
+    try {
+        const reqReturn = await axios({
+            method: 'get',
+            url: `${apiUrl}/project/getAllProjects?userId=${userId}`,
+        });
+        return reqReturn.data;
+    } catch (error) {
+        return null;
+    }
+};
+
 export const userService = {
     getUserById,
     getCompanyById,
     getTeamById,
     getProjectById,
+    getAllProjects,
     createTaskCat,
     createTask,
     updateTaskCat,

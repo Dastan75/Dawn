@@ -15,7 +15,6 @@
   z-index: 10;
   transition: all 1s;
   animation: come-from-right2 .7s forwards;
-}
 .closeBacklog {
   &:hover {
     // box-shado w: $shadow-large
@@ -133,3 +132,4 @@
     transform: rotate(-2deg);
     width: 200px;
   }
+}

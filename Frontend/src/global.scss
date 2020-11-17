@@ -16,7 +16,6 @@ $base-color-opacity: 0.3;
 .BGcolor1 {
 	background: linear-gradient(90deg, rgba($base-color-red, $base-color-opacity) 0%, $base-color-red 100%);
 }
-
 .BGcolor2 {
 	background: linear-gradient(90deg, rgba($base-color-purple, $base-color-opacity) 0%, $base-color-purple 100%);
 }
@@ -186,7 +185,7 @@ $letterspacing-tight: -0.035em;
 	position: fixed;
 	top: 0px;
 	transition: 1s all;
-	width: auto;
+	width: $left-menu-size;
 }
 
 body {
