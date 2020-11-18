@@ -1,0 +1,32 @@
+@import '../global.scss';
+
+
+.ProjectsTasks {
+    .myWorkTitlesBlock {
+        margin-top: 40px;
+        margin-left: $left-menu-size;
+        .intro {
+            font-family: Greycliff CF;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 21px;
+            line-height: 25px;
+            letter-spacing: 0.0035em;
+            color: #272343;
+        }
+        .title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: Greycliff CF;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 52px;
+            line-height: 60px;
+            letter-spacing: 0.01em;
+            color: #272343;
+            .project {
+                opacity: 0.35;
+            }
+        }
+    }
+}

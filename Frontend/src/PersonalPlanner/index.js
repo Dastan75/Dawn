@@ -107,7 +107,7 @@ class PersonalPlanner extends React.Component {
       });
   }
 
-  TimeTableCell = (props) => <WeekView.TimeTableCell className='clickable' onClick={async () => {
+  TimeTableCell = (props) => <WeekView.TimeTableCell className='clickable' onClick={() => {
       let { data, backlogVisible, selectedBacklog, backlogList } = this.state;
 
       // console.log('CLICK', bouh)
@@ -141,8 +141,10 @@ class PersonalPlanner extends React.Component {
           }
           backlog.startDate = props.startDate;
           backlog.onPlanner = true;
+          backlog.owner = this.props.user.id
+          backlog.ownerName = this.props.user.firstName
           data = [...data, { id: backlog.id, ...backlog }];
-          const ret = await userService.updateTask(backlog, backlog.id);
+          userService.updateTask(backlog, backlog.id);
           this.setState({
           // selectedEvent: { endDate: props.endDate, startDate: props.startDate},
           // backlogVisible: false,
@@ -229,13 +231,9 @@ class PersonalPlanner extends React.Component {
 
   render() {
       const { data, currentDate, backlogVisible, addedAppointment, backlogList } = this.state;
-
-      // console.log('PLANNER STATE', this.state);
       return (
           <div className={`PersonalPlanner ${this.state.selectedBacklog.length === 0 ? '' : 'clickedBacklog'}`}>
-              {
-                  backlogVisible && <Backlog backlogList={backlogList} onClose={this.onClose} selectBacklog={this.selectBacklog} selectedBacklog={this.state.selectedBacklog}/>
-              }
+            <Backlog visible={backlogVisible} backlogList={backlogList} onClose={this.onClose} selectBacklog={this.selectBacklog} selectedBacklog={this.state.selectedBacklog}/>
               {/* <div className='clickable' onClick={this.showDrawer}>Start planning your week</div> */}
               {/* <div>My personal planner</div> */}
               <div className='headerBlock'>
@@ -269,7 +267,7 @@ class PersonalPlanner extends React.Component {
                       />
                       <WeekView
                           cellDuration={60}
-                          endDayHour={18}
+                          endDayHour={22}
                           startDayHour={8}
 
                           // onClick={() => console.log(2)}

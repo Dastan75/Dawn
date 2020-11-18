@@ -205,7 +205,8 @@
             }
             .task {
                 // position: fixed;
-                padding-right: 10px;
+                // height: 100px;
+
                 &.new {
                     align-items: center;
                     background: none;
@@ -214,7 +215,6 @@
                     color: $base-color;
                     display: flex;
                     font-weight: bold;
-                    height: 60px;
                     margin-bottom: 10px;
                     opacity: 0;
                     padding-left: 12px;
@@ -239,6 +239,8 @@
 
                 }
                 .task {
+                    padding-right: 15px;
+                    padding-left: 15px;
                     align-items: center;
                     background: white;
                     border-radius: 3px;
@@ -246,9 +248,8 @@
                     display: flex;
                     font-size: $text18px;
                     font-weight: bold;
-                    height: 60px;
+                    height: 104px;
                     margin-bottom: 16px;
-                    padding-left: 1vw;
                     width: 260px;
                     &.isDragging {
                         // box-shadow: $shadow-bigger;
@@ -256,10 +257,43 @@
                         // transform: rotate(17deg) !important;
                     }
                     .contentTask {
-                        align-items: center;
-                        display: flex;
-                        justify-content: space-between;
+                        // align-items: center;
+                        // display: flex;
+                        // justify-content: space-between;
                         width: 100%;
+                        .title {
+                            // border: red solid 1px;
+                            width: 200px;
+                            float: left;
+                        }
+                        .priority {
+                            float: left;
+                            width: 30px;
+                            // border: blue solid 1px;
+                        }
+                        .subContent {
+                            float: left;
+                            align-items: center;
+                            display: flex;
+                            .estTime {
+                                // border: green solid 1px;
+                                // width: 100px;
+                                float: left;
+                            }
+                            .owner {
+                                margin-left: 10px;
+                                // border: purple solid 1px;    
+                                float: left;
+                                background: #17BEBB;
+                                color: white;
+                                border-radius: 50%;
+                                width: 28px;
+                                height: 28px;
+                                align-items: center;
+                                display: flex;
+                                justify-content: center;
+                            }    
+                        }
                     }
                 }
             }

@@ -116,6 +116,7 @@ class App extends React.PureComponent {
                             </Route>
 
                             <Route component={ProjectsTasks} path='/Tasks/:projectId'/>
+                            
                             <Redirect to='/Home' />
                         </Switch>
                     </Router>

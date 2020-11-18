@@ -17,9 +17,9 @@ import './style.scss';
 
 const dateFormatList = 'DD/MM/YYYY';
 
-const today = moment().format(dateFormatList);
+const today = moment("2020-11-20T00:00:00-05:00").format(dateFormatList);
 
-// console.log('Today', today);
+console.log('Today', today);
 
 class TaskDetails extends React.Component {
     defaulState = {
@@ -50,7 +50,7 @@ class TaskDetails extends React.Component {
     }
 
     handleMenuClickEstTime = (e) => {
-        const { task } = this.state;
+        let { task } = this.state;
         task.estTime = e.key;
         this.setState({
             task: { ...task }
@@ -58,7 +58,7 @@ class TaskDetails extends React.Component {
     };
 
     handleMenuClickPriority = (e) => {
-        const { task } = this.state;
+        let { task } = this.state;
         task.priority = e.key;
         this.setState({
             task: { ...task }
@@ -75,7 +75,7 @@ class TaskDetails extends React.Component {
     }
 
     addSubTask = (subId) => {
-        const { subtasks, task } = this.state;
+        let { subtasks, task } = this.state;
         for (let index = 0; index < subtasks.length; index++) {
             if (subtasks[index].id === subId) {
                 subtasks[index].checklistItems.push({ name: 'This is a checklist item', id: Math.random(), checked: false });
@@ -114,7 +114,7 @@ class TaskDetails extends React.Component {
     }
 
     checkItem = (checkItemId, subTaskItemId) => {
-        const { subtasks, task } = this.state;
+        let { subtasks, task } = this.state;
         for (let index = 0; index < subtasks.length; index++) {
             if (subtasks[index].id === subTaskItemId) {
                 for (let index2 = 0; index2 < subtasks[index].checklistItems.length; index2++) {
@@ -139,7 +139,7 @@ class TaskDetails extends React.Component {
 
     changeValue = (e) => {
         const { value, name } = e.target;
-        const { task } = this.state;
+        let { task } = this.state;
         task[name] = value;
         this.setState({
             task: { ...task }
@@ -148,8 +148,28 @@ class TaskDetails extends React.Component {
         // userService.updateTask({ subtask: JSON.stringify(subtasks) }, task.id);
     }
 
+    onDueDateChange = (value, dateString) => {
+        const { task } = this.state;
+        // task.dueDate = value;
+        console.log('HELLO', value, dateString);
+        if (dateString === "year") {
+            task.dueDate = value.format();
+        } else if (dateString === "month") {
+
+        } else if (dateString === "date") {
+            task.dueDate = value.format();
+        } else {
+            task.dueDate = moment(dateString, dateFormatList).format();
+        }
+
+        console.log('RESULT', task.dueDate);
+        this.setState({
+            task: { ...task }
+        });
+    };
+
     onChangeMode = async () => {
-        const { onUpdate, task, subtasks } = this.state;
+        let { onUpdate, task, subtasks } = this.state;
         task.subtask = JSON.stringify(subtasks);
         if (onUpdate) {
             await userService.updateTask({ ...task }, task.id);
@@ -220,13 +240,21 @@ class TaskDetails extends React.Component {
                             <div className='twoRows'>
                                 <div className='rowTitle'>Due date</div>
                                 <div className='dueDate'>
-                                    {/* {
-                                        onUpdate && <DatePicker defaultValue={moment('01/01/2020', dateFormatList[0])} format={dateFormatList} />
-                                    } */}
-                                    {/* {
-                                        !onUpdate && <span>{today}</span>
-                                    } */}
-                                    <span>{today}</span>
+                                    {
+                                        onUpdate &&
+                                        <DatePicker
+                                            format={dateFormatList}
+                                            onChange={this.onDueDateChange}
+                                            // onPanelChange={this.onDueDateChange}
+                                            allowClear={false}
+                                            showToday
+                                            value={task.dueDate ? moment(task.dueDate) : null}
+                                        />
+                                    }
+                                    {
+                                        !onUpdate && <span>{task.dueDate ? moment(task.dueDate).format(dateFormatList) : 'No Due Date'}</span>
+                                    }
+                                    {/* <span>{today}</span> */}
                                 </div>
                             </div>
                             <div className='twoRows'>

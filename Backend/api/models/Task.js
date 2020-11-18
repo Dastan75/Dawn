@@ -29,6 +29,8 @@ module.exports = {
     percent:              { type: 'number', defaultsTo: 0 },
     priority:             { type: 'string', defaultsTo: 'medium' },
     objectives:           { type: 'string' },
+    owner:                { type: 'string' },
+    ownerName:            { type: 'string' },
     category: {
       model: 'taskcategory'
     },

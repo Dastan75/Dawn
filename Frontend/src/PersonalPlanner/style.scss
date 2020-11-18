@@ -46,54 +46,60 @@
     }
     .personalPlannerTaskBlock {
         background: white;
-        .VerticalAppointment-container-162 {
+        [class*="VerticalAppointment-container-"] {
             color: #272343 !important;
         }
+        &:hover {
+            [class*="VerticalAppointment-container-"] {
+                color: white !important;
+            }    
+        }
+
         &.color1 {
-            $base-color-red: rgb(214, 34, 70);
-            .VerticalAppointment-container-162 {
+            background: $base-color-red;
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color2 {
             background: $base-color-purple;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color3 {
             background: $base-color-blue;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color4 {
             background: $base-color-green;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color5 {
             background: $base-color-yellow;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color6 {
             background: $base-color-orange;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color7 {
             background: $base-color-pink;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
         &.color8 {
             background: $base-color-emerald;
-            .VerticalAppointment-container-162 {
+            [class*="VerticalAppointment-container-"] {
                 color: white !important;
             }
         }
@@ -126,6 +132,7 @@
                 line-height: 60px;
             }
             .backlogButton {
+                margin-right: 20px;
                 align-items: center;        
                 background: #272343;
                 border-radius: 3px;
@@ -196,7 +203,7 @@
     {
         background: $base-color-lightgrey !important;
     }
-    .TodayButtonBase-button-13 {
+    [class*="TodayButtonBase-button-"] {
         background: white !important;
         &:hover {
             border: solid 1px #272343 !important;

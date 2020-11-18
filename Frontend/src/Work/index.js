@@ -1,17 +1,18 @@
 import React from 'react';
-import SVGDetails from './SvgIcons/Details';
-import SVGConversation from './SvgIcons/Conversation';
-import SVGTasks from './SvgIcons/Tasks';
-import SVGFiles from './SvgIcons/Files';
-import SVGLink from './SvgIcons/Link';
+// import SVGDetails from './SvgIcons/Details';
+// import SVGConversation from './SvgIcons/Conversation';
+// import SVGTasks from './SvgIcons/Tasks';
+// import SVGFiles from './SvgIcons/Files';
+// import SVGLink from './SvgIcons/Link';
 import SVGSearch from './SvgIcons/Search';
-import SVGClose from './SvgIcons/Close';
+// import SVGClose from './SvgIcons/Close';
 import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
 import SVGColumns from './SvgIcons/View_Columns';
-import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from '../TaskDetails/SvgIcons/Priority';
+// import { PriorityUrgent, PriorityHigh, PriorityMedium, PriorityLow } from '../TaskDetails/SvgIcons/Priority';
 import { connect } from 'react-redux';
+import OneTask from '../ProjectsTasks/oneTask'
 
 // import { Document, Page } from 'react-pdf/dist/esm/entry.webpack'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -21,7 +22,7 @@ import { userService } from '../_services';
 import {
     withRouter
 } from 'react-router-dom';
-// import './style.scss';
+import './style.scss';
 
 
 
@@ -62,8 +63,11 @@ class ProjectsTasks extends React.Component {
         let tmpCat = { ...this.state.columns }
         // tasks
         for (let index = 0; index < retProj.tasks.length; index++) {
-            const element = retProj.tasks[index];
-            tmpCat.priority[element.priority].tasks.push(element)        }
+            const task = retProj.tasks[index];
+            if (task.owner === user.id) {
+                tmpCat.priority[task.priority].tasks.push(task)                        
+            }
+        }
         // for (let index = 0; index < project.tasksCategories.length; index++) {
         //     const category = project.tasksCategories[index];
         //     if (!category.tasks) {
@@ -82,7 +86,7 @@ class ProjectsTasks extends React.Component {
         //     tmpCat.push(category);
         // }
         // tmpCat.sort((a, b) => a.createdAt - b.createdAt);
-        console.log("CAT", tmpCat);
+        // console.log("CAT", tmpCat);
 
         this.setState({
             // projectName: project.name,
@@ -240,45 +244,12 @@ class ProjectsTasks extends React.Component {
                 >
                     <Input onChange={this.changeModalValue} placeholder={`Name your ${modalType === 'newGroup' ? 'group' : 'task'}`} value={imputNameValue}/>
                 </Modal>
-                <div className='projectBar'>
-                    <div className='progressBar'/>
-                    <div className='barLeft'>
-                        <div className='backButton clickable' onClick={this.props.history.goBack}>Back</div>
-                        <div className='projectTitle'>{projectName}</div>
-                        <div className='members'>
-                            <div className='memberBox'>
-                                <div className='oneMember'>
-                                    M
-                                </div>
-                            </div>
-                            <div className='memberBox'>
-                                <div className='oneMember'>
-                                    B
-                                </div>
-                            </div>
-                        </div>
-                        <div className='faveButton' />
+                <div className="myWorkTitlesBlock">
+                    <div className="intro">
+                        Let’s get some things done!
                     </div>
-                    <div className='barRight'>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGDetails/></div>
-                            <div className='navTitle'>Details</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGTasks/></div>
-                            <div className='navTitle'>Tasks</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGConversation/></div>
-                            <div className='navTitle'>Conversation</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGFiles/></div>
-                            <div className='navTitle'>Files</div>
-                        </div>
-                        <div className='navBtn clickable'>
-                            <div className='icon'><SVGLink/></div>
-                        </div>
+                    <div className="title">
+                        My tasks / <span className="project">My projects</span>
                     </div>
                 </div>
                 <div className='projectWrapper'>
@@ -318,22 +289,7 @@ class ProjectsTasks extends React.Component {
                                                             key={item.id}
                                                         >
                                                             {(provided, snapshot) => (
-                                                                <div
-                                                                    onClick={() => this.openTaskDetails(item)}
-                                                                    ref={provided.innerRef}
-                                                                    {...provided.draggableProps}
-                                                                    {...provided.dragHandleProps}
-                                                                    className={`task ${snapshot.isDragging ? 'isDragging' : ''}`}>
-                                                                    <div className={`progressBar ${item.choosedColor ? 'BG' + item.choosedColor : 'BGcolor1'}`} style={{ width: `${item.percent}%` }}/>
-                                                                    <div className='contentTask'>
-                                                                        {item.title}
-                                                                        {item.priority === 'urgent' && <PriorityUrgent />}
-                                                                        {item.priority === 'high' && <PriorityHigh />}
-                                                                        {item.priority === 'medium' && <PriorityMedium />}
-                                                                        {item.priority === 'low' && <PriorityLow />}
-                                                                        {!item.priority && <PriorityMedium/>}
-                                                                    </div>
-                                                                </div>
+                                                                <OneTask item={item} openTaskDetails={this.openTaskDetails} provided={provided} snapshot={snapshot} />
                                                             )}
                                                         </Draggable>
                                                     ))

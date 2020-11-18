@@ -20,9 +20,15 @@ module.exports = {
                 project: myTeam.projects.map(item => item.id)
             })
             // req.body.profile = profile.id
-
+            retTask = myTasks.filter(task => {
+                if (task.onPlanner) {
+                    return task.owner === myUser.id
+                } else {
+                    return true
+                }
+            })
             // let createdUser = await User.create(req.body).fetch();
-            return res.status(201).json({ tasks: myTasks});
+            return res.status(201).json({ tasks: retTask});
 
         } catch (err) {
             return res.status(404).json({ err: err });

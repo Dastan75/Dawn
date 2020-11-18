@@ -103,6 +103,14 @@
             letter-spacing: 0.007em;
             text-transform: uppercase;
         }
+        .dueDate {
+            .ant-picker {
+                padding: 0px !important;
+                padding-right: 4px !important;
+                padding-bottom: 1px !important;
+                padding-top: 1px !important;
+            }
+        }
         .menuPrioOne {
             display: flex;
             align-items: center;

@@ -5,7 +5,7 @@ import SVGTasks from './SvgIcons/Tasks';
 import SVGFiles from './SvgIcons/Files';
 import SVGLink from './SvgIcons/Link';
 import SVGSearch from './SvgIcons/Search';
-import SVGClose from './SvgIcons/Close';
+// import SVGClose from './SvgIcons/Close';
 import SVGCards from './SvgIcons/View_Cards';
 import SVGTimeline from './SvgIcons/View_Timeline';
 import SVGList from './SvgIcons/View_List';
@@ -321,11 +321,9 @@ class ProjectsTasks extends React.Component {
                                                             index={index}
                                                             key={item.id}
                                                         >
-                                                            {(provided, snapshot) => {
-                                                                return (
-                                                                    <OneTask item={item} openTaskDetails={this.openTaskDetails} provided={provided} snapshot={snapshot} />
-                                                                )
-                                                            }}
+                                                            {(provided, snapshot) => (
+                                                                <OneTask item={item} openTaskDetails={this.openTaskDetails} provided={provided} snapshot={snapshot} />
+                                                            )}
                                                         </Draggable>
                                                     ))
                                                 }

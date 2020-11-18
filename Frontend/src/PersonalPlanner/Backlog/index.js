@@ -16,9 +16,9 @@ class Backlog extends React.Component {
     };
 
     render() {
-        const { backlogList, selectedBacklog } = this.props;
+        const { backlogList, selectedBacklog, visible } = this.props;
         return (
-            <div className='backlogContainer'>
+            <div className={`backlogContainer ${visible ? 'visible' : ''}`}>
                 <div className='backlogTitle'>My backlog</div>
                 <div className='closeBacklog' onClick={this.props.onClose}><SVGClose/></div>
                 <div className='todaysBlock block'>

@@ -10,11 +10,15 @@
   // margin: 0;
   // padding: 0;
   position: fixed; 
-  right: 0;
+  // right: 0;
   width: 314px;
   z-index: 10;
-  transition: all 1s;
-  animation: come-from-right2 .7s forwards;
+  transition: all .5s ease-out;
+  right: -400px;
+  // display: none;
+  &.visible {
+    right: 0px !important;
+  }
 .closeBacklog {
   &:hover {
     // box-shado w: $shadow-large
