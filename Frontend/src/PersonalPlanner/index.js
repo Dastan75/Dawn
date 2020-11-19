@@ -86,25 +86,26 @@ class PersonalPlanner extends React.Component {
 
   componentDidMount = async () => {
       const { user } = this.props;
-      let ret = await userService.getEvent();
-      let ret2 = await userService.getTasks(user.id);
-
-      if (!ret2 || !ret2.tasks) {
-          ret2 = { tasks: [] };
-      }
-      if (!ret) {
-          ret = [];
-      }
-
-      // console.log('TASKS', ret2);
-
-      const taksCal = ret2.tasks.filter((item) => item.onPlanner === true);
-      const taksBack = ret2.tasks.filter((item) => item.onPlanner === false);
-
-      this.setState({
-          data: [...ret, ...taksCal],
-          backlogList: taksBack
-      });
+      const promisesArray = []
+      promisesArray.push(userService.getEvent())
+      promisesArray.push(userService.getTasks(user.id))
+      Promise.allSettled(promisesArray).then(([ret, ret2]) => {
+        let retEvent = [ ...ret.value ]
+        let retTasks = { ...ret2.value }
+        if (!retTasks || !retTasks.tasks) {
+            retTasks = { tasks: [] };
+        }
+        if (!retEvent) {
+            retEvent = [];
+        } 
+        const taksCal = retTasks.tasks.filter((item) => item.onPlanner === true);
+        const taksBack = retTasks.tasks.filter((item) => item.onPlanner === false);
+  
+        this.setState({
+            data: [...retEvent, ...taksCal],
+            backlogList: taksBack
+        });
+      }); 
   }
 
   TimeTableCell = (props) => <WeekView.TimeTableCell className='clickable' onClick={() => {
@@ -135,7 +136,7 @@ class PersonalPlanner extends React.Component {
           //   endDate: props.endDate
           // }
           if (backlog.estTime) {
-              backlog.endDate = moment(props.endDate).add(backlog.estTime, 'hours').toDate();
+              backlog.endDate = moment(props.endDate).add(backlog.estTime - 1, 'hours').toDate();
           } else {
               backlog.endDate = props.endDate;
           }

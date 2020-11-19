@@ -27,20 +27,20 @@
         display: flex;
         height: 80px;
         line-height: 80px;
-        margin-bottom: 56px;
+        margin-bottom: 36px;
         padding: 0 48px;
         position: relative;
         width: 100%;
     }
-    .progressBar {
-        // background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
-        bottom: 0px;
-        height: 3px;
-        left: 0px;
-        position: absolute;
-        top: 0;
-        // width: 70%;
-    }
+    // .progressBar {
+    //     // background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
+    //     bottom: 0px;
+    //     height: 3px;
+    //     left: 0px;
+    //     position: absolute;
+    //     top: 0;
+    //     // width: 70%;
+    // }
     .barLeft {
         display: flex;
         width: 40%;
@@ -190,41 +190,21 @@
             &:nth-last-of-type(1) {
                 border-right: 0 solid red;
             }
-            &:hover .task {
-                &.new{
-                    background: $base-color-darkergrey;
-                    opacity: 1;
+            .titleBlock {
+                .newTask {
+                    // position: absolute;
+                    // top: 0px;
+                    float: right;
                 }
-            }
-            .title {
-                margin-bottom: 20px;
-                font-size: $text-caps;
-                font-weight: bold;
-                padding-bottom: 2px;
-                text-transform: uppercase;
-            }
-            .task {
-                // position: fixed;
-                // height: 100px;
-
-                &.new {
-                    align-items: center;
-                    background: none;
-                    border-radius: 3px;
-                    box-shadow: none;
-                    color: $base-color;
-                    display: flex;
+                .title {
+                    width: fit-content;
+                    margin-bottom: 20px;
+                    font-size: $text-caps;
                     font-weight: bold;
-                    margin-bottom: 10px;
-                    opacity: 0;
-                    padding-left: 12px;
-                    text-align: left;
-                    transition: all .5s;
-                    width: 260px;
-                    .content {
-                        font-size: $text18px;
-                    }
-                }
+                    padding-bottom: 2px;
+                    float: left;
+                    text-transform: uppercase;
+                }        
             }
             .column {
                 width: 280px;
@@ -239,6 +219,7 @@
 
                 }
                 .task {
+                    position: relative;
                     padding-right: 15px;
                     padding-left: 15px;
                     align-items: center;
@@ -251,6 +232,15 @@
                     height: 104px;
                     margin-bottom: 16px;
                     width: 260px;
+                    .progressBar {
+                        // background: linear-gradient(90deg, #FFB1C1 0%, #D62246 100%);
+                        bottom: 0px;
+                        height: 3px;
+                        left: 0px;
+                        position: absolute;
+                        top: 0;
+                        // width: 70%;
+                    }
                     &.isDragging {
                         // box-shadow: $shadow-bigger;
                         // transform: translate(50px, 100px);
@@ -262,9 +252,14 @@
                         // justify-content: space-between;
                         width: 100%;
                         .title {
+                            height: 30px;
                             // border: red solid 1px;
                             width: 200px;
                             float: left;
+                            font-weight: bold;
+                            font-size: 18px;
+                            // line-height: 16px;
+                            color: #272343;
                         }
                         .priority {
                             float: left;
@@ -279,6 +274,7 @@
                                 // border: green solid 1px;
                                 // width: 100px;
                                 float: left;
+                                font-size: 16px;
                             }
                             .owner {
                                 margin-left: 10px;

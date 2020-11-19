@@ -299,14 +299,16 @@ class ProjectsTasks extends React.Component {
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             {columns && columns.map((column, index) => (
                                 <div className='columnBlock' key={column.id}>
-                                    <div className='title'>
-                                        {column.name}
+                                    <div className='titleBlock'>
+                                        <div className='title'>
+                                            {column.name}
+                                        </div>
+                                        <div className={'newTask clickable'} onClick={() => this.showModal('newTask', column.id)}>
+                                            <span className='content'>
+                                                + Create a new task
+                                            </span>
+                                        </div>
                                     </div>
-                                    {/* <div className={'task new clickable'} onClick={() => this.showModal('newTask', column.id)}>
-                                        <span className='content'>
-                                            + Create a new task
-                                        </span>
-                                    </div> */}
                                     <Droppable droppableId={`${column.id}`}>
                                         {(provided, snapshot) => (
                                             <div

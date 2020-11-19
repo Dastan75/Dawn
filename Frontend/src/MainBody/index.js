@@ -8,6 +8,7 @@ import { userService } from '../_services';
 import {
     withRouter
 } from 'react-router-dom';
+import SVGArrow from './SvgIcons/Arrow';
 
 // const { TabPane } = Tabs;
 let defmoodModal = true;
@@ -132,8 +133,22 @@ class MainBody extends React.PureComponent {
                   <div className='boxesBlock'>
                       <div className='todayBlock block'>
                           <div className='title'>
-                            Today's tasks
+                                Today's tasks { tasks && tasks.length > 3 ? <span className="moreTasks">{`(+${tasks.length - 3} tasks)`}</span> : ''}
                           </div>
+                          {
+                              tasks && tasks.length === 0 &&
+                              <div className="emptyTasks">
+                                <div className='noteToUser'>
+                                    <div className='noteArrow'><SVGArrow/></div>
+                                    <div className='noteText'>Looks like you’ve got nothing to do today</div>
+                                </div>
+                                <div className="buttonBlock">
+                                    <div className="button clickable">
+                                        See my planner
+                                    </div>
+                                </div>
+                              </div>
+                          }
                           {
                               tasks && tasks.map((item, index) => {
                                   if (index < 3) {

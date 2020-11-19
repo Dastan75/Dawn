@@ -21,12 +21,15 @@
         margin: 0 24px 0 0;
         padding: $scale24;
         width: 338px;
-      }
-      .title {
-        @include font-default;
-        color: $base-color;
-        font-size: $text21px;
-        margin-bottom: $scale32;
+        .title {
+          @include font-default;
+          color: $base-color;
+          font-size: $text21px;
+          margin-bottom: $scale32;
+          .moreTasks {
+            font-size: 14px !important;
+          }
+        }      
       }
       .weekBlock {
         background: #FFE7B9;
@@ -57,6 +60,71 @@
       }
       .todayBlock {
         background: $base-color-lightgrey;
+        // border: red solid 1px;
+        position: relative;
+        border: rgba(128, 128, 128, .5) solid 1px;
+
+        .seeMore {
+          @include font-default;
+          color: $base-color;
+          font-size: $text14px;
+          font-style: normal;
+          position: absolute;
+          bottom: $scale24;
+        }
+        .emptyTasks {
+          border-radius: 16px;
+          position: absolute;
+          // border: solid blue 1px;
+          width: 100%;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          .buttonBlock {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            // border: solid blue 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .button {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 22px;
+              color: white;
+              width: 165px;
+              height: 48px;
+              background: #272343;
+              border-radius: 9px;
+            }
+          }
+          .noteToUser {
+            position: absolute;
+            bottom: 70px;
+            right: 0px;
+            // margin-top: 18px;  
+            display: flex;
+            .noteArrow {
+              height: 36px;
+              // margin-top: 24px;
+              width: 40px;
+            }
+            .noteText {
+              font-family: Kalam;
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 25px;
+              margin-left: 12px;
+              transform: rotate(-5deg);
+              width: 150px;
+            }
+          }
+
+        }
         .task {
           align-items: center;
           background: white;
