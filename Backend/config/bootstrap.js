@@ -92,8 +92,8 @@ module.exports.bootstrap = async function (done) {
 
   let createdTeamA = null
   try {
-    createdTeamA = await Team.findOrCreate({ name: 'Agency Team' }, {
-      name: 'Agency Team',
+    createdTeamA = await Team.findOrCreate({ name: 'Dawn Team' }, {
+      name: 'Dawn Team',
       company: createdCompany.id
     });
   } catch (err) {
@@ -132,9 +132,9 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject = null
   try {
-    createdProject = await Project.findOrCreate({ name: 'Code Swap' }, {
-      name: 'Code Swap',
-      desc: 'I use HTML/CSS + React/Node',
+    createdProject = await Project.findOrCreate({ name: 'Design Dawn' }, {
+      name: 'Design Dawn',
+      desc: 'Let\'s make Dawn the most beautiful website in the world',
       team: createdTeamA.id
     });
   } catch (err) {
@@ -143,9 +143,9 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject2 = null
   try {
-    createdProject2 = await Project.findOrCreate({ name: 'Design Swap' }, {
-      name: 'Design Swap',
-      desc: 'I use dribble and figma',
+    createdProject2 = await Project.findOrCreate({ name: 'Code Dawn' }, {
+      name: 'Code Dawn',
+      desc: 'Testing is Doubting',
       team: createdTeamA.id
     });
   } catch (err) {
@@ -154,9 +154,9 @@ module.exports.bootstrap = async function (done) {
 
   let createdProject3 = null
   try {
-    createdProject3 = await Project.findOrCreate({ name: 'Sell Swap' }, {
-      name: 'Sell Swap',
-      desc: 'I use this african prince money that I received in my email',
+    createdProject3 = await Project.findOrCreate({ name: 'Marketing Dawn' }, {
+      name: 'Marketing Dawn',
+      desc: 'The next Billion $$$ company',
       team: createdTeamA.id
     });
   } catch (err) {
@@ -166,11 +166,42 @@ module.exports.bootstrap = async function (done) {
   //******** CREATE USER ADMIN ********//
   try {
     await User.findOrCreate({ email: '1' }, {
-      id: 'abc',
       email: '1',
       password: '@@@@',
       name: 'B',
       firstName: 'Florian',
+      gender: '1',
+      state: '2',
+      avatarUrl: '',
+      profile: createdAdmin.id,
+      company: createdCompany.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  try {
+    await User.findOrCreate({ email: 'ivyg' }, {
+      email: 'ivyg',
+      password: 'ivyg123',
+      name: 'Gao',
+      firstName: 'Ivy',
+      gender: '1',
+      state: '2',
+      avatarUrl: '',
+      profile: createdAdmin.id,
+      company: createdCompany.id
+    });
+  } catch (err) {
+    sails.log.debug('Err creating Admin user', err);
+  }
+
+  try {
+    await User.findOrCreate({ email: 'damient' }, {
+      email: 'damient',
+      password: 'damient123',
+      name: 'Terwagne',
+      firstName: 'Damien',
       gender: '1',
       state: '2',
       avatarUrl: '',
