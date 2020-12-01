@@ -13,7 +13,7 @@ module.exports = {
     id:                   { type: 'string', autoIncrement: true, unique:true },
     title:                { type: 'string', required: true },
     rRule:                { type: 'string' },
-    notes:                { type: 'string', required: true },
+    notes:                { type: 'string' },
     color:                { type: 'string' },
     startDate:            { type: 'string', required: true },
     endDate:              { type: 'string' },

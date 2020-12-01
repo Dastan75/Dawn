@@ -187,8 +187,11 @@
             // border: red solid 1px;
             // border-left: solid 1px #D4D5DD;
             border-right: 1px solid #D4D5DD;
-            &:nth-last-of-type(1) {
-                border-right: 0 solid red;
+            // &:nth-last-of-type(1) {
+            //     border-right: 0 solid red;
+            // }
+            &:nth-of-type(1) {
+                border-left: 1px solid #D4D5DD;
             }
             .titleBlock {
                 .newTask {

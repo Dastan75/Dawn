@@ -33,7 +33,7 @@ module.exports = {
             return res.status(201).json({ tasks: myTasks, projects: myTeam.projects });
 
         } catch (err) {
-            console.log('PROBLEMS')
+            console.log('PROBLEMS', err)
             return res.status(404).json({ err: err });
         }
     },

@@ -56,10 +56,10 @@ class ProjectsTasks extends React.Component {
         const { user } = this.props
         const retProj = await userService.getAllProjects(user.id);
         // console.log('RET', retProj);
-        // if (!retProj) {
-        //     this.props.history.goBack();
-        //     return;
-        // }
+        if (!retProj) {
+            this.props.history.goBack();
+            return;
+        }
         let tmpCat = { ...this.state.columns }
         // tasks
         for (let index = 0; index < retProj.tasks.length; index++) {

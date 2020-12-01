@@ -22,8 +22,6 @@ import { userActions } from './_actions';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
-// const { TabPane } = Tabs;
-
 class App extends React.PureComponent {
     defaulState = {
 
@@ -49,7 +47,7 @@ class App extends React.PureComponent {
     }
 
     componentDidMount = () => {
-        console.log('VERSION 1');
+        // console.log('VERSION 1');
         this.getData()
     }
 

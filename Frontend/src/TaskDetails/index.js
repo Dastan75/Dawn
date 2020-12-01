@@ -133,7 +133,7 @@ class TaskDetails extends React.Component {
         const newTask = { ...task };
         this.setState({
             subtasks: newSubt,
-            tasl: newTask
+            task: newTask
         });
     }
 
@@ -146,6 +146,38 @@ class TaskDetails extends React.Component {
         });
 
         // userService.updateTask({ subtask: JSON.stringify(subtasks) }, task.id);
+    }
+
+    changeValueSubTask = (checkItemId, subTaskItemId, e) => {
+        const { value } = e.target;
+        let { subtasks } = this.state;
+        for (let index = 0; index < subtasks.length; index++) {
+            if (subtasks[index].id === subTaskItemId) {
+                for (let index2 = 0; index2 < subtasks[index].checklistItems.length; index2++) {
+                    if (subtasks[index].checklistItems[index2].id === checkItemId) {
+                        subtasks[index].checklistItems[index2].name = value;
+                    }
+                }
+            }
+        }
+        const newSubt = [...subtasks];
+        this.setState({
+            subtasks: newSubt,
+        });
+    }
+
+    changeValueSubTaskItem = (subTaskItemId, e) => {
+        const { value } = e.target;
+        let { subtasks } = this.state;
+        for (let index = 0; index < subtasks.length; index++) {
+            if (subtasks[index].id === subTaskItemId) {
+                subtasks[index].name = value;
+            }
+        }
+        const newSubt = [...subtasks];
+        this.setState({
+            subtasks: newSubt,
+        });
     }
 
     onDueDateChange = (value, dateString) => {
@@ -421,7 +453,7 @@ class TaskDetails extends React.Component {
                                 </div>
                             </div>}
                             { openPanel === 'viewSubTasks' &&
-                            <div className='viewSubTasks'>
+                            <div className=' '>
                                 <div className='contents'>
                                     <div className='title'>List of things to do</div>
                                     {/* <div className='taskRow'>
@@ -450,7 +482,19 @@ class TaskDetails extends React.Component {
                                             <div className='taskRow' key={subTaskItem.id}>
                                                 <div className='taskItem'>
                                                     <div className='avatar' />
-                                                    <div className='subtaskTitle'>{subTaskItem.name} ({subTaskItem.checklistItems.filter((item) => item.checked === true).length}/{subTaskItem.checklistItems.length})</div>
+                                                    <div className='subtaskTitle'>
+                                                        {
+                                                            onUpdate === true &&
+                                                            <Input className="subtaskEditItem" name='title' onChange={(e) => this.changeValueSubTaskItem(subTaskItem.id, e)} value={subTaskItem.name}/>
+                                                        }
+                                                        {
+                                                            onUpdate === false &&
+                                                            <span>{subTaskItem.name}</span>
+                                                        }
+                                                        <div className="checkCount">
+                                                            ({subTaskItem.checklistItems.filter((item) => item.checked === true).length}/{subTaskItem.checklistItems.length})
+                                                        </div>
+                                                    </div>
                                                     {/* <div className='timeEstimated'>3 hrs</div> */}
                                                     <div className='statusSquare' />
                                                 </div>
@@ -458,8 +502,15 @@ class TaskDetails extends React.Component {
                                                     {
                                                         subTaskItem.checklistItems && subTaskItem.checklistItems.map((checkItem) => (
                                                             <div className='checklistItem clickable' key={checkItem.id}>
-                                                                <div className={`checkbox ${checkItem.checked ? 'completed' : ''}`} onClick={() => this.checkItem(checkItem.id, subTaskItem.id)} />
-                                                                <div className='subtaskTitle'>{checkItem.name}</div>
+                                                                <div className={`checkbox ${checkItem.checked ? 'completed' : ''}`} onClick={() => this.checkItem(checkItem.id, subTaskItem.id)} />                                                                
+                                                                {
+                                                                    onUpdate === true &&
+                                                                    <Input className="subtaskEdit" name='title' onChange={(e) => this.changeValueSubTask(checkItem.id, subTaskItem.id, e)} value={checkItem.name}/>
+                                                                }
+                                                                {
+                                                                    onUpdate === false &&
+                                                                    <div className='subtaskTitle'>{checkItem.name}</div>
+                                                                }
                                                             </div>
                                                         ))
                                                     }
@@ -473,10 +524,10 @@ class TaskDetails extends React.Component {
                                     <div className='subtaskAdd'>
                                         <div className='avatarAdd clickable' onClick={() => this.addNewSubT()}><SVGAvatar/></div>
                                         <div className='subtaskTitle clickable' onClick={() => this.addNewSubT()}>This is where to add a new sub-task</div>
-                                        <div className='addMoreBox'>
+                                        {/* <div className='addMoreBox'>
                                             <div className='addTime'><SVGTime/></div>
                                             <div className='addStatus'><SVGStatus/></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>

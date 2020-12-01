@@ -190,8 +190,14 @@ class PersonalPlanner extends React.Component {
       //   console.log('commitChanges Delete', deleted);
 
       if (added) {
-          const copyTask = { ...added };
+          let copyTask = { ...added };
           copyTask.owner = user.id;
+          if (!copyTask.title) {
+              return
+          }
+        //   if (!copyTask.notes) {
+        //     copyTask.notes = ''
+        //   }
           const ret = await userService.createEvent(copyTask);
           data = [...data, ret];
       }

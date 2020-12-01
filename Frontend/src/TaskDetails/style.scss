@@ -160,6 +160,11 @@
         display: flex;
         height: calc(100vh - 160px);
         z-index: 5;
+        .contents {
+            .title {
+                margin-bottom: 10px;
+            }
+        }
     }
         .leftDetails {
             padding: $scale32;
@@ -240,15 +245,18 @@
                 background-color: white;
                 box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.1), inset 2px 2px 3px rgba(0, 0, 0, 0.1);
                 display: flex;
-                padding: 12px;
-            }
-            .avatarAdd {
-                width: 24px;
-            }
-            .avatarAdd, .addMoreBox {
-                display: flex;
-                height: 24px;
-                margin-right: 12px;
+                // justify-content: center;
+                align-items: center;
+                padding: 5px 12px;
+                .avatarAdd {
+                    width: 24px;
+                    // border: red solid 1px;
+                }
+                .avatarAdd, .addMoreBox {
+                    display: flex;
+                    margin-right: 12px;
+                }
+    
             }
             .subtaskTitle {
                 font-size: $text21px;
@@ -256,6 +264,7 @@
                 width: calc(100% - 200px);
             }
             .taskItem {
+                align-items: center;
                 display: flex;
                 width: 100%;
             }
@@ -269,7 +278,13 @@
                 display: flex;
                 line-height: 32px;
                 margin-bottom: 12px;
+                align-items: center;
                 width: 100%;
+                // border: red solid 1px;
+                .subtaskEdit {
+                    height: 100%;
+                    // height: 30px;
+                }
             }
             .checkbox {
                 background-color: white;
@@ -291,6 +306,14 @@
             }
             .subtaskTitle {
                 font-size: $text14px;
+                display: flex;
+                align-items: center;
+                .checkCount {
+                    margin-left : 10px;
+                }
+                .subtaskEditItem {
+                    height: 100%;
+                }
             }
             .converseComment, .uploadBar {
                 background-color: white;
